@@ -1,13 +1,11 @@
 <?php
-use Illuminate\Support\Facades\Input;
-use Uninett\Api\Transformers\UserTransformer;
 
+use Uninett\Api\Transformers\UserTransformer;
 use Uninett\Users\Registration\RegisterUserCommand;
 use Uninett\Users\Registration\VerifyUserCommand;
 
 class RegistrationController extends ApiController {
 	private $transform;
-
 
 	function __construct(UserTransformer $transform)
 	{

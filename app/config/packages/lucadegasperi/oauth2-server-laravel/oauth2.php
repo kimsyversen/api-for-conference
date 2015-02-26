@@ -76,23 +76,20 @@ return [
 
     'grant_types' => [
 	    'password' => [
-		    'class'            => 'League\OAuth2\Server\Grant\PasswordGrant',
-		    'access_token_ttl' => 604800,
-
-		    // the code to run in order to verify the user's identity
-		    'callback'         => function($username, $password){
-			    $credentials = [
+		    'class' => '\League\OAuth2\Server\Grant\PasswordGrant',
+		    'callback' => function($username, $password) {
+			    if( Auth::validate([
 				    'email'    => $username,
 				    'password' => $password,
-			    ];
-
-			    if (Auth::once($credentials)) {
-				    return Auth::user()->id;
+			    ])){
+				    $user = User::where('email',$username)->first();
+				    return $user->id;
 			    } else {
 				    return false;
 			    }
-		    }
-	    ],
+		    },
+		    'access_token_ttl' => 3600
+	    ]
     ],
 
     /*

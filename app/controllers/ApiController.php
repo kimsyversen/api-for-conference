@@ -28,6 +28,12 @@ class ApiController extends \BaseController {
 
 	public function respond($data, $headers = [])
 	{
+		//Check if the client has set the Accept field to application/json
+		if(Request::wantsJson())
+			return Response::json($data, $this->getStatusCode(), $headers);
+
+
+		//Default back to json if none matched
 		return Response::json($data, $this->getStatusCode(), $headers);
 	}
 
