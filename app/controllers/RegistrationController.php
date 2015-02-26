@@ -27,11 +27,6 @@ class RegistrationController extends ApiController {
 	{
 		$user = $this->execute(VerifyUserCommand::class, ['confirmation_code' => $confirmation_code] );
 
-		if(!$user)
-			return $this->respondWithError([
-				'message' => 'Something went wrong when verifying user'
-			]);
-
 		return $this->respond([
 			'data' => $this->transform->transform($user->toArray())
 		]);

@@ -1,6 +1,8 @@
 <?php namespace Uninett\Validation;
 
 use Illuminate\Support\Facades\Validator as Validate;
+use Uninett\Exceptions\ValidationException;
+
 abstract class Validator {
 
 	protected $errors;
@@ -17,7 +19,9 @@ abstract class Validator {
 		if($validator->fails())
 		{
 			$this->errors = $validator->messages();
-			return false;
+
+			//TODO: Se på  $this->errors
+			throw new ValidationException($this->errors, $this->errors, 422);
 		}
 
 		return true;

@@ -28,13 +28,22 @@ class ApiController extends \BaseController {
 
 	public function respond($data, $headers = [])
 	{
-		//Check if the client has set the Accept field to application/json
-		if(Request::wantsJson())
-			return Response::json($data, $this->getStatusCode(), $headers);
+		try
+		{
+			//Check if the client has set the Accept field to application/json
+			if (Request::wantsJson())
+				return Response::json($data, $this->getStatusCode(), $headers);
+
+		} catch (\Illuminate\Database\Eloquent\ModelNotFoundException $ex) {
+			return $this->respondNotFound('Resource not found');
+		}
+
+
 
 
 		//Default back to json if none matched
 		return Response::json($data, $this->getStatusCode(), $headers);
+
 	}
 
 	public function respondWithPagination(Illuminate\Pagination\Paginator $items, $data)
@@ -80,5 +89,10 @@ class ApiController extends \BaseController {
 		return $this->setStatusCode(HttpResponse::HTTP_OK)->respond([
 			'message' => $message
 		]);
+	}
+
+	protected function getUserId()
+	{
+		return Authorizer::getResourceOwnerId();
 	}
 }

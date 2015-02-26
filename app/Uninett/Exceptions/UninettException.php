@@ -1,8 +1,7 @@
-<?php namespace Uninett\Validation;
-
+<?php namespace Uninett\Exceptions;
 use Exception;
 
-class ValidationException extends Exception {
+class UninettException extends Exception {
 
 	protected $errors;
 
@@ -11,10 +10,5 @@ class ValidationException extends Exception {
 		$this->errors = $errors;
 
 		parent::__construct($message, $code, $previous);
-	}
-
-	public function getErrors()
-	{
-		return $this->errors;
 	}
 }

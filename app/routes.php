@@ -12,6 +12,7 @@ Route::group(['prefix' => 'api'], function() {
 	Route::group(['prefix' => 'v1', 'before' => 'oauth' ], function() {
 
 		Route::get('users/me', [ 'as' => 'users_path', 'uses' => 'UsersController@getMe' ]);
+		Route::get('users/{id}', [ 'as' => 'users_path', 'uses' => 'UsersController@getUserById' ]);
 
 	});
 });

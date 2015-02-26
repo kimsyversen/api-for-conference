@@ -12,15 +12,26 @@ class UsersController extends ApiController {
 
 	public function getMe()
 	{
-		$user_id = Authorizer::getResourceOwnerId();
+		$user_id = $this->getUserId();
 
 		$user = User::where('id', '=', $user_id)->get()->first();
 
-		return $user;
+/*		if(!$user)
+			return $this->respondNotFound([
+				'message' => 'User was not found'
+			]);*/
 
 		return $this->respond([
 			'data' => $this->transform->transform($user->toArray())
 		]);
+	}
 
+	public function getUserById($id)
+	{
+		$user = User::findOrFail($id);
+
+		return $this->respond([
+			'data' => $this->transform->transform($user->toArray())
+		]);
 	}
 }
