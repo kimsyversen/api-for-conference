@@ -1,6 +1,8 @@
 <?php namespace Uninett\Validation;
 
 use Illuminate\Support\Facades\Validator as Validate;
+use Uninett\Exceptions\ValidationException;
+
 abstract class Validator {
 
 	protected $errors;
@@ -14,12 +16,11 @@ abstract class Validator {
 	{
 		$validator = Validate::make($attributes, static::$rules);
 
-		if($validator->fails())
-		{
+		if($validator->fails()) {
 			$this->errors = $validator->messages();
-			return false;
-		}
 
+			throw new ValidationException('One or more of these fields already exists', $this->errors, 422);
+		}
 		return true;
 	}
 }

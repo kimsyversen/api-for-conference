@@ -20,6 +20,8 @@ ClassLoader::addDirectories(array(
 
 ));
 
+
+require(app_path().'/errors.php');
 /*
 |--------------------------------------------------------------------------
 | Application Error Logger

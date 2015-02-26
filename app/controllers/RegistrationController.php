@@ -1,13 +1,11 @@
 <?php
-use Illuminate\Support\Facades\Input;
-use Uninett\Api\Transformers\UserTransformer;
 
+use Uninett\Api\Transformers\UserTransformer;
 use Uninett\Users\Registration\RegisterUserCommand;
 use Uninett\Users\Registration\VerifyUserCommand;
 
 class RegistrationController extends ApiController {
 	private $transform;
-
 
 	function __construct(UserTransformer $transform)
 	{
@@ -28,11 +26,6 @@ class RegistrationController extends ApiController {
 	public function verify($confirmation_code)
 	{
 		$user = $this->execute(VerifyUserCommand::class, ['confirmation_code' => $confirmation_code] );
-
-		if(!$user)
-			return $this->respondWithError([
-				'message' => 'Something went wrong when verifying user'
-			]);
 
 		return $this->respond([
 			'data' => $this->transform->transform($user->toArray())

@@ -1,18 +1,18 @@
 <?php namespace Uninett\Users\Registration;
+
 use Laracasts\Commander\CommandHandler;
 use Laracasts\Commander\Events\DispatchableTrait;
-use Log;
+use Uninett\Exceptions\VerifyUserException;
 use Uninett\Users\Registration\Events\UserHasBeenVerified;
-use Uninett\Users\Registration\Events\UserHasRegistered;
 use Uninett\Users\UserRepository;
-use User;
 use Laracasts\Commander\Events\EventGenerator;
+
+use Log;
 class VerifyUserCommandHandler implements  CommandHandler{
 
 	use DispatchableTrait, EventGenerator;
 
 	protected $repository;
-
 
 	function __construct(UserRepository $repository)
 	{
@@ -28,21 +28,14 @@ class VerifyUserCommandHandler implements  CommandHandler{
 	 */
 	public function handle($command)
 	{
-		//TODO: Forbedre?
 		$code = $command->confirmation_code;
-
-		if(!is_string($code))
-			return false;
 
 		$user = $this->repository->verify($code);
 
-		if(is_bool($user))
-			return false;
+		if(is_bool($user) || is_null($user))
+			throw new VerifyUserException('Verification code expired.', 'Verification code expired.', 412);
 
 		$verifiedUser = new UserHasBeenVerified($user);
-
-		if(!$verifiedUser)
-			return false;
 
 		$user->raise($verifiedUser);
 
@@ -52,6 +45,4 @@ class VerifyUserCommandHandler implements  CommandHandler{
 
 		return $user;
 	}
-
-
 } 

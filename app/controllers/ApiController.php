@@ -28,7 +28,14 @@ class ApiController extends \BaseController {
 
 	public function respond($data, $headers = [])
 	{
+
+		//Check if the client has set the Accept field to application/json
+		if (Request::wantsJson())
+			return Response::json($data, $this->getStatusCode(), $headers);
+		
+		//Default back to json if none matched
 		return Response::json($data, $this->getStatusCode(), $headers);
+
 	}
 
 	public function respondWithPagination(Illuminate\Pagination\Paginator $items, $data)
@@ -74,5 +81,10 @@ class ApiController extends \BaseController {
 		return $this->setStatusCode(HttpResponse::HTTP_OK)->respond([
 			'message' => $message
 		]);
+	}
+
+	protected function getUserId()
+	{
+		return Authorizer::getResourceOwnerId();
 	}
 }
