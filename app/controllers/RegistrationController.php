@@ -1,5 +1,6 @@
 <?php
 
+use Uninett\Api\Formatters\OutputFormatter;
 use Uninett\Api\Transformers\UserTransformer;
 use Uninett\Users\Registration\RegisterUserCommand;
 use Uninett\Users\Registration\VerifyUserCommand;
@@ -7,8 +8,10 @@ use Uninett\Users\Registration\VerifyUserCommand;
 class RegistrationController extends ApiController {
 	private $transform;
 
-	function __construct(UserTransformer $transform)
+	function __construct(UserTransformer $transform, OutputFormatter $outputFormatter)
 	{
+		parent::__construct($outputFormatter);
+
 		$this->transform = $transform;
 	}
 
@@ -17,7 +20,7 @@ class RegistrationController extends ApiController {
 		$user = $this->execute(RegisterUserCommand::class);
 
 		if($user)
-			return $this->respondCreated(['Account was successfully created. You must now verify it. Please check your email inbox or spam folder for email.']);
+			return $this->respondCreated('Account was successfully created. You must now verify it. Please check your email inbox or spam folder for email.');
 
 		return $this->respondWithError('Something went wrong.');
 

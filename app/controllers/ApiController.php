@@ -1,10 +1,8 @@
 <?php
-
-use Illuminate\Support\Facades\Response;
-
 use Illuminate\Http\Response as HttpResponse;
-
 use Laracasts\Commander\CommanderTrait;
+use Illuminate\Pagination\Paginator as Paginator;
+use Uninett\Api\Formatters\OutputFormatter;
 
 class ApiController extends \BaseController {
 
@@ -13,6 +11,13 @@ class ApiController extends \BaseController {
 	protected $statusCode = 200;
 
 	protected $limit = 100;
+
+	protected $outputFormatter;
+
+	function __construct(OutputFormatter $outputFormatter)
+	{
+		$this->outputFormatter = $outputFormatter;
+	}
 
 	public function getStatusCode()
 	{
@@ -28,17 +33,10 @@ class ApiController extends \BaseController {
 
 	public function respond($data, $headers = [])
 	{
-
-		//Check if the client has set the Accept field to application/json
-		if (Request::wantsJson())
-			return Response::json($data, $this->getStatusCode(), $headers);
-		
-		//Default back to json if none matched
-		return Response::json($data, $this->getStatusCode(), $headers);
-
+		return $this->outputFormatter->response($data, HttpResponse::HTTP_OK, $headers);
 	}
 
-	public function respondWithPagination(Illuminate\Pagination\Paginator $items, $data)
+	public function respondWithPagination(Paginator $items, $data)
 	{
 		$data = array_merge($data, [
 			'paginator' => [
@@ -52,35 +50,9 @@ class ApiController extends \BaseController {
 		return $this->respond($data);
 	}
 
-	public function respondWithError($message)
-	{
-		return $this->respond(
-			[
-				'error' =>
-					[
-						'message' => $message,
-					]
-			]);
-	}
-
-	public function respondNotFound($message = 'Not found')
-	{
-		return $this->setStatusCode(HttpResponse::HTTP_NOT_FOUND)->respondWithError($message);
-	}
-
-	public function respondInternalError($message = 'Internal error')
-	{
-		return $this->setStatusCode(HttpResponse::HTTP_INTERNAL_SERVER_ERROR)->respondWithError($message);
-	}
-
-	/**
-	 * @return \Illuminate\Http\JsonResponse
-	 */
 	public function respondCreated($message)
 	{
-		return $this->setStatusCode(HttpResponse::HTTP_OK)->respond([
-			'message' => $message
-		]);
+		return  $this->outputFormatter->response($message, HttpResponse::HTTP_CREATED, []);
 	}
 
 	protected function getUserId()
