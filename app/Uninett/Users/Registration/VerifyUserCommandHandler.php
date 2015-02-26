@@ -6,7 +6,7 @@ use Uninett\Exceptions\VerifyUserException;
 use Uninett\Users\Registration\Events\UserHasBeenVerified;
 use Uninett\Users\UserRepository;
 use Laracasts\Commander\Events\EventGenerator;
-
+use Illuminate\Http\Response as HttpResponse;
 use Log;
 class VerifyUserCommandHandler implements  CommandHandler{
 
@@ -33,7 +33,7 @@ class VerifyUserCommandHandler implements  CommandHandler{
 		$user = $this->repository->verify($code);
 
 		if(is_bool($user) || is_null($user))
-			throw new VerifyUserException('Verification code expired.', 'Verification code expired.', 412);
+			throw new VerifyUserException('Verification code expired.', 'Verification code expired.', HttpResponse::HTTP_PRECONDITION_FAILED);
 
 		$verifiedUser = new UserHasBeenVerified($user);
 
