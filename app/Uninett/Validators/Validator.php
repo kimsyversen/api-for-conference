@@ -16,14 +16,11 @@ abstract class Validator {
 	{
 		$validator = Validate::make($attributes, static::$rules);
 
-		if($validator->fails())
-		{
+		if($validator->fails()) {
 			$this->errors = $validator->messages();
 
-			//TODO: Se på  $this->errors
-			throw new ValidationException($this->errors, $this->errors, 422);
+			throw new ValidationException('One or more of these fields already exists', $this->errors, 422);
 		}
-
 		return true;
 	}
 }

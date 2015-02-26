@@ -28,19 +28,11 @@ class ApiController extends \BaseController {
 
 	public function respond($data, $headers = [])
 	{
-		try
-		{
-			//Check if the client has set the Accept field to application/json
-			if (Request::wantsJson())
-				return Response::json($data, $this->getStatusCode(), $headers);
 
-		} catch (\Illuminate\Database\Eloquent\ModelNotFoundException $ex) {
-			return $this->respondNotFound('Resource not found');
-		}
-
-
-
-
+		//Check if the client has set the Accept field to application/json
+		if (Request::wantsJson())
+			return Response::json($data, $this->getStatusCode(), $headers);
+		
 		//Default back to json if none matched
 		return Response::json($data, $this->getStatusCode(), $headers);
 

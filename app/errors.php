@@ -1,5 +1,4 @@
 <?php
-//TODO: Format error messages to something more fitting
 
 /**
  * PROS: easy
@@ -12,17 +11,21 @@
 App::error(function(\Illuminate\Database\Eloquent\ModelNotFoundException $exception, $code)
 {
 	$data = [
-		'error' => $exception->getMessage()
+		'error' => 'validation_failed',
+		'error_description' => $exception->getMessage(),
+		'errors' => $exception->getErrors(),
 	];
+
 
 	return Response::json($data, $exception->getCode());
 });
 
 App::error(function(\Uninett\Exceptions\ValidationException $exception, $code)
 {
-
 	$data = [
-		'error' => $exception->getMessage()
+		'error' => 'validation_failed',
+		'error_description' => $exception->getMessage(),
+		'errors' => $exception->getErrors(),
 	];
 
 	return Response::json($data, $exception->getCode());
@@ -33,8 +36,15 @@ App::error(function(\Uninett\Exceptions\ValidationException $exception, $code)
 App::error(function(\Uninett\Exceptions\VerifyUserException $exception, $code)
 {
 	$data = [
-		'error' => $exception->getMessage()
+		'error' => 'validation_failed',
+		'error_description' => $exception->getMessage(),
+		'errors' => $exception->getErrors(),
 	];
+
+	//Content negotiation
+	if(Request::header('accept') === 'application/json')
+		return Response::json($data, $exception->getCode());
+
 
 	return Response::json($data, $exception->getCode());
 });
