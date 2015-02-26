@@ -20,6 +20,7 @@ App::error(function(\Illuminate\Database\Eloquent\ModelNotFoundException $except
 
 App::error(function(\Uninett\Exceptions\ValidationException $exception, $code)
 {
+
 	$data = [
 		'error' => $exception->getMessage()
 	];

@@ -1,19 +1,18 @@
 <?php namespace Uninett\Users\Registration;
+
 use Laracasts\Commander\CommandHandler;
 use Laracasts\Commander\Events\DispatchableTrait;
-use Log;
 use Uninett\Exceptions\VerifyUserException;
 use Uninett\Users\Registration\Events\UserHasBeenVerified;
-use Uninett\Users\Registration\Events\UserHasRegistered;
 use Uninett\Users\UserRepository;
-use User;
 use Laracasts\Commander\Events\EventGenerator;
+
+use Log;
 class VerifyUserCommandHandler implements  CommandHandler{
 
 	use DispatchableTrait, EventGenerator;
 
 	protected $repository;
-
 
 	function __construct(UserRepository $repository)
 	{
