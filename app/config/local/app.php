@@ -18,6 +18,7 @@ return array(
 	'providers' => append_config(array(
 		'Way\Generators\GeneratorsServiceProvider',
 		'Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider',
+        'Xethron\MigrationsGenerator\MigrationsGeneratorServiceProvider',
 	)),
 
 );

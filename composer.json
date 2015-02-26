@@ -15,7 +15,8 @@
       "fzaninotto/faker": "1.5.*@dev",
       "barryvdh/laravel-ide-helper": "1.*@dev",
       "zircote/swagger-php": "0.9.*@dev",
-      "way/generators": "~2.0"
+      "way/generators": "~2.0",
+      "xethron/migrations-generator": "1.2.*"
     },
 	"autoload": {
 		"classmap": [
