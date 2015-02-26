@@ -25,8 +25,8 @@ $app = new Illuminate\Foundation\Application;
 */
 
 $env = $app->detectEnvironment(array(
-	'production' => array('shockwave', 'botein.bibsys.no'),
-	'local' =>  array('kImac.local')
+	'production' => array('shockwave'),
+	'local' =>  array('kImac.local' , 'administrator-VirtualBox')
 ));
 
 /*
