@@ -9,6 +9,4 @@ class UserHasRegistered {
 	{
 		$this->user = $user;
 	}
-
-
 } 

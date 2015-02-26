@@ -11,5 +11,6 @@ class EventServiceProvider extends ServiceProvider{
 	public function register()
 	{
 		$this->app['events']->listen('Uninett.*', 'Uninett\Handlers\EmailNotifier');
+
 	}
 }

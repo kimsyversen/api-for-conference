@@ -23,7 +23,6 @@ class RegisterUserCommandHandler implements  CommandHandler {
 
 	function __construct(UserValidator $validator, UserRepository $repository)
 	{
-
 		$this->validator = $validator;
 		$this->repository = $repository;
 	}
