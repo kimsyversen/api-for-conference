@@ -1,4 +1,5 @@
-<?php
+<?php namespace Uninett\Eloquent\StatisticUris;
+use Eloquent;
 use Laracasts\Commander\Events\EventGenerator;
 
 class StatisticUri extends Eloquent {

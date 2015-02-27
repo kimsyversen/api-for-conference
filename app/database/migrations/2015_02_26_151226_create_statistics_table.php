@@ -16,7 +16,7 @@ class CreateStatisticsTable extends Migration {
 		{
 			$table->increments('id');
 			$table->integer('hits')->unsigned();
-			$table->timestamp('created_at');
+			$table->timestamps();
 		});
 	}
 

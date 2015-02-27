@@ -1,4 +1,6 @@
-<?php
+<?php namespace Uninett\Eloquent\Statistics;
+
+use Eloquent;
 use Laracasts\Commander\Events\EventGenerator;
 use Uninett\Api\Events\NewRequest;
 

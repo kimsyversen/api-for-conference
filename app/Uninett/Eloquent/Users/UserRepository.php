@@ -2,10 +2,6 @@
 use Uninett\Validation\UserValidator;
 use User;
 
-/**
- * Class UserRepository
- * @package Larabook\Users
- */
 class UserRepository {
 
 	protected $validator;
@@ -37,30 +33,5 @@ class UserRepository {
 		return $user;
 	}
 
-
-	/**
-	 * Get paginated list for all users
-	 * @param int $howMany
-	 * @return \Illuminate\Pagination\Paginator
-	 */
-	public function getPaginated($howMany = 25)
-	{
-		return User::orderBy('username', 'asc')->paginate($howMany);
-	}
-
-
-	/**
-	 * @param $userName
-	 * @return \Illuminate\Database\Eloquent\Model|null|static
-	 */
-	public function findByUsername($userName)
-	{
-		return User::with('statuses')->where('username', '=', $userName)->first();
-	}
-
-	public function findById($id)
-	{
-		return User::findOrFail($id);
-	}
 
 } 

@@ -126,7 +126,6 @@ return array(
 		'LucaDegasperi\OAuth2Server\Storage\FluentStorageServiceProvider',
 		'LucaDegasperi\OAuth2Server\OAuth2ServerServiceProvider',
 		'Uninett\Providers\EventServiceProvider'
-
 	),
 
 	/*
