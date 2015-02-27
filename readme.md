@@ -46,7 +46,7 @@ Tests contains of integration, functional, unit, and acceptance. In short:
 Integration tests are created with codeception. To generate a new integration test
  ```
  vendor/bin/codecept generate:test integration Name
-``
+```
 
 To run
 
@@ -54,6 +54,7 @@ To run
  vendor/bin/codecept run integration 
  
  vendor/bin/codecept run integration ASpecificFile.php
+ 
 ```
 
 If using functional tests:
