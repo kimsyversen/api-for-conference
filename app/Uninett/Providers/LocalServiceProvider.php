@@ -1,7 +1,7 @@
 <?php namespace Uninett\Providers;
 use Illuminate\Support\ServiceProvider;
 
-class EventServiceProvider extends ServiceProvider{
+class LocalServiceProvider extends ServiceProvider{
 
 	/**
 	 * Register the service provider.
@@ -10,6 +10,7 @@ class EventServiceProvider extends ServiceProvider{
 	 */
 	public function register()
 	{
-		$this->app['events']->listen('Uninett.*', 'Uninett\Handlers\EmailNotifier');
+		$this->app->bind('Uninett\Mailers\MailerInterface', 'Uninett\Api\Mailers\FakeUserMailer');
 	}
+
 }

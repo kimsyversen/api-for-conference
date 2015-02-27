@@ -1,18 +1,12 @@
 <?php namespace Uninett\Users\Registration;
-
-
-use ErrorException;
-use GuzzleHttp\Event\RequestEvents;
-use Illuminate\Database\QueryException;
-use Laracasts\Commander\CommandHandler;
-use Laracasts\Commander\Events\DispatchableTrait;
 use Log;
+use Config;
 use Request;
-
-
-use Uninett\Eloquent\Users\Repositories\UserRepository;
 use Uninett\Eloquent\Users\User;
 use Uninett\Validation\UserValidator;
+use Laracasts\Commander\CommandHandler;
+use Laracasts\Commander\Events\DispatchableTrait;
+use Uninett\Eloquent\Users\Repositories\UserRepository;
 
 
 class RegisterUserCommandHandler implements  CommandHandler {
@@ -39,10 +33,10 @@ class RegisterUserCommandHandler implements  CommandHandler {
 		$this->validator->isValid(Request::all());
 
 		$confirmation_code = str_random(40);
-
 		$user = User::register($command->username, $command->email, $command->password, $confirmation_code);
 
 		$this->repository->save($user);
+
 
 		$this->dispatchEventsFor($user);
 

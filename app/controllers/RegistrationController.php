@@ -19,8 +19,8 @@ class RegistrationController extends ApiController {
 	{
 		$user = $this->execute(RegisterUserCommand::class);
 
-		if($user)
-			return $this->respondCreated('Account was successfully created. You must now verify it. Please check your email inbox or spam folder for email.');
+
+		return $this->respondCreated('Account was successfully created.');
 
 		//return $this->respondWithError('Something went wrong.');
 

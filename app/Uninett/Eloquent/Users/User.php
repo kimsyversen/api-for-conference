@@ -42,7 +42,7 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	 * @param $email
 	 * @param $password
 	 */
-	public static function register($username, $email, $password, $confirmation_code)
+	public static function register($username, $email, $password, $confirmation_code = null)
 	{
 		$user = new static(compact('username', 'email', 'password', 'confirmation_code'));
 
