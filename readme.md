@@ -62,7 +62,6 @@ To generate new functional cept
 
 ```
 vendor/bin/codecept generate:cept functional CreateAccount
-
 ```
 
 

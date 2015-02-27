@@ -22,9 +22,16 @@ class StatisticsRepositoryTest extends \Codeception\TestCase\Test
 		$this->statistic_uris = TestDummy::times(10)->create('Uninett\Eloquent\StatisticUris\StatisticUri');
 	}
 
-	protected function _after()
-	{
+	protected function _after(){}
 
+	private function getNewStatisticRecord()
+	{
+		return  [
+			'hits' => 1,
+			'created_at' => Carbon::now(),
+			'updated_at' => Carbon::now(),
+			'statistic_uri_id' => $this->statistic_uris[0]->id
+		];
 	}
 
 	/** @test */
@@ -61,13 +68,5 @@ class StatisticsRepositoryTest extends \Codeception\TestCase\Test
 		$this->assertNull($result);
 	}
 
-	private function getNewStatisticRecord()
-	{
-		return  [
-			'hits' => 1,
-			'created_at' => Carbon::now(),
-			'updated_at' => Carbon::now(),
-			'statistic_uri_id' => $this->statistic_uris[0]->id
-		];
-	}
+
 }
