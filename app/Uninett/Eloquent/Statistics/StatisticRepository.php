@@ -12,8 +12,9 @@ class StatisticRepository {
 		return Statistic::create($data);
 	}
 
-	public function increment($column){
-		return Statistic::increment($column);
-
+	public function increment($id, $column){
+		$statistics = Statistic::find($id);
+		$statistics->increment($column);
 	}
+
 }

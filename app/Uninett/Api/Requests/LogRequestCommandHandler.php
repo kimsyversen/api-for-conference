@@ -37,11 +37,11 @@ class LogRequestCommandHandler implements CommandHandler {
 			//date_default_timezone_set('America/Curacao');
 
 			$foundRecord = $this->statisticRepository->whereCreatedAtBetween(
-				Carbon::now()->format('Y-m-d H:00:00')
-				, Carbon::now()->addHour()->format('Y-m-d H:00:00'));
+				Carbon::now()->format('Y-m-d H:00:00'),
+				Carbon::now()->addHour()->format('Y-m-d H:00:00'));
 
 			if(isset($foundRecord))
-				$this->statisticRepository->increment('hits');
+				$this->statisticRepository->increment($foundRecord->id, 'hits');
 			else
 				$this->statisticRepository->create([
 					'hits' => 1,

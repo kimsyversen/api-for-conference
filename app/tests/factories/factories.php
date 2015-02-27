@@ -18,3 +18,16 @@ $factory('Uninett\Eloquent\Users\User', [
 	'updated_at' => $faker->date()
 ]);
 
+$factory('Uninett\Eloquent\Statistics\Statistic', [
+	'hits' =>  1,
+	'statistic_uri_id' => 'Factory:Uninett\Eloquent\StatisticUris\StatisticUri',
+	'created_at' => $faker->date(),
+	'updated_at' => $faker->date()
+]);
+
+$factory('Uninett\Eloquent\StatisticUris\StatisticUri', [
+	'name' =>  $faker->url,
+	'created_at' => $faker->date(),
+]);
+
+
