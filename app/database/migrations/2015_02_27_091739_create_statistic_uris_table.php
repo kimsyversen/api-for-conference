@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class CreateStatisticsTable extends Migration {
+class CreateStatisticUrisTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,10 +12,10 @@ class CreateStatisticsTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('statistics', function(Blueprint $table)
+		Schema::create('statistic_uris', function(Blueprint $table)
 		{
 			$table->increments('id');
-			$table->integer('hits')->unsigned();
+			$table->string('name')->unique();
 			$table->timestamp('created_at');
 		});
 	}
@@ -28,7 +28,7 @@ class CreateStatisticsTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('statistics');
+		Schema::drop('statistic_uris');
 	}
 
 }

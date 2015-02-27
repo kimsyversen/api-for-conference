@@ -194,7 +194,6 @@ return array(
 		'Validator'       => 'Illuminate\Support\Facades\Validator',
 		'View'            => 'Illuminate\Support\Facades\View',
 		'Authorizer' => 'LucaDegasperi\OAuth2Server\Facades\AuthorizerFacade',
-
 	),
 
 );

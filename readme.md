@@ -33,3 +33,10 @@ the rest of your parameters
 ```
 
 When sending requests, include the parameter "access_token" together with the token.
+
+
+#TODO
+
+* Validering via commands?
+* Content negotiation?
+* 

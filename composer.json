@@ -7,7 +7,8 @@
 		"laravel/framework": "4.2.*",
         "laracasts/commander": "~1.0",
         "laracasts/validation": "~1.0",
-        "lucadegasperi/oauth2-server-laravel": "3.*"
+        "lucadegasperi/oauth2-server-laravel": "3.*",
+		"barryvdh/laravel-debugbar": "~1.8"
 	},
     "require-dev": {
       "codeception/codeception" : "~2.0",

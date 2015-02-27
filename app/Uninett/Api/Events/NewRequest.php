@@ -1,13 +1,13 @@
 <?php namespace Uninett\Api\Events;
-use Statistics;
+use Statistic;
 use Log;
 class NewRequest {
 
-	public $response;
+	public $request;
 
-	function __construct(Statistics $request)
+	function __construct(Statistic $request)
 	{
-		$this->response = $request;
+		$this->request = $request;
 
 		Log::info('NewRequest event fungerte');
 	}

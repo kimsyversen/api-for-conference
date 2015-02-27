@@ -49,7 +49,7 @@ class ApiController extends \BaseController {
 	 */
 	public function respond($data, $headers = [])
 	{
-		Statistics::register(Request::all());
+		Statistic::logRequest(Request::all());
 
 		return $this->outputFormatter->response($data, HttpResponse::HTTP_OK, $headers);
 	}
@@ -79,7 +79,7 @@ class ApiController extends \BaseController {
 	 */
 	public function respondCreated($message)
 	{
-		Statistics::register(Request::all());
+		Statistic::logRequest(Request::all());
 
 		return  $this->outputFormatter->response($message, HttpResponse::HTTP_CREATED, []);
 	}

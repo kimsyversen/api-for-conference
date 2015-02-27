@@ -1,5 +1,7 @@
 <?php
 
+use DebugBar\DebugBar;
+use Uninett\Api\Requests\LogRequestCommand;
 use Uninett\Api\Transformers\UserTransformer;
 
 class UsersController extends ApiController {
@@ -33,5 +35,17 @@ class UsersController extends ApiController {
 		return $this->respond([
 			'data' => $this->transform->transform($user->toArray())
 		]);
+	}
+	public function asdf()
+	{
+
+
+		$request = [
+			'request' => Request::getRequestUri()
+		];
+
+		$this->execute(LogRequestCommand::class, $request);
+
+		return View::make('hello');
 	}
 }
