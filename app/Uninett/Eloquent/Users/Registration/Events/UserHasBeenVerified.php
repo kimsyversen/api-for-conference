@@ -1,5 +1,7 @@
 <?php namespace Uninett\Users\Registration\Events;
-use User;
+
+
+use Uninett\Eloquent\Users\User;
 
 class UserHasBeenVerified {
 

@@ -22,7 +22,7 @@ class RegistrationController extends ApiController {
 		if($user)
 			return $this->respondCreated('Account was successfully created. You must now verify it. Please check your email inbox or spam folder for email.');
 
-		return $this->respondWithError('Something went wrong.');
+		//return $this->respondWithError('Something went wrong.');
 
 	}
 

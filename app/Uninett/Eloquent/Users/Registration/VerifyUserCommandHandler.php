@@ -2,9 +2,10 @@
 
 use Laracasts\Commander\CommandHandler;
 use Laracasts\Commander\Events\DispatchableTrait;
+use Uninett\Eloquent\Users\Repositories\UserRepository;
 use Uninett\Exceptions\VerifyUserException;
 use Uninett\Users\Registration\Events\UserHasBeenVerified;
-use Uninett\Users\UserRepository;
+
 use Laracasts\Commander\Events\EventGenerator;
 use Illuminate\Http\Response as HttpResponse;
 use Log;

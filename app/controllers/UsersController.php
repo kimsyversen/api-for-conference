@@ -3,6 +3,7 @@
 use DebugBar\DebugBar;
 use Uninett\Api\Requests\LogRequestCommand;
 use Uninett\Api\Transformers\UserTransformer;
+use Uninett\Eloquent\Users\User;
 
 class UsersController extends ApiController {
 	private $transform;

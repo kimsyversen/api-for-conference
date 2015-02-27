@@ -8,11 +8,12 @@ use Laracasts\Commander\CommandHandler;
 use Laracasts\Commander\Events\DispatchableTrait;
 use Log;
 use Request;
-use Uninett\Services\UserService;
-use Uninett\Users\UserRepository;
+
+
+use Uninett\Eloquent\Users\Repositories\UserRepository;
+use Uninett\Eloquent\Users\User;
 use Uninett\Validation\UserValidator;
-use Uninett\Validation\ValidationException;
-use User;
+
 
 class RegisterUserCommandHandler implements  CommandHandler {
 

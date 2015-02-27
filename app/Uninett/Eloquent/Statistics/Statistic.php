@@ -2,7 +2,7 @@
 
 use Eloquent;
 use Laracasts\Commander\Events\EventGenerator;
-use Uninett\Api\Events\NewRequest;
+
 
 class Statistic extends Eloquent {
 	use EventGenerator;
