@@ -3,10 +3,21 @@
 use Carbon\Carbon;
 use Laracasts\Commander\CommandHandler;
 use Uninett\Eloquent\Statistics\Statistic;
-use Uninett\Eloquent\StatisticUris\StatisticUri;
+use Uninett\Eloquent\Statistics\StatisticRepository;
+use Uninett\Eloquent\StatisticUris\StatisticUriRepository;
 
 
 class LogRequestCommandHandler implements CommandHandler {
+
+	private $statisticRepository;
+	private $statisticUriRepository;
+
+	function __construct(StatisticRepository $statisticRepository, StatisticUriRepository $statisticUriRepository)
+	{
+		$this->statisticRepository = $statisticRepository;
+		$this->statisticUriRepository = $statisticUriRepository;
+	}
+
 
 	/**
 	 * Handle the command.
@@ -18,31 +29,32 @@ class LogRequestCommandHandler implements CommandHandler {
 	{
 		//TODO: Flytte til respository?
 
-		$record = StatisticUri::where('name', '=', $command->request)->first();
+		$record = $this->statisticUriRepository->find($command->request);
 
 		if(isset($record)) {
+
+			//If you want to test
 			//date_default_timezone_set('America/Curacao');
 
-			$statistics = Statistic::whereBetween (
-				'created_at', [
-				Carbon::now()->format('Y-m-d H:00:00'),
-				Carbon::now()->addHour()->format('Y-m-d H:00:00')
-			])->first();
+			$foundRecord = $this->statisticRepository->whereCreatedAtBetween(
+				Carbon::now()->format('Y-m-d H:00:00')
+				, Carbon::now()->addHour()->format('Y-m-d H:00:00'));
 
-			if(isset($statistics))
-				$statistics->increment('hits');
+			if(isset($foundRecord))
+				$this->statisticRepository->increment('hits');
+				//$statistics->increment('hits');
 			else
-				Statistic::create([
+				$this->statisticRepository->create([
 					'hits' => 1,
 					'statistic_uri_id' => $record->id
 				]);
 		} else {
 
-			$newUri = StatisticUri::create([
+			$newUri = $this->statisticUriRepository->create([
 				'name' => $command->request
 			]);
 
-			Statistic::create([
+			$this->statisticRepository->create([
 				'hits' => 1,
 				'statistic_uri_id' => $newUri->id
 			]);
