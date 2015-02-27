@@ -6,6 +6,7 @@ use Illuminate\Auth\UserInterface;
 use Illuminate\Auth\Reminders\RemindableTrait;
 use Illuminate\Auth\Reminders\RemindableInterface;
 
+use Illuminate\Support\Facades\Hash;
 use Laracasts\Commander\Events\EventGenerator;
 use Uninett\Users\Registration\Events\UserHasRegistered;
 

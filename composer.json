@@ -17,7 +17,8 @@
       "barryvdh/laravel-ide-helper": "1.*@dev",
       "zircote/swagger-php": "0.9.*@dev",
       "way/generators": "~2.0",
-      "xethron/migrations-generator": "1.2.*"
+      "xethron/migrations-generator": "1.2.*",
+      "codeception/codeception" : "~2.0"
     },
 	"autoload": {
 		"classmap": [

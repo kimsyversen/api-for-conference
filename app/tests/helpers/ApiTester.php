@@ -6,7 +6,6 @@ abstract class ApiTester extends TestCase {
 	protected $fake;
 	protected $client;
 
-
 	protected $basePath = "api/v1/";
 
 	function __construct()

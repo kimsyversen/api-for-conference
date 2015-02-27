@@ -42,7 +42,6 @@ class LogRequestCommandHandler implements CommandHandler {
 
 			if(isset($foundRecord))
 				$this->statisticRepository->increment('hits');
-				//$statistics->increment('hits');
 			else
 				$this->statisticRepository->create([
 					'hits' => 1,
