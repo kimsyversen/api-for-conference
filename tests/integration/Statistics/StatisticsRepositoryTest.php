@@ -54,8 +54,8 @@ class StatisticsRepositoryTest extends \Codeception\TestCase\Test
 		$object = TestDummy::create('Uninett\Eloquent\Statistics\Statistic', $this->getNewStatisticRecord());
 
 		$result = $this->statisticsRepository->whereCreatedAtBetween(
-			$object->created_at->subHours(3),
-			$object->created_at->subHours(2)
+			$object->created_at->subHours(5),
+			$object->created_at->subHours(6)
 		);
 
 		$this->assertNull($result);

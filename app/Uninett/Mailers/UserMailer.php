@@ -1,10 +1,11 @@
 <?php namespace Uninett\Api\Mailers;
 
-use User;
+use Uninett\Eloquent\Users\User;
+use Uninett\Mailers\MailerInterface;
 
-class UserMailer extends Mailer {
+class UserMailer extends Mailer implements MailerInterface {
 
-	public function sendWelcomeMessageTo(User $user)
+	public function sendMessageTo(User $user)
 	{
 		$subject =  'Please verify your account';
 		$view = 'emails.registration.verify';

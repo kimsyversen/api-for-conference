@@ -14,6 +14,9 @@ class UserRepository {
 
 	public function save(User $user)
 	{
+		if($user->confirmation_code === null)
+			$user->confirmed = 1;
+
 		return $user->save();
 	}
 

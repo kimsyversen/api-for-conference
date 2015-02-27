@@ -34,9 +34,38 @@ the rest of your parameters
 
 When sending requests, include the parameter "access_token" together with the token.
 
+#Testing
+Tests contains of integration, functional, unit, and acceptance. In short:
+
+ * A unit test is testing a class/method.
+ * A integration test is testing multiple classes/methods (or many unit tests). Examples are UserRepositories.
+ * A functional test verifies the functionality in the views works
+ * A acceptance test is "outside-in". Simulating that a user is doing specific tasks on the page. Often done together with a user
+ 
+ 
+Integration tests are created with codeception. To generate a new integration test
+ ```
+ vendor/bin/codecept generate:test integration Name
+``
+
+To run
+
+```
+ vendor/bin/codecept run integration 
+ 
+ vendor/bin/codecept run integration ASpecificFile.php
+```
+
+If using functional tests:
+
+To generate new functional cept
+
+```
+vendor/bin/codecept generate:cept functional CreateAccount
+
+```
+
 
 #TODO
 
 * Validering via commands?
-* Content negotiation?
-* 

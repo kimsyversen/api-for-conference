@@ -82,8 +82,6 @@ class ApiController extends \BaseController {
 	 */
 	public function respondCreated($message)
 	{
-		Statistic::logRequest(Request::all());
-
 		return  $this->outputFormatter->response($message, HttpResponse::HTTP_CREATED, []);
 	}
 

@@ -2,6 +2,7 @@
 
 use Illuminate\Mail\Mailer as Mail;
 
+
 /**
  * Class Mailer
  * @package Larabook\Mailers
