@@ -1,6 +1,4 @@
 <?php
-
-
 use Carbon\Carbon;
 use Laracasts\TestDummy\Factory as TestDummy;
 use Uninett\Eloquent\StatisticUris\StatisticUriRepository;
@@ -48,7 +46,7 @@ class StatisticUriRepositoryTest extends \Codeception\TestCase\Test
 
 		$this->assertNull($results);
 	}
-	
+
 	private function getNewUriRecord()
 	{
 		return  [

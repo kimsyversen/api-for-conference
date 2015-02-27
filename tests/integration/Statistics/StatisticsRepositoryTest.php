@@ -1,6 +1,4 @@
 <?php
-
-
 use Carbon\Carbon;
 use Laracasts\TestDummy\Factory as TestDummy;
 use Uninett\Eloquent\Statistics\StatisticRepository;
