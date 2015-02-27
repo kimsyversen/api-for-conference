@@ -2,9 +2,9 @@
 
 use Carbon\Carbon;
 use Laracasts\Commander\CommandHandler;
+use Uninett\Eloquent\Statistics\Statistic;
+use Uninett\Eloquent\StatisticUris\StatisticUri;
 
-use Statistic;
-use StatisticUri;
 
 class LogRequestCommandHandler implements CommandHandler {
 

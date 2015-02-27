@@ -4,6 +4,8 @@ use Laracasts\Commander\CommanderTrait;
 use Illuminate\Pagination\Paginator as Paginator;
 use Laracasts\Commander\Events\DispatchableTrait;
 use Uninett\Api\Formatters\OutputFormatter;
+use Uninett\Api\Requests\LogRequestCommand;
+use Uninett\Eloquent\Statistics\Statistic;
 
 class ApiController extends \BaseController {
 
@@ -21,6 +23,7 @@ class ApiController extends \BaseController {
 	function __construct(OutputFormatter $outputFormatter)
 	{
 		$this->outputFormatter = $outputFormatter;
+
 	}
 
 	/**

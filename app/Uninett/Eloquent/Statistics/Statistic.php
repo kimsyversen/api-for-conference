@@ -2,6 +2,8 @@
 
 use Eloquent;
 use Laracasts\Commander\Events\EventGenerator;
+use Request;
+use Uninett\Api\Requests\LogRequestCommand;
 
 
 class Statistic extends Eloquent {
@@ -19,4 +21,5 @@ class Statistic extends Eloquent {
 	{
 		return $this->belongsTo('StatisticUri');
 	}
+
 }
