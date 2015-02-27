@@ -11,7 +11,7 @@ class UserMailer extends Mailer implements MailerInterface {
 		$view = 'emails.registration.verify';
 		$data = [
 			'confirmation_code' => $user->confirmation_code
-			];
+		];
 
 		$this->sendTo($user, $subject, $view, $data);
 	}
