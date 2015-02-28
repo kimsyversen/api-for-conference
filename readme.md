@@ -70,5 +70,5 @@ vendor/bin/codecept generate:cept functional CreateAccount
 
 
 #TODO
-
+* Testing with Oauth2!  http://www.onesheep.org/blog/testing-oauth-2-0-protected-api-endpoints-in-laravel/
 * Validering via commands?
