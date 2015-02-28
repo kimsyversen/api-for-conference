@@ -1,14 +1,16 @@
 <?php
 
-use Uninett\Api\Requests\LogRequestCommand;
+use Uninett\Api\Formatters\OutputFormatter;
 use Uninett\Api\Transformers\UserTransformer;
 use Uninett\Eloquent\Users\User;
 
 class UsersController extends ApiController {
 	private $transform;
 
-	function __construct(UserTransformer $transform)
+	function __construct(UserTransformer $transform, OutputFormatter $outputFormatter)
 	{
+		parent::__construct($outputFormatter);
+
 		$this->transform = $transform;
 	}
 
@@ -43,11 +45,11 @@ class UsersController extends ApiController {
 		 * Ser for meg at det kunne ligge i ApiController, men da må vi sende noe opp til den med parent::__construct ...
 		 * Lage event av det og lytte på det?
 		 */
-		$request  = [
+/*		$request  = [
 			'request' => Request::getRequestUri()
 		];
 
-		$this->execute(LogRequestCommand::class, $request);
+		$this->execute(LogRequestCommand::class, $request);*/
 
 		return View::make('hello');
 	}

@@ -1,11 +1,8 @@
 <?php namespace Uninett\Eloquent\Statistics;
 
 use Eloquent;
-use Laracasts\Commander\Events\EventGenerator;
 
 class Statistic extends Eloquent {
-	use EventGenerator;
-
 	protected $table = 'statistics';
 
 	protected $fillable = ['hits', 'statistic_uri_id'];
@@ -14,5 +11,4 @@ class Statistic extends Eloquent {
 	{
 		return $this->belongsTo('StatisticUri');
 	}
-
 }
