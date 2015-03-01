@@ -29,15 +29,34 @@ class Chat extends Eloquent {
         return $this->belongsTo('Conference');
     }
 
-    // A chat can have both individual users as well as groups as recipients.
-    //TODO: Add the possibility to include individual users in the chat recipients list
     /**
-     * A chat has group recipients
+     * A chat has many chatable recipients
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\MorphTo
+     */
+    public function chatable()
+    {
+        return $this->morphTo();
+    }
+
+    /**
+     * A chat has many group recipients
+     *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
     public function groups()
     {
-        return $this->belongsToMany('Grpup');
+        return $this->morphedByMany('Grpup', 'chatable');
+    }
+
+    /**
+     * A chat has many user recipients
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\MorphToMany
+     */
+    public function users()
+    {
+        return $this->morphedByMany('User', 'chatable');
     }
 
 }

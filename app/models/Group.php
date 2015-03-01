@@ -16,7 +16,7 @@ class Group extends Eloquent {
      */
     public function chats()
     {
-        return $this->belongsToMany('Chat');
+        return $this->morphToMany('Chat', 'chatable');
     }
 
     /**

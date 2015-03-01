@@ -121,4 +121,14 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
         return $this->belongsToMany('Role');
     }
 
+    /**
+     * A user belongs to many chats
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function chats()
+    {
+        return $this->morphToMany('Chat', 'chatable');
+    }
+
 }
