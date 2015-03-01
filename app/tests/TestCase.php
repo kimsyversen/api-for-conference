@@ -13,6 +13,8 @@ class TestCase extends Illuminate\Foundation\Testing\TestCase {
 
 		$testEnvironment = 'testing';
 
+		Laracasts\TestDummy\Factory::$factoriesPath = 'app/tests/factories';
+
 		return require __DIR__.'/../../bootstrap/start.php';
 	}
 
