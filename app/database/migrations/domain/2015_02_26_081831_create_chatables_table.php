@@ -17,7 +17,7 @@ class CreateChatablesTable extends Migration {
 			$table->integer('chat_id')->unsigned()->index();
 			$table->integer('chatable_id')->unsigned()->index();
             $table->string('chatable_type');
-			$table->primary(['chat_id','group_id', 'chatable_type']);
+			$table->primary(['chat_id','chatable_id','chatable_type']);
             $table->timestamps();
 		});
 	}
