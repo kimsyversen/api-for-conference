@@ -5,22 +5,25 @@ use Response;
 class OutputFormatter {
 
 	public function errors($error, $error_description, $code, $errors) {
+
+		$headers = [];
+
 		$data = [
 			'error' => $error,
 			'error_description' => $error_description,
 			'errors' => $errors,
 		];
 
-		return $this->negotiate($data, $code, []);
+		return $this->negotiate($data, $code, $headers);
 	}
 
 	public function response($data, $code, $headers)
 	{
-		$format = [
+		$dataFormat = [
 			'data' => $data
 		];
 
-		return $this->negotiate($format, $code, $headers);
+		return $this->negotiate($dataFormat, $code, $headers);
 	}
 
 	private function negotiate($data, $code, $headers)

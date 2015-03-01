@@ -22,9 +22,16 @@ class StatisticsRepositoryTest extends \Codeception\TestCase\Test
 		$this->statistic_uris = TestDummy::times(10)->create('Uninett\Eloquent\StatisticUris\StatisticUri');
 	}
 
-	protected function _after()
-	{
+	protected function _after(){}
 
+	private function getNewStatisticRecord()
+	{
+		return  [
+			'hits' => 1,
+			'created_at' => Carbon::now(),
+			'updated_at' => Carbon::now(),
+			'statistic_uri_id' => $this->statistic_uris[0]->id
+		];
 	}
 
 	/** @test */
@@ -41,7 +48,7 @@ class StatisticsRepositoryTest extends \Codeception\TestCase\Test
 		$object = TestDummy::create('Uninett\Eloquent\Statistics\Statistic', $this->getNewStatisticRecord());
 
 		$result = $this->statisticsRepository->whereCreatedAtBetween(
-			$object->created_at->subHours(2),
+			$object->created_at,
 			$object->created_at->addHour(1)
 		);
 
@@ -54,20 +61,12 @@ class StatisticsRepositoryTest extends \Codeception\TestCase\Test
 		$object = TestDummy::create('Uninett\Eloquent\Statistics\Statistic', $this->getNewStatisticRecord());
 
 		$result = $this->statisticsRepository->whereCreatedAtBetween(
-			$object->created_at->subHours(5),
-			$object->created_at->subHours(6)
+			$object->created_at->addHours(1),
+			$object->created_at->addHours(2)
 		);
 
 		$this->assertNull($result);
 	}
 
-	private function getNewStatisticRecord()
-	{
-		return  [
-			'hits' => 1,
-			'created_at' => Carbon::now(),
-			'updated_at' => Carbon::now(),
-			'statistic_uri_id' => $this->statistic_uris[0]->id
-		];
-	}
+
 }

@@ -44,9 +44,12 @@ Tests contains of integration, functional, unit, and acceptance. In short:
  
  
 Integration tests are created with codeception. To generate a new integration test
- ```
+
+```
+ vendor/bin/codecept generate:suite integration
  vendor/bin/codecept generate:test integration Name
-``
+
+```
 
 To run
 
@@ -54,6 +57,7 @@ To run
  vendor/bin/codecept run integration 
  
  vendor/bin/codecept run integration ASpecificFile.php
+ 
 ```
 
 If using functional tests:
@@ -62,10 +66,9 @@ To generate new functional cept
 
 ```
 vendor/bin/codecept generate:cept functional CreateAccount
-
 ```
 
 
 #TODO
-
+* Testing with Oauth2!  http://www.onesheep.org/blog/testing-oauth-2-0-protected-api-endpoints-in-laravel/
 * Validering via commands?

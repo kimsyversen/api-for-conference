@@ -23,6 +23,7 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 
 	protected $fillable = ['username', 'email','password', 'confirmation_code', 'confirmed'];
 
+
 	/**
 	 * The attributes excluded from the model's JSON form.
 	 *
@@ -50,5 +51,75 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 
 		return $user;
 	}
+
+    /**
+     * A user has many personal schedules
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function personalSchedules()
+    {
+        return $this->hasMany('PersonalSchedule');
+    }
+
+    /**
+     * A user has many questions
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function questions()
+    {
+        return $this->hasMany('Question');
+    }
+
+    /**
+     * A user has many ratings
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function ratings()
+    {
+        return $this->hasMany('Rating');
+    }
+
+    /**
+     * A user has many newsposts
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function newsposts()
+    {
+        return $this->hasMany('Newspost');
+    }
+
+    /**
+     * A user has many messages
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function messages()
+    {
+        return $this->hasMany('Message');
+    }
+
+    /**
+     * A user belongs to many groups
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function groups()
+    {
+        return $this->belongsToMany('Group');
+    }
+
+    /**
+     * A user belongs to many roles
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function roles()
+    {
+        return $this->belongsToMany('Role');
+    }
 
 }

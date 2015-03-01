@@ -1,16 +1,16 @@
 <?php
 
-use DebugBar\DebugBar;
-use Uninett\Api\Requests\LogRequestCommand;
+use Uninett\Api\Formatters\OutputFormatter;
 use Uninett\Api\Transformers\UserTransformer;
-use Uninett\Eloquent\Statistics\Statistic;
 use Uninett\Eloquent\Users\User;
 
 class UsersController extends ApiController {
 	private $transform;
 
-	function __construct(UserTransformer $transform)
+	function __construct(UserTransformer $transform, OutputFormatter $outputFormatter)
 	{
+		parent::__construct($outputFormatter);
+
 		$this->transform = $transform;
 	}
 
