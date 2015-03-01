@@ -1,11 +1,15 @@
 <?php
 use Faker\Factory as Faker;
 
+
 abstract class ApiTester extends TestCase {
+
 	protected $fake;
 	protected $client;
 
-	protected $basePath = null;
+	protected $basePath  = 'http://localhost:8000/api/v1/';
+
+	protected $access_token = null;
 
 	function __construct()
 	{
@@ -15,6 +19,7 @@ abstract class ApiTester extends TestCase {
 	public function setUp()
 	{
 		parent::setUp();
+
 		Artisan::call('db:seed');
 	}
 
@@ -33,7 +38,23 @@ abstract class ApiTester extends TestCase {
 			$this->assertObjectHasAttribute($attribute, $object);
 	}
 
-	public function getStub() {
-		throw new BadMethodCallException('Create your own getStub metod to declare your fields');
+	public function getStub()
+	{
+		throw new BadMethodCallException('Create your own getStub method to declare your fields');
 	}
+
+
+	protected function getParameteresForGettingAccesstoken()
+	{
+		return 	[
+			'client_id' => 1,
+			'client_secret' => 'asdf',
+			'username' => 'user@example.com',
+			'password' => 'secret',
+			'grant_type' => 'password'
+		];
+	}
+
+
+
 }

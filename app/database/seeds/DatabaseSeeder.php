@@ -3,11 +3,16 @@
 class DatabaseSeeder extends Seeder {
 
 	private $tables = [
-		'users'
+		'users',
+		'oauth_scopes',
+		'oauth_clients',
+		'oauth_sessions',
+		'oauth_access_tokens'
 	];
 
 	private $seeders = [
-		'UserTableSeeder'
+		'UserTableSeeder',
+		'OAuthTestSeeder'
 	];
 
 

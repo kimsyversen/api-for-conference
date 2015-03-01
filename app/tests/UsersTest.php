@@ -1,23 +1,34 @@
-<?php namespace tests; 
-use Config;
-use Route;
-
-class UsersTest extends \ApiTester{
+<?php
 
 
+class UsersTest extends OAuthApiTester {
+
+	private $token = null;
 	public function setUp()
 	{
 		parent::setUp();
+		Route::enableFilters();
 
-		//$this->prepareTheDatabase();
+		$this->token = $this->getAccessToken();
 	}
 
+
+
 	/** @test */
-	public function it_can_retrieve_users_by_username()
+	public function it_can_retrieve_me()
 	{
-		$user = $this->getJson(Config::get('uninett.api') . 'users/me')->data;
+
+		dd($this->getAccessToken()->access_token);
+
+
+		//$response = $this->getJson($this->basePath . 'users/me', $parameters)->data;
+
+		$response = $this->call('GET', $this->basePath . 'users/me', $parameters);
 
 		$this->assertResponseOk();
+
+		$this->assertNotEmpty($response);
+
 
 	}
 }

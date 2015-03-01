@@ -1,5 +1,7 @@
 <?php
 
+use Uninett\Eloquent\Users\User;
+
 return [
 
     /*
