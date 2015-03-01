@@ -7,8 +7,6 @@ abstract class ApiTester extends TestCase {
 	protected $fake;
 	protected $client;
 
-	protected $basePath  = 'http://localhost:8000/api/v1/';
-
 	protected $access_token = null;
 
 	function __construct()
@@ -44,7 +42,7 @@ abstract class ApiTester extends TestCase {
 	}
 
 
-	protected function getParameteresForGettingAccesstoken()
+	protected function getParameteresToAquireAccesstoken()
 	{
 		return 	[
 			'client_id' => 1,
@@ -54,7 +52,4 @@ abstract class ApiTester extends TestCase {
 			'grant_type' => 'password'
 		];
 	}
-
-
-
 }
