@@ -2,7 +2,13 @@
 class OAuthApiTester extends ApiTester {
 
 	/**
-	 * Get access OAuth2 access token
+	 * Access token
+	 * @var
+	 */
+	protected $access_token;
+
+	/**
+	 * Get OAuth2 access token
 	 * {
 		"access_token": "nkpm1CrxR7tWMK7kueVYy0H7Mmp8egP40lGgQNez",
 		"token_type": "Bearer",
@@ -10,10 +16,12 @@ class OAuthApiTester extends ApiTester {
 		}
 	 * @return mixed
 	 */
-	protected function getAccessToken()
+	protected function setupAccesstoken()
 	{
-		$response = $this->call('POST', "oauth/access_token", $this->getParameteresForGettingAccesstoken());
+		$response = $this->call('POST', "oauth/access_token", $this->getParameteresToAquireAccesstoken());
 
-		return json_decode($response->getContent());
+		$this->access_token = json_decode($response->getContent(), true);
+
+		return $this->access_token;
 	}
 }
