@@ -10,7 +10,7 @@ class LocalServiceProvider extends ServiceProvider{
 	 */
 	public function register()
 	{
-		$this->app->bind('Uninett\Mailers\MailerInterface', 'Uninett\Api\Mailers\FakeUserMailer');
+		$this->app->bind('Uninett\Mailers\MailerInterface', 'Uninett\Api\Mailers\UserMailer');
 	}
 
 }
