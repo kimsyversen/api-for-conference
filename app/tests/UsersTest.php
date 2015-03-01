@@ -2,11 +2,15 @@
 
 
 class UsersTest extends OAuthApiTester {
+
+
 	public function setUp()
 	{
 		parent::setUp();
 
 		$this->setupAccesstoken();
+
+		$this->base_url = Config::get('uninett.base_url');
 
 		Route::enableFilters();
 	}
@@ -37,7 +41,6 @@ class UsersTest extends OAuthApiTester {
 	/** @test */
 	public function it_can_retrieve_user_by_id()
 	{
-
 		$response = $this->getJson(Config::get('uninett.base_url') . 'users/1', 'GET', $this->access_token)->data;
 
 		$this->assertResponseOk();

@@ -7,6 +7,8 @@ class OAuthApiTester extends ApiTester {
 	 */
 	protected $access_token;
 
+	protected $base_url;
+
 	/**
 	 * Get OAuth2 access token
 	 * {
