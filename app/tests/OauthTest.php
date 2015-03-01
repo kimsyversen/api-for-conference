@@ -12,7 +12,7 @@ class OauthTest extends ApiTester {
 	/** @test  */
 	public function test_get_access_token_with_correct_credentials()
 	{
-		$this->call('POST', "oauth/access_token", $this->getParameteresToAquireAccesstoken());
+		$this->call('POST', "oauth/access_token", $this->getParametersToAquireAccesstoken());
 
 		$this->assertResponseStatus(200);
 	}
@@ -23,7 +23,7 @@ class OauthTest extends ApiTester {
 	 */
 	public function test_not_getting_access_token_with_incorrect_credentials()
 	{
-		$parameters = $this->getParameteresToAquireAccesstoken();
+		$parameters = $this->getParametersToAquireAccesstoken();
 
 		$parameters['username'] = 'NoNexistingUser';
 

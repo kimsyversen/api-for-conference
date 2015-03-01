@@ -5,9 +5,14 @@ use Faker\Factory as Faker;
 abstract class ApiTester extends TestCase {
 
 	protected $fake;
-	protected $client;
 
-	protected $access_token = null;
+	/**
+	 * The base url for the api
+	 * @var
+	 */
+	protected $base_url;
+
+
 
 	function __construct()
 	{
@@ -41,8 +46,10 @@ abstract class ApiTester extends TestCase {
 		throw new BadMethodCallException('Create your own getStub method to declare your fields');
 	}
 
-
-	protected function getParameteresToAquireAccesstoken()
+	/**
+	 * @return array
+	 */
+	protected function getParametersToAquireAccesstoken()
 	{
 		return 	[
 			'client_id' => 1,

@@ -2,7 +2,7 @@
 
 class StatisticRepository {
 
-	public function whereCreatedAtBetween($start, $end){
+	public function whereCreatedAtIsBetween($start, $end){
 		return Statistic::whereBetween (
 			'created_at', [$start, $end]
 		)->first();
