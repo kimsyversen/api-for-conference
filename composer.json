@@ -29,6 +29,10 @@
 			"app/database/seeds",
 			"app/tests/TestCase.php"
 		],
+        "files": [
+          "app/tests/helpers/ApiTester.php",
+          "app/tests/helpers/OAuthApiTester.php"
+        ],
       "psr-4": {
         "Uninett\\": "app/Uninett"
       }

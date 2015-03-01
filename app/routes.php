@@ -1,10 +1,14 @@
 <?php
+use League\OAuth2\Server\AuthorizationServer;
+
 Event::listen('Illuminate.Support.Facades.Response', function($param)
 {
 	dd('asdf');
 });
 
 Route::get('/', function() { return View::make('hello'); });
+
+
 Route::post('oauth/access_token', 'OAuthController@postAccessToken');
 
 
