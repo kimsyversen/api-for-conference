@@ -1,12 +1,11 @@
 <?php
 use Faker\Factory as Faker;
-use GuzzleHttp\Client;
 
 abstract class ApiTester extends TestCase {
 	protected $fake;
 	protected $client;
 
-	protected $basePath = "api/v1/";
+	protected $basePath = null;
 
 	function __construct()
 	{
@@ -16,8 +15,6 @@ abstract class ApiTester extends TestCase {
 	public function setUp()
 	{
 		parent::setUp();
-
-		Artisan::call('migrate');
 		Artisan::call('db:seed');
 	}
 
