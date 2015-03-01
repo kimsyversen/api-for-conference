@@ -52,7 +52,4 @@ abstract class ApiTester extends TestCase {
 			'grant_type' => 'password'
 		];
 	}
-
-
-
 }

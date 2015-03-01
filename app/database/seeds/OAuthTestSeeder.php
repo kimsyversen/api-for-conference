@@ -14,6 +14,9 @@ class OAuthTestSeeder extends Seeder{
 		DB::insert('insert into oauth_clients (id, secret, name, created_at, updated_at) values (?, ?, ?, ?, ?)', $values);
 
 
+		/**
+		 * Commented out tables may be used later if we decide to use scopes
+		 */
 		/*DB::table('oauth_scopes')->delete();
 		 * $values = array(1, 'basic',  $now, $now);
 		DB::insert('insert into oauth_scopes (id, description, created_at, updated_at) values (?, ?, ?, ?)', $values);*/

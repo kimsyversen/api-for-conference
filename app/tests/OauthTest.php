@@ -30,5 +30,4 @@ class OauthTest extends ApiTester {
 		$this->call('POST', "oauth/access_token", $parameters);
 
 	}
-
 }

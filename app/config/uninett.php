@@ -1,5 +1,5 @@
 <?php
 
 return array (
-	'rooturi' => 'http://localhost:8000/api/v1/',
+	'base_url' => 'http://localhost:8000/api/v1/',
 );

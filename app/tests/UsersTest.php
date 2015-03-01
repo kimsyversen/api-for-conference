@@ -11,8 +11,6 @@ class UsersTest extends OAuthApiTester {
 		Route::enableFilters();
 	}
 
-
-
 	/** @test */
 	public function it_can_retrieve_me()
 	{
@@ -33,13 +31,14 @@ class UsersTest extends OAuthApiTester {
 			'access_token' => '123'
 		];
 
-		$this->getJson(Config::get('uninett.rooturi') . 'users/me', 'GET', $tull)->data;
+		$this->getJson(Config::get('uninett.base_url') . 'users/me', 'GET', $tull)->data;
 	}
 
 	/** @test */
 	public function it_can_retrieve_user_by_id()
 	{
-		$response = $this->getJson(Config::get('uninett.rooturi') . 'users/1', 'GET', $this->access_token)->data;
+
+		$response = $this->getJson(Config::get('uninett.base_url') . 'users/1', 'GET', $this->access_token)->data;
 
 		$this->assertResponseOk();
 
