@@ -15,8 +15,6 @@ class AddForeignKeysToRatingsTable extends Migration {
 		Schema::table('ratings', function(Blueprint $table)
 		{
 			$table->foreign('user_id')->references('id')->on('users')->onUpdate('NO ACTION')->onDelete('NO ACTION');
-			$table->foreign('ratable_id', 'ratings_ratable_id_foreign_conferences')->references('id')->on('conferences')->onUpdate('NO ACTION')->onDelete('NO ACTION');
-			$table->foreign('ratable_id', 'ratings_ratable_id_foreign_sessions')->references('id')->on('sessions')->onUpdate('NO ACTION')->onDelete('NO ACTION');
 		});
 	}
 
@@ -31,8 +29,6 @@ class AddForeignKeysToRatingsTable extends Migration {
 		Schema::table('ratings', function(Blueprint $table)
 		{
 			$table->dropForeign(['user_id']);
-			$table->dropForeign('ratings_ratable_id_foreign_conferences');
-			$table->dropForeign('ratings_ratable_id_foreign_sessions');
 		});
 	}
 

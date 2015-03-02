@@ -1,4 +1,6 @@
-<?php
+<?php namespace Uninett\Eloquent\Groups;
+
+use Eloquent;
 
 class Group extends Eloquent {
     
@@ -16,7 +18,7 @@ class Group extends Eloquent {
      */
     public function chats()
     {
-        return $this->morphToMany('Chat', 'chatable');
+        return $this->morphToMany('Uninett\Eloquent\Chats\Chat', 'chatable');
     }
 
     /**
@@ -26,7 +28,7 @@ class Group extends Eloquent {
      */
     public function conference()
     {
-        return $this->belongsTo('Conference');
+        return $this->belongsTo('Uninett\Eloquent\Conferences\Conference');
     }
 
     /**
@@ -36,7 +38,7 @@ class Group extends Eloquent {
      */
     public function users()
     {
-        return $this->belongsToMany('User');
+        return $this->belongsToMany('Uninett\Eloquent\Users\User');
     }
 
 }

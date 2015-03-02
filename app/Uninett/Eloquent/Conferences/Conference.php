@@ -1,6 +1,8 @@
-<?php
+<?php namespace Uninett\Eloquent\Conferences;
 
-class Conference extends \Eloquent {
+use Eloquent;
+
+class Conference extends Eloquent {
 
     /**
      * Fillable fields for a new Conference
@@ -17,7 +19,7 @@ class Conference extends \Eloquent {
      */
     public function conferenceSchedules()
     {
-        return $this->hasMany('ConferenceSchedule');
+        return $this->hasMany('Uninett\Eloquent\Schedule\ConferenceSchedule');
     }
 
     /**
@@ -27,7 +29,7 @@ class Conference extends \Eloquent {
      */
     public function personalSchedules()
     {
-        return $this->hasMany('PersonalSchedule');
+        return $this->hasMany('Uninett\Eloquent\Schedule\PersonalSchedule');
     }
 
     /**
@@ -37,7 +39,7 @@ class Conference extends \Eloquent {
      */
     public function sessions()
     {
-        return $this->hasMany('Session');
+        return $this->hasMany('Uninett\Eloquent\Sessions\Session');
     }
 
     /**
@@ -47,7 +49,7 @@ class Conference extends \Eloquent {
      */
     public function maps()
     {
-        return $this->hasMany('Map');
+        return $this->hasMany('Uninett\Eloquent\Maps\Map');
     }
 
     /**
@@ -57,7 +59,7 @@ class Conference extends \Eloquent {
      */
     public function ratings()
     {
-        return $this->morphMany('Rating', 'ratable');
+        return $this->morphMany('Uninett\Eloquent\Ratings\Rating', 'ratable');
     }
 
     /**
@@ -67,7 +69,7 @@ class Conference extends \Eloquent {
      */
     public function newsfeeds()
     {
-        return $this->hasMany('Newsfeed');
+        return $this->hasMany('Uninett\Eloquent\Newsfeeds\Newsfeed');
     }
 
     /**
@@ -76,7 +78,7 @@ class Conference extends \Eloquent {
      */
     public function chats()
     {
-        return $this->hasMany('Chat');
+        return $this->hasMany('Uninett\Eloquent\Chats\Chat');
     }
 
     /**
@@ -86,6 +88,6 @@ class Conference extends \Eloquent {
      */
     public function groups()
     {
-        return $this->hasMany('Group');
+        return $this->hasMany('Uninett\Eloquent\Groups\Group');
     }
 }

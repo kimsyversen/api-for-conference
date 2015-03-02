@@ -1,4 +1,6 @@
-<?php
+<?php namespace Uninett\Eloquent\Sessions;
+
+use Eloquent;
 
 class Session extends Eloquent {
     
@@ -27,7 +29,7 @@ class Session extends Eloquent {
      */
     public function personalSchedules()
     {
-        return $this->morphedByMany('PersonalSchedule', 'schedulable');
+        return $this->morphedByMany('Uninett\Eloquent\Schedules\PersonalSchedule', 'schedulable');
     }
 
     /**
@@ -37,7 +39,7 @@ class Session extends Eloquent {
      */
     public function conferenceSchedules()
     {
-        return $this->morphedByMany('ConferenceSchedule', 'schedulable');
+        return $this->morphedByMany('Uninett\Eloquent\Schedules\ConferenceSchedule', 'schedulable');
     }
 
     /**
@@ -47,7 +49,7 @@ class Session extends Eloquent {
      */
     public function conference()
     {
-        return $this->belongsTo('Conference');
+        return $this->belongsTo('Uninett\Eloquent\Conferences\Conference');
     }
 
     /**
@@ -57,7 +59,7 @@ class Session extends Eloquent {
      */
     public function questions()
     {
-        return $this->hasMany('Question');
+        return $this->hasMany('Uninett\Eloquent\Questions\Question');
     }
 
     /**
@@ -67,6 +69,6 @@ class Session extends Eloquent {
      */
     public function ratings()
     {
-        return $this->morphMany('Rating', 'ratable');
+        return $this->morphMany('Uninett\Eloquent\Ratings\Rating', 'ratable');
     }
 }
