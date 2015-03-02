@@ -1,4 +1,6 @@
-<?php
+<?php namespace Uninett\Eloquent\Ratings;
+
+use Eloquent;
 
 class Rating extends Eloquent {
     
@@ -26,7 +28,7 @@ class Rating extends Eloquent {
      */
     public function user()
     {
-        return $this->belongsTo('User');
+        return $this->belongsTo('Uninett\Eloquent\Users\User');
     }
 
 }

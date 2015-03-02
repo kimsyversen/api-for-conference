@@ -1,4 +1,6 @@
-<?php
+<?php namespace Uninett\Eloquent\Roles;
+
+use Eloquent;
 
 class Role extends Eloquent {
 
@@ -16,6 +18,6 @@ class Role extends Eloquent {
      */
     public function users()
     {
-        return $this->belongsToMany('User');
+        return $this->belongsToMany('Uninett\Eloquent\Users\User');
     }
 }

@@ -1,4 +1,6 @@
-<?php
+<?php namespace Uninett\Eloquent\Maps;
+
+use Eloquent;
 
 class Map extends Eloquent {
     
@@ -17,7 +19,7 @@ class Map extends Eloquent {
      */
     public function conference()
     {
-        return $this->belongsTo('Conference');
+        return $this->belongsTo('Uninett\Eloquent\Conferences\Conference');
     }
 
 }

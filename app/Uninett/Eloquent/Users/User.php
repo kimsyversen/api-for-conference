@@ -58,7 +58,7 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
      */
     public function personalSchedules()
     {
-        return $this->hasMany('PersonalSchedule');
+        return $this->hasMany('Uninett\Eloquent\Schedules\PersonalSchedule');
     }
 
     /**
@@ -68,7 +68,7 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
      */
     public function questions()
     {
-        return $this->hasMany('Question');
+        return $this->hasMany('Uninett\Eloquent\Questions\Question');
     }
 
     /**
@@ -78,7 +78,7 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
      */
     public function ratings()
     {
-        return $this->hasMany('Rating');
+        return $this->hasMany('Uninett\Eloquent\Ratings\Rating');
     }
 
     /**
@@ -88,7 +88,7 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
      */
     public function newsposts()
     {
-        return $this->hasMany('Newspost');
+        return $this->hasMany('Uninett\Eloquent\Newsposts\Newspost');
     }
 
     /**
@@ -98,7 +98,7 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
      */
     public function messages()
     {
-        return $this->hasMany('Message');
+        return $this->hasMany('Uninett\Eloquent\Messages\Message');
     }
 
     /**
@@ -108,7 +108,7 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
      */
     public function groups()
     {
-        return $this->belongsToMany('Group');
+        return $this->belongsToMany('Uninett\Eloquent\Groups\Group');
     }
 
     /**
@@ -118,7 +118,7 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
      */
     public function roles()
     {
-        return $this->belongsToMany('Role');
+        return $this->belongsToMany('Uninett\Eloquent\Roles\Role');
     }
 
     /**
@@ -128,7 +128,7 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
      */
     public function chats()
     {
-        return $this->morphToMany('Chat', 'chatable');
+        return $this->morphToMany('Uninett\Eloquent\Chats\Chat', 'chatable');
     }
 
 }

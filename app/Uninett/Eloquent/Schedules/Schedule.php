@@ -1,4 +1,6 @@
-<?php
+<?php namespace Uninett\Eloquent\Schedules;
+
+use Eloquent;
 
 abstract class Schedule extends Eloquent {
     
@@ -16,7 +18,7 @@ abstract class Schedule extends Eloquent {
      */
     public function conference()
     {
-        return $this->belongsTo('Conference');
+        return $this->belongsTo('Uninett\Eloquent\Conferences\Conference');
     }
 
     /**
@@ -26,6 +28,6 @@ abstract class Schedule extends Eloquent {
      */
     public function sessions()
     {
-        return $this->morphToMany('Session', 'schedulable');
+        return $this->morphToMany('Uninett\Eloquent\Sessions\Session', 'schedulable');
     }
 }

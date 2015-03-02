@@ -1,4 +1,6 @@
-<?php
+<?php namespace Uninett\Eloquent\Messages;
+
+use Eloquent;
 
 class Message extends Eloquent {
     
@@ -16,7 +18,7 @@ class Message extends Eloquent {
      */
     public function user()
     {
-        return $this->belongsTo('User');
+        return $this->belongsTo('Uninett\Eloquent\Users\User');
     }
 
     /**
@@ -26,7 +28,7 @@ class Message extends Eloquent {
      */
     public function chat()
     {
-        return $this->belongsTo('Chat');
+        return $this->belongsTo('Uninett\Eloquent\Chats\Chat');
     }
 
 }

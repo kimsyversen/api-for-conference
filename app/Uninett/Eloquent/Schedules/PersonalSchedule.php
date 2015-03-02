@@ -1,6 +1,6 @@
-<?php
+<?php namespace Uninett\Eloquent\Schedules;
 
-class PersonalSchedule extends \Schedule {
+class PersonalSchedule extends Schedule {
 
     /**
      * Fillable fields for a new PersonalSchedule
@@ -16,6 +16,6 @@ class PersonalSchedule extends \Schedule {
      */
     public function user()
     {
-        return $this->belongsTo('User');
+        return $this->belongsTo('Uninett\Eloquent\Users\User');
     }
 }

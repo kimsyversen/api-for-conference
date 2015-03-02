@@ -1,4 +1,6 @@
-<?php
+<?php namespace Uninett\Eloquent\Chats;
+
+use Eloquent;
 
 class Chat extends Eloquent {
     
@@ -16,7 +18,7 @@ class Chat extends Eloquent {
      */
     public function messages()
     {
-        return $this->hasMany('Message');
+        return $this->hasMany('Uninett\Eloquent\Messages\Message');
     }
 
     /**
@@ -26,7 +28,7 @@ class Chat extends Eloquent {
      */
     public function conference()
     {
-        return $this->belongsTo('Conference');
+        return $this->belongsTo('Uninett\Eloquent\Conferences\Conference');
     }
 
     /**
@@ -46,7 +48,7 @@ class Chat extends Eloquent {
      */
     public function groups()
     {
-        return $this->morphedByMany('Grpup', 'chatable');
+        return $this->morphedByMany('Uninett\Eloquent\Groups\Grpup', 'chatable');
     }
 
     /**
@@ -56,7 +58,7 @@ class Chat extends Eloquent {
      */
     public function users()
     {
-        return $this->morphedByMany('User', 'chatable');
+        return $this->morphedByMany('Uninett\Eloquent\Users\User', 'chatable');
     }
 
 }

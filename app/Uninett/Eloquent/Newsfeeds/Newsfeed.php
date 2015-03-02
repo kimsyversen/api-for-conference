@@ -1,4 +1,6 @@
-<?php
+<?php namespace Uninett\Eloquent\Newsfeeds;
+
+use Eloquent;
 
 class Newsfeed extends Eloquent {
     
@@ -16,7 +18,7 @@ class Newsfeed extends Eloquent {
      */
     public function conference()
     {
-        return $this->belongsTo('Conference');
+        return $this->belongsTo('Uninett\Eloquent\Conferences\Conference');
     }
 
     /**
@@ -26,7 +28,7 @@ class Newsfeed extends Eloquent {
      */
     public function newsposts()
     {
-        return $this->hasMany('Newspost');
+        return $this->hasMany('Uninett\Eloquent\Newsposts\Newspost');
     }
 
 }

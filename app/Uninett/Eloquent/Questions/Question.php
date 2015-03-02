@@ -1,4 +1,6 @@
-<?php
+<?php namespace Uninett\Eloquent\Questions;
+
+use Eloquent;
 
 class Question extends Eloquent {
     
@@ -16,7 +18,7 @@ class Question extends Eloquent {
      */
     public function user()
     {
-        return $this->belongsTo('User');
+        return $this->belongsTo('Uninett\Eloquent\Users\User');
     }
 
     /**
@@ -26,7 +28,7 @@ class Question extends Eloquent {
      */
     public function session()
     {
-        return $this->belongsTo('Session');
+        return $this->belongsTo('Uninett\Eloquent\Sessions\Session');
     }
 
 }
