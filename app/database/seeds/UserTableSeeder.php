@@ -10,16 +10,38 @@ class UserTableSeeder extends Seeder {
 	{
 		$faker = Faker::create();
 
-		//The main test user
+		//The main test user and admin for the conferences
 		User::create([
-			'username' => 'user',
-			'email' => 'user@example.com',
+			'username' => 'admin',
+			'email' => 'admin@example.com',
 			'password' => 'secret',
 			'confirmed' => 1,
 			'confirmation_code' => null,
 			'remember_token' => null,
 
 		]);
+
+        //The co-admin for the conferences
+        User::create([
+            'username' => 'co-admin',
+            'email' => 'co-admin@example.com',
+            'password' => 'secret',
+            'confirmed' => 1,
+            'confirmation_code' => null,
+            'remember_token' => null,
+
+        ]);
+
+        //A normal participant for the conference
+        User::create([
+            'username' => 'participant',
+            'email' => 'participant@example.com',
+            'password' => 'secret',
+            'confirmed' => 1,
+            'confirmation_code' => null,
+            'remember_token' => null,
+
+        ]);
 
 
 		foreach(range(1, 10) as $index)

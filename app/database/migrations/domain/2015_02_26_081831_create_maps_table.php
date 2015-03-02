@@ -16,6 +16,7 @@ class CreateMapsTable extends Migration {
 		{
 			$table->increments('id');
 			$table->integer('conference_id')->unsigned()->index();
+            $table->string('uri');
             $table->timestamps();
 		});
 	}

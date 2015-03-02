@@ -29,7 +29,7 @@ class Session extends Eloquent {
      */
     public function personalSchedules()
     {
-        return $this->morphedByMany('Uninett\Eloquent\Schedules\PersonalSchedule', 'schedulable');
+        return $this->morphedByMany('Uninett\Eloquent\Schedules\PersonalSchedule', 'schedulable')->withTimestamps();
     }
 
     /**
@@ -39,7 +39,7 @@ class Session extends Eloquent {
      */
     public function conferenceSchedules()
     {
-        return $this->morphedByMany('Uninett\Eloquent\Schedules\ConferenceSchedule', 'schedulable');
+        return $this->morphedByMany('Uninett\Eloquent\Schedules\ConferenceSchedule', 'schedulable')->withTimestamps();
     }
 
     /**

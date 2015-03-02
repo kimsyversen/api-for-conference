@@ -129,7 +129,7 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
      */
     public function chats()
     {
-        return $this->morphToMany('Uninett\Eloquent\Chats\Chat', 'chatable');
+        return $this->morphToMany('Uninett\Eloquent\Chats\Chat', 'chatable')->withTimestamps();
     }
 
 }

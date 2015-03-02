@@ -28,6 +28,6 @@ abstract class Schedule extends Eloquent {
      */
     public function sessions()
     {
-        return $this->morphToMany('Uninett\Eloquent\Sessions\Session', 'schedulable');
+        return $this->morphToMany('Uninett\Eloquent\Sessions\Session', 'schedulable')->withTimestamps();
     }
 }

@@ -54,7 +54,7 @@ abstract class ApiTester extends TestCase {
 		return 	[
 			'client_id' => 1,
 			'client_secret' => 'asdf',
-			'username' => 'user@example.com',
+			'username' => 'admin@example.com',
 			'password' => 'secret',
 			'grant_type' => 'password'
 		];

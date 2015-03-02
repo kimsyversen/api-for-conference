@@ -2,17 +2,56 @@
 
 class DatabaseSeeder extends Seeder {
 
-	private $tables = [
+	protected $tables = [
 		'users',
 		'oauth_scopes',
 		'oauth_clients',
 		'oauth_sessions',
-		'oauth_access_tokens'
+		'oauth_access_tokens',
+
+        'chatables',
+        'chats',
+        'conference_roles',
+        'conference_schedules',
+        'conferences',
+        'group_conference_user',
+        'groups',
+        'maps',
+        'messages',
+        'newsfeeds',
+        'newsposts',
+        'personal_schedules',
+        'questions',
+        'ratings',
+        'roles',
+        'schedulables',
+        'sessions',
 	];
 
-	private $seeders = [
-		'UserTableSeeder',
-		'OAuthTestSeeder'
+    protected $seeders = [
+        'UserTableSeeder',
+        'OAuthTestSeeder',
+
+        'ConferencesTableSeeder',
+        'MapsTableSeeder',
+        'SessionsTableSeeder',
+        'RatingsTableSeeder',
+        'ConferenceSchedulesTableSeeder',
+        'PersonalSchedulesTableSeeder',
+        'QuestionsTableSeeder',
+
+        'RolesTableSeeder',
+        'UserConferenceRolesTableSeeder',
+
+        'GroupsTableSeeder',
+        'GroupConferenceUsersTableSeeder',
+
+        'ChatsTableSeeder',
+        'MessagesTableSeeder',
+
+        'NewsfeedsTableSeeder',
+        'NewspostsTableSeeder'
+
 	];
 
 

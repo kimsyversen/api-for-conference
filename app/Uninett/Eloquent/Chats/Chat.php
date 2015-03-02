@@ -48,7 +48,7 @@ class Chat extends Eloquent {
      */
     public function groups()
     {
-        return $this->morphedByMany('Uninett\Eloquent\Groups\Grpup', 'chatable');
+        return $this->morphedByMany('Uninett\Eloquent\Groups\Group', 'chatable')->withTimestamps();
     }
 
     /**
@@ -58,7 +58,7 @@ class Chat extends Eloquent {
      */
     public function users()
     {
-        return $this->morphedByMany('Uninett\Eloquent\Users\User', 'chatable');
+        return $this->morphedByMany('Uninett\Eloquent\Users\User', 'chatable')->withTimestamps();
     }
 
 }

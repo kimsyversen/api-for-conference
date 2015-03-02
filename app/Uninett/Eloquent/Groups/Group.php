@@ -18,7 +18,7 @@ class Group extends Eloquent {
      */
     public function chats()
     {
-        return $this->morphToMany('Uninett\Eloquent\Chats\Chat', 'chatable');
+        return $this->morphToMany('Uninett\Eloquent\Chats\Chat', 'chatable')->withTimestamps();
     }
 
     /**
