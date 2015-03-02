@@ -8,7 +8,7 @@ class UsersTest extends OAuthApiTester {
 	{
 		parent::setUp();
 
-		$this->setupAccesstoken();
+		$this->getAccesstoken();
 
 		$this->base_url = Config::get('uninett.base_url');
 

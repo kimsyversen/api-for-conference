@@ -7,7 +7,8 @@ class OAuthApiTester extends ApiTester {
 	 */
 	protected $access_token;
 
-	protected $base_url;
+
+
 
 	/**
 	 * Get OAuth2 access token
@@ -18,12 +19,14 @@ class OAuthApiTester extends ApiTester {
 		}
 	 * @return mixed
 	 */
-	protected function setupAccesstoken()
+	protected function getAccesstoken()
 	{
-		$response = $this->call('POST', "oauth/access_token", $this->getParameteresToAquireAccesstoken());
+		$response = $this->call('POST', "oauth/access_token", $this->getParametersToAquireAccesstoken());
 
 		$this->access_token = json_decode($response->getContent(), true);
 
 		return $this->access_token;
 	}
+
+
 }

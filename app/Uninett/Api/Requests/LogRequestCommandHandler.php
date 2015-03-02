@@ -36,7 +36,7 @@ class LogRequestCommandHandler implements CommandHandler {
 			//If you want to test
 			//date_default_timezone_set('America/Curacao');
 
-			$foundRecord = $this->statisticRepository->whereCreatedAtBetween(
+			$foundRecord = $this->statisticRepository->whereCreatedAtIsBetween(
 				Carbon::now()->format('Y-m-d H:00:00'),
 				Carbon::now()->addHour()->format('Y-m-d H:00:00'));
 
