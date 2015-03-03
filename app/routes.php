@@ -25,5 +25,10 @@ Route::group(['prefix' => 'api'], function() {
 		Route::get('users/me', [ 'as' => 'users_path', 'uses' => 'UsersController@getMe' ]);
 		Route::get('users/{id}', [ 'as' => 'users_path', 'uses' => 'UsersController@getUserById' ]);
 
+		Route::group(['prefix' => 'conference/{id}'], function() {
+
+		Route::get('/admin',  [ 'as' => 'admin_path', 'uses' => 'AdminController@index' ]);
+
+		});
 	});
 });

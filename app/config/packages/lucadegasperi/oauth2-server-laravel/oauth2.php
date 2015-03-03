@@ -90,7 +90,7 @@ return [
 				    return false;
 			    }
 		    },
-		    'access_token_ttl' => 3600
+		    'access_token_ttl' => 7200
 	    ]
     ],
 
@@ -156,7 +156,7 @@ return [
     | this can be also set on a per grant-type basis
     |
     */
-    'access_token_ttl' => 3600,
+    'access_token_ttl' => 7200,
 
     /*
     |--------------------------------------------------------------------------

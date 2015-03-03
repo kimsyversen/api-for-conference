@@ -20,14 +20,7 @@ class UsersController extends ApiController {
 
 		$user = User::where('id', '=', $user_id)->get()->first();
 
-/*		if(!$user)
-			return $this->respondNotFound([
-				'message' => 'User was not found'
-			]);*/
-
-		return $this->respond([
-			'data' => $this->transform->transform($user->toArray())
-		]);
+		return $this->respond($this->transform->transform($user->toArray()));
 	}
 
 	public function getUserById($id)
