@@ -23,7 +23,6 @@ class RegistrationController extends ApiController {
 		return $this->respondCreated('Account was successfully created.');
 
 		//return $this->respondWithError('Something went wrong.');
-
 	}
 
 	public function verify($confirmation_code)

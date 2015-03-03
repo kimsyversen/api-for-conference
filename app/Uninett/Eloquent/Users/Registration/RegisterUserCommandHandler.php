@@ -37,7 +37,6 @@ class RegisterUserCommandHandler implements  CommandHandler {
 
 		$this->repository->save($user);
 
-
 		$this->dispatchEventsFor($user);
 
 		Log::info('Created new user');

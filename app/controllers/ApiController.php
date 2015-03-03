@@ -53,6 +53,7 @@ class ApiController extends \BaseController {
 	public function respond($data, $headers = [])
 	{
 		//TODO: This should probably be placed a place before the response is made. However, this works "for now".
+		//This is for logging statistics
 		$this->execute(LogRequestCommand::class, ['request' => Request::server('PATH_INFO') ]);
 
 		return $this->outputFormatter->response($data, HttpResponse::HTTP_OK, $headers);
