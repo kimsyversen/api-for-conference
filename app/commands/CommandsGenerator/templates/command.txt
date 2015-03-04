@@ -1,0 +1,10 @@
+<?php namespace {{NAMESPACE}};
+
+class {{NAME}}Command {
+
+    function __construct()
+    {
+        // TODO: Add properties
+    }
+
+}
