@@ -20,14 +20,22 @@ Route::get('register/verify/{confirmation_code}', [ 'as' => 'confirmation_path',
 Route::get('test', 'UsersController@asdf');
 
 Route::group(['prefix' => 'api'], function() {
-	Route::group(['prefix' => 'v1', 'before' => 'oauth' ], function() {
+	Route::group(['prefix' => 'v1', ], function() {
 
-		Route::get('users/me', [ 'as' => 'users_path', 'uses' => 'UsersController@getMe' ]);
-		Route::get('users/{id}', [ 'as' => 'users_path', 'uses' => 'UsersController@getUserById' ]);
+		Route::group(['prefix' => 'conferences',  ], function() {
+			Route::get('/', [ 'as' => 'conferences_path', 'uses' => 'ConferencesController@index' ]);
+		});
 
-		Route::group(['prefix' => 'conference/{id}'], function() {
 
-		Route::get('/admin',  [ 'as' => 'admin_path', 'uses' => 'AdminController@index' ]);
+		Route::group(['prefix' => '/', 'before' => 'oauth'  ], function() {
+			Route::get('users/me', [ 'as' => 'users_path', 'uses' => 'UsersController@getMe' ]);
+			Route::get('users/{id}', [ 'as' => 'users_path', 'uses' => 'UsersController@getUserById' ]);
+		});
+
+
+		Route::group(['prefix' => 'conference/{id}', 'before' => 'oauth' ], function() {
+
+			Route::get('/admin',  [ 'as' => 'admin_path', 'uses' => 'AdminController@index' ]);
 
 		});
 	});
