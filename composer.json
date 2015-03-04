@@ -21,7 +21,7 @@
     },
 	"autoload": {
 		"classmap": [
-			"app/commands",
+            "app/commands",
 			"app/controllers",
 			"app/database/migrations",
 			"app/database/seeds",
@@ -29,11 +29,12 @@
             "app/database/seeds/fakeSeed"
 		],
         "files": [
-          "app/tests/helpers/ApiTester.php",
-          "app/tests/helpers/OAuthApiTester.php"
+            "app/tests/helpers/ApiTester.php",
+            "app/tests/helpers/OAuthApiTester.php"
         ],
       "psr-4": {
-        "Uninett\\": "app/Uninett"
+        "Uninett\\": "app/Uninett",
+        "commands\\" : "app/commands"
       }
 	},
 	"scripts": {

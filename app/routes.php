@@ -7,6 +7,7 @@ Event::listen('Illuminate.Support.Facades.Response', function($param)
 });
 
 Route::resource('group', 'GroupsController');
+Route::get('map', 'MapsController@index');
 
 Route::get('/', function() { return View::make('hello'); });
 
