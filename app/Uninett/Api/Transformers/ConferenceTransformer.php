@@ -1,13 +1,21 @@
 <?php namespace Uninett\Api\Transformers;
 
+use Config;
+
 class ConferenceTransformer extends Transformer {
 
 	public function transform($item)
 	{
 		return [
-			'conference_name' => $item['name'],
-			'conference_banner' => $item['banner'],
-			'conference_starts' => $item['created_at'],
+			'links' => [
+				'uri' => 'conferences/' . $item['id'],
+				'rel' => 'self',
+			],
+			'id' => $item['id'],
+			'name' => $item['name'],
+			'banner' => $item['banner'],
+			'begins' => $item['created_at'],
+			'ends' => $item['created_at'],
 		];
 	}
 }

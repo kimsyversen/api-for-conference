@@ -27,6 +27,10 @@ class ConferencesController extends ApiController  {
 	}
 
 
+	public function getConferenceById($id){
+		$data = Uninett\Eloquent\Conferences\Conference::find($id);
+		return $this->respond($this->transform->transform($data->toArray()));
+	}
 	/**
 	 * Show the form for creating a new resource.
 	 *

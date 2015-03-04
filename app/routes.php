@@ -24,6 +24,7 @@ Route::group(['prefix' => 'api'], function() {
 
 		Route::group(['prefix' => 'conferences',  ], function() {
 			Route::get('/', [ 'as' => 'conferences_path', 'uses' => 'ConferencesController@index' ]);
+			Route::get('/{id}', [ 'as' => 'conferences_path', 'uses' => 'ConferencesController@getConferenceById' ]);
 		});
 
 
