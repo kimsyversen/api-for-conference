@@ -6,6 +6,8 @@ Event::listen('Illuminate.Support.Facades.Response', function($param)
 	dd('asdf');
 });
 
+Route::resource('group', 'GroupsController');
+
 Route::get('/', function() { return View::make('hello'); });
 
 
@@ -25,5 +27,15 @@ Route::group(['prefix' => 'api'], function() {
 		Route::get('users/me', [ 'as' => 'users_path', 'uses' => 'UsersController@getMe' ]);
 		Route::get('users/{id}', [ 'as' => 'users_path', 'uses' => 'UsersController@getUserById' ]);
 
+
+        Route::group(['prefix' => 'conference/{id}'], function() {
+            Route::get('/', [ 'as' => '', 'uses' => 'x@x' ]);
+
+            Route::get('personal_scheduele', [ 'as' => '', 'uses' => 'x@x' ]);
+            Route::get('sessions', [ 'as' => '', 'uses' => 'x@x' ]);
+            Route::get('users/{id}', [ 'as' => '', 'uses' => 'x@x' ]);
+        });
+
 	});
 });
+

@@ -122,7 +122,7 @@ return array(
 		'Illuminate\View\ViewServiceProvider',
 		'Illuminate\Workbench\WorkbenchServiceProvider',
 		'Laracasts\Commander\CommanderServiceProvider',
-		'Laracasts\Validation\ValidationServiceProvider',
+        'Uninett\Validators\ValidationServiceProvider',
 		'LucaDegasperi\OAuth2Server\Storage\FluentStorageServiceProvider',
 		'LucaDegasperi\OAuth2Server\OAuth2ServerServiceProvider',
 		'Uninett\Providers\EventServiceProvider'
