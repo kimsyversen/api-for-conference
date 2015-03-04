@@ -1,6 +1,19 @@
 <?php
 
+use Uninett\Api\Formatters\OutputFormatter;
+use Uninett\Api\Transformers\ConferenceTransformer;
+
 class ConferencesController extends ApiController  {
+
+
+	private $transform;
+
+	function __construct(ConferenceTransformer $transform, OutputFormatter $outputFormatter)
+	{
+		parent::__construct($outputFormatter);
+
+		$this->transform = $transform;
+	}
 
 	/**
 	 * Display a listing of the resource.
@@ -10,7 +23,7 @@ class ConferencesController extends ApiController  {
 	public function index()
 	{
 		$data = Uninett\Eloquent\Conferences\Conference::all();
-		return $this->respond($data);
+		return $this->respond($this->transform->transformCollection($data->toArray()));
 	}
 
 
