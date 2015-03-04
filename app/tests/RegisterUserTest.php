@@ -10,7 +10,7 @@ class RegisterUserTest extends \ApiTester {
 
 	/**
 	 * @test
-	 * @expectedException \Illuminate\Database\QueryException
+	 * @expectedException \Uninett\Exceptions\FormValidationException
 	 */
 	public function it_throws_queryexception_if_username_or_email_already_exists()
 	{
