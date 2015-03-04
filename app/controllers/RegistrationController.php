@@ -20,8 +20,6 @@ class RegistrationController extends ApiController {
 	{
 		$user = $this->execute(RegisterUserCommand::class);
 
-
-
 		return $this->respondCreated('Account was successfully created.');
 
 		//return $this->respondWithError('Something went wrong.');
