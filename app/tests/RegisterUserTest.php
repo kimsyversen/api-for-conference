@@ -12,7 +12,7 @@ class RegisterUserTest extends \ApiTester {
 	 * @test
 	 * @expectedException \Uninett\Exceptions\FormValidationException
 	 */
-	public function it_throws_queryexception_if_username_or_email_already_exists()
+	public function it_throws_exception_if_username_or_email_already_exists()
 	{
 		$newUser = [
 			'username' => 'admin',
