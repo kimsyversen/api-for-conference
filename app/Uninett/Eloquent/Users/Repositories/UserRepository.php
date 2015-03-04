@@ -1,19 +1,13 @@
 <?php namespace Uninett\Eloquent\Users\Repositories;
+
 use Uninett\Eloquent\Users\User;
-use Uninett\Validation\UserValidator;
 
 
 class UserRepository {
 
-	protected $validator;
-
-	function __construct(UserValidator $validator)
-	{
-		$this->validator = $validator;
-	}
-
 	public function save(User $user)
 	{
+        // TODO: Kan vi fjerne denne?
 		if($user->confirmation_code === null)
 			$user->confirmed = 1;
 
