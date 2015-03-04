@@ -2,6 +2,11 @@
 
 use Illuminate\Support\ServiceProvider;
 
+/**
+ * This code is a modification of the validation package
+ * authored by Jeffery Way. Source:
+ * https://github.com/laracasts/Validation
+ */
 class ValidationServiceProvider extends ServiceProvider {
 
 	/**

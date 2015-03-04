@@ -4,6 +4,12 @@ use Uninett\Exceptions\FormValidationException;
 use Uninett\Validators\FactoryInterface as ValidatorFactory;
 use Uninett\Validators\ValidatorInterface as ValidatorInstance;
 
+
+/**
+ * This code is a modification of the validation package
+ * authored by Jeffery Way. Source:
+ * https://github.com/laracasts/Validation
+ */
 abstract class FormValidator {
 
     /**
