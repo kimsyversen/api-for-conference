@@ -14,7 +14,7 @@ class QuestionsTableSeeder extends Seeder {
 
         $session_ids = Uninett\Eloquent\Sessions\Session::lists('id');
 
-		foreach(range(1, 400) as $index)
+		foreach(range(1, 50) as $index)
 		{
 			Question::create([
                 'session_id' => $faker->randomElement($session_ids),

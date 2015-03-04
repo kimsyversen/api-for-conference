@@ -15,6 +15,9 @@ class UsersTest extends OAuthApiTester {
 		Route::enableFilters();
 	}
 
+
+
+
 	/** @test */
 	public function it_can_retrieve_me()
 	{
@@ -25,8 +28,9 @@ class UsersTest extends OAuthApiTester {
 		$this->assertNotEmpty($response);
 	}
 
-	/** @test */
+
 	/**
+	 * @test
 	 * @expectedException League\OAuth2\Server\Exception\AccessDeniedException
 	 */
 	public function it_can_not_retrieve_me_if_wrong_access_token()
@@ -47,5 +51,9 @@ class UsersTest extends OAuthApiTester {
 
 		$this->assertNotEmpty($response);
 	}
+
+
+
+
 }
 

@@ -13,7 +13,7 @@ class SessionsTableSeeder extends UninettSeeder {
 
         $conference_ids = Conference::lists('id');
 
-		foreach(range(1, 200) as $index)
+		foreach(range(1, 50) as $index)
 		{
             $startDate = Carbon::createFromTimeStamp($faker->dateTimeBetween('now', '+1 months')->getTimestamp());
             $startTime = $startDate->format('Y-m-d H:00:00');

@@ -16,7 +16,7 @@ class NewspostsTableSeeder extends Seeder {
 
         $newsfeed_ids = Newsfeed::lists('id');
 
-		foreach(range(1, 200) as $index)
+		foreach(range(1, 20) as $index)
 		{
 			Newspost::create([
                 'newsfeed_id' => $faker->randomElement($newsfeed_ids),

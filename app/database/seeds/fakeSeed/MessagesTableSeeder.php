@@ -15,7 +15,7 @@ class MessagesTableSeeder extends Seeder {
 
         $user_ids = User::lists('id');
 
-		foreach(range(1, 200) as $index)
+		foreach(range(1, 50) as $index)
 		{
 			Message::create([
                 'chat_id' => $faker->randomElement($chat_ids),
