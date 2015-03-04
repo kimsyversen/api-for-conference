@@ -24,7 +24,15 @@ Route::group(['prefix' => 'api'], function() {
 
 		Route::group(['prefix' => 'conferences',  ], function() {
 			Route::get('/', [ 'as' => 'conferences_path', 'uses' => 'ConferencesController@index' ]);
-			Route::get('/{id}', [ 'as' => 'conferences_path', 'uses' => 'ConferencesController@getConferenceById' ]);
+
+
+			Route::group(['prefix' => '{id}',  ], function() {
+				Route::get('/', [ 'as' => 'conferences_path', 'uses' => 'ConferencesController@getConferenceById' ]);
+
+				Route::get('schedueles', [ 'as' => 'schedueles_path', 'uses' => 'ConferenceScheduelesController@index' ]);
+			});
+
+
 		});
 
 

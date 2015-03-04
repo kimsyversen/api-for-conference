@@ -7,11 +7,10 @@ class ConferenceTransformer extends Transformer {
 	public function transform($item)
 	{
 		return [
-			'links' => [
+			'link' => [
 				'uri' => 'conferences/' . $item['id'],
 				'rel' => 'self',
 			],
-			'id' => $item['id'],
 			'name' => $item['name'],
 			'banner' => $item['banner'],
 			'begins' => $item['created_at'],
