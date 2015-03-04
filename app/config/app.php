@@ -123,9 +123,10 @@ return array(
 		'Illuminate\Workbench\WorkbenchServiceProvider',
 		'Laracasts\Commander\CommanderServiceProvider',
         'Uninett\Validators\ValidationServiceProvider',
+        'Uninett\Providers\EventingServiceProvider',
 		'LucaDegasperi\OAuth2Server\Storage\FluentStorageServiceProvider',
 		'LucaDegasperi\OAuth2Server\OAuth2ServerServiceProvider',
-		'Uninett\Providers\EventServiceProvider'
+
 	),
 
 	/*

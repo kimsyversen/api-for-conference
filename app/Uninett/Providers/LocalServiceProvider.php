@@ -1,4 +1,5 @@
 <?php namespace Uninett\Providers;
+
 use Illuminate\Support\ServiceProvider;
 
 class LocalServiceProvider extends ServiceProvider{
