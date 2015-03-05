@@ -17,7 +17,7 @@ class UserRepositoryTest extends \Codeception\TestCase\Test
 
 	protected function _before()
 	{
-		$this->repository = new UserRepository(new \Uninett\Validation\UserValidator());
+		$this->repository = new UserRepository();
 	}
 
 	protected function _after()
@@ -29,7 +29,6 @@ class UserRepositoryTest extends \Codeception\TestCase\Test
 	public function it_can_save_a_user()
 	{
 		$user = [
-			'username' =>  'someUsername',
 			'email' => 'someUsername@someEmail.com',
 			'password' => 'password',
 			'confirmation_code' => str_random(40),
@@ -48,7 +47,9 @@ class UserRepositoryTest extends \Codeception\TestCase\Test
 	{
 		$created_user =  TestDummy::create('Uninett\Eloquent\Users\User');
 
-		$result = $this->repository->verify($created_user['confirmation_code']);
+
+
+		$result = $this->repository->verify($created_user->confirmation_code);
 
 		$this->assertInstanceOf('\Uninett\Eloquent\Users\User', $result);
 
