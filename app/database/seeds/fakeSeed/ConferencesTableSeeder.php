@@ -20,7 +20,8 @@ class ConferencesTableSeeder extends Seeder {
 		{
 			$conference = Conference::create([
                 'name' => $this->faker->word,
-                'banner' => $this->faker->url
+                'description' => $this->faker->sentence(),
+                'banner' => 'http://www.3in.no/wp-content/uploads/Nokios_trondheim_28.-30.oktober_2014.png'
 			]);
 		}
 	}

@@ -15,7 +15,8 @@ class SessionsTableSeeder extends UninettSeeder {
 
 		foreach(range(1, 50) as $index)
 		{
-            $startDate = Carbon::createFromTimeStamp($faker->dateTimeBetween('now', '+1 months')->getTimestamp());
+            //$startDate = Carbon::createFromTimeStamp($faker->dateTimeBetween('now', '+1 months')->getTimestamp());
+			$startDate = Carbon::now()->addDays($faker->numberBetween(0,30))->addHours($faker->numberBetween(0,24));
             $startTime = $startDate->format('Y-m-d H:00:00');
             $endTime = $startDate->addHours($faker->numberBetween(1, 8))->format('Y-m-d H:00:00');
 
