@@ -15,9 +15,9 @@ class GroupsController extends \BaseController {
 	 */
 	public function index()
 	{
-        $this->execute(CreateGroupCommand::class, ['name' => null, 'conference_id' => null]);
+        //$this->execute(CreateGroupCommand::class, ['name' => null, 'conference_id' => null]);
 
-        return URL::to('api/v1/conferences');
+        return URL::route('schedueles_path');
 	}
 
 	/**

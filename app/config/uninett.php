@@ -2,6 +2,7 @@
 
 return [
 	'base_url' => 'http://localhost:8000/api/v1/',
+    'v1' => 'app.v1',
 
     'listeners' => [
         'Uninett\Handlers\EmailNotifier',
