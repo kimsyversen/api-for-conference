@@ -20,6 +20,7 @@ class ConferencesTableSeeder extends Seeder {
 		{
 			$conference = Conference::create([
                 'name' => $this->faker->word,
+                'description' => $this->faker->sentence(),
                 'banner' => $this->faker->url
 			]);
 		}
