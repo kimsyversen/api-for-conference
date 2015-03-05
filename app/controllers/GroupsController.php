@@ -1,7 +1,6 @@
 <?php
 
 use Laracasts\Commander\CommanderTrait;
-use Laracasts\Validation\FormValidationException;
 use Uninett\Eloquent\Groups\CreateGroupCommand;
 
 class GroupsController extends \BaseController {
@@ -16,21 +15,9 @@ class GroupsController extends \BaseController {
 	 */
 	public function index()
 	{
-        $this->execute(CreateGroupCommand::class, ['name' => null, 'conference_id' => null]);
+        //$this->execute(CreateGroupCommand::class, ['name' => null, 'conference_id' => null]);
 
-        /*try
-        {
-            $this->execute(CreateGroupCommand::class, ['name' => null, 'conference_id' => null]);
-        }
-		catch (FormValidationException $e)
-        {
-            $errors = $e->getErrors();
-            return $errors->first('name');
-        }*/
-
-
-
-        return 'done';
+        return URL::route('schedueles_path');
 	}
 
 	/**
