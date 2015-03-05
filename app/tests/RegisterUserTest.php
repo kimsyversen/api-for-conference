@@ -12,12 +12,12 @@ class RegisterUserTest extends \ApiTester {
 	 * @test
 	 * @expectedException \Uninett\Exceptions\FormValidationException
 	 */
-	public function it_throws_exception_if_username_or_email_already_exists()
+	public function it_throws_exception_if_email_already_exists()
 	{
 		$newUser = [
-			'username' => 'admin',
 			'email' => 'admin@example.com',
 			'password' => 'secret',
+			'password_confirmation' => 'secret',
 			'client_id' => 1,
 			'client_secret' => 'asdf',
 			'grant_type' => 'password'

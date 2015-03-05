@@ -21,7 +21,7 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	 */
 	protected $table = 'users';
 
-	protected $fillable = ['username', 'email','password', 'confirmation_code', 'confirmed'];
+	protected $fillable = ['email','password', 'confirmation_code', 'confirmed'];
 
 
 	/**
@@ -43,9 +43,9 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	 * @param $email
 	 * @param $password
 	 */
-	public static function register($username, $email, $password, $confirmation_code = null)
+	public static function register($email, $password, $confirmation_code = null)
 	{
-		$user = new static(compact('username', 'email', 'password', 'confirmation_code'));
+		$user = new static(compact('email', 'password', 'confirmation_code'));
 
 		$user->raise(new UserHasRegistered($user));
 

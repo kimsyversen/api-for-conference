@@ -29,7 +29,7 @@ class RegisterUserCommandHandler implements  CommandHandler {
 	{
 		$confirmation_code = str_random(40);
 
-		$user = User::register($command->username, $command->email, $command->password, $confirmation_code);
+		$user = User::register($command->email, $command->password, $confirmation_code);
 
 		$this->repository->save($user);
 

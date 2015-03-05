@@ -51,7 +51,6 @@ abstract class ApiTester extends TestCase {
 	 */
 	protected function getParametersToAquireAccesstoken()
 	{
-		//TODO: SKille ut parametere og brukeren admin
 		return 	[
 			'client_id' => 1,
 			'client_secret' => 'asdf',

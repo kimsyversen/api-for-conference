@@ -25,7 +25,7 @@ class OauthTest extends ApiTester {
 	{
 		$parameters = $this->getParametersToAquireAccesstoken();
 
-		$parameters['username'] = 'NoNexistingUser';
+		$parameters['username'] = 'NoNexistingUser@example.com';
 
 		$this->call('POST', "oauth/access_token", $parameters);
 

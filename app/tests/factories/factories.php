@@ -1,7 +1,6 @@
 <?php
 $factory('Uninett\Eloquent\Users\User', [
-	'username' =>  $faker->userName,
-	'email' => $faker->safeEmail,
+	'username' => $faker->safeEmail,
 	'password' => 'password',
 	'confirmation_code' => str_random(40),
 	'created_at' => $faker->date(),
@@ -10,8 +9,7 @@ $factory('Uninett\Eloquent\Users\User', [
 
 
 $factory('Uninett\Eloquent\Users\User', [
-	'username' =>  'foo',
-	'email' => 'foo@example.com',
+	'username' => 'foo@example.com',
 	'password' => 'foo',
 	'confirmed' => 1,
 	'created_at' => $faker->date(),

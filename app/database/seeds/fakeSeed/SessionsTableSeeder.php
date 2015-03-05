@@ -15,18 +15,19 @@ class SessionsTableSeeder extends UninettSeeder {
 
 		foreach(range(1, 50) as $index)
 		{
-            //$startDate = Carbon::createFromTimeStamp($faker->dateTimeBetween('now', '+1 months')->getTimestamp());
-			$startDate = Carbon::now()->addDays($faker->numberBetween(0,30))->addHours($faker->numberBetween(0,24));
-            $startTime = $startDate->format('Y-m-d H:00:00');
-            $endTime = $startDate->addHours($faker->numberBetween(1, 8))->format('Y-m-d H:00:00');
+			$randomDay = $faker->numberBetween(0,30);
+			$randomHour = $faker->numberBetween(0,24);
+
+			$startDate = Carbon::now()->addDays($randomDay)->addHours($randomHour);
+            $endDate = Carbon::now()->addDays($randomDay)->addHours($randomHour)->addHours($faker->numberBetween(1,3));
 
 			Session::create([
                 'conference_id' => $faker->randomElement($conference_ids),
                 'title' => $faker->sentence(),
                 'description' => $faker->text(),
                 'location' => $faker->address,
-                'start_time' => $startTime,
-                'end_time' => $endTime
+                'start_time' => $startDate->format('Y-m-d H:00:00'),
+                'end_time' => $endDate->format('Y-m-d H:00:00'),
 			]);
 		}
 	}
