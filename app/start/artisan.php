@@ -11,4 +11,4 @@
 |
 */
 
-Artisan::resolve('commands\CommandsGenerator\CommandStructureCreatorCommand');
+Artisan::resolve('commands\CommandsGenerator\CommanderGenerateCommand');

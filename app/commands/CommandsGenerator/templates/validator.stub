@@ -1,0 +1,18 @@
+<?php namespace {{ namespace }};
+
+use Uninett\Validators\FormValidator;
+
+class {{ name }} extends FormValidator{
+
+    /**
+     * Validation rules
+     *
+     * @var array
+     */
+    protected $rules = [
+        {{# properties }}
+        '{{ . }}' => 'required',
+        {{/ properties}}
+    ];
+
+}
