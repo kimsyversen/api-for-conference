@@ -26,18 +26,7 @@ class ConferencesController extends ApiController  {
 		return $this->respond($this->transform->transformCollection($data->toArray()));
 	}
 
-    /**
-     * Display a listing of the resource.
-     *
-     * @return Response
-     */
-    public function index2()
-    {
-        return "DAta for versjon 2";
-    }
-
-
-    public function getConferenceById($id){
+    public function show($id){
 		$data = Uninett\Eloquent\Conferences\Conference::find($id);
 		return $this->respond($this->transform->transform($data->toArray()));
 	}
