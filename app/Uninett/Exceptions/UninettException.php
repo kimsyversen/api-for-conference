@@ -4,14 +4,15 @@ use Exception;
 
 class UninettException extends Exception {
 
+
     /**
-     * @var int
+     * @var array
      */
     protected $errors;
 
     /**
      * @param string $message
-     * @param int $errors
+     * @param array $errors
      * @param int $code
      * @param Exception $previous
      */
@@ -25,7 +26,7 @@ class UninettException extends Exception {
 	}
 
     /**
-     * @return int
+     * @return array
      */
     public function getErrors()
 	{

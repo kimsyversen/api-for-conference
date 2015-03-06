@@ -15,18 +15,24 @@ class ConferencesController extends ApiController  {
 		$this->transform = $transform;
 	}
 
-	public function index()
-	{
-//        $limit = Input::get('limit') ?:3;
-//        $conferences = Conference::paginate($limit);
-//        return $this->respondWithPagination($conferences, $this->transform->transformCollection($conferences->all()));
 
-		$data = Conference::all();
-		return $this->responder->respond($this->transform->transformCollection($data->toArray()));
+    /**
+     * Get the paginated version of all the conferences
+     * in the system.
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function index()
+	{
+        $limit = Input::get('limit') ?: 10;
+
+        $conferences = Conference::paginate($limit);
+
+        return $this->responder->respondWithPagination($this->transform->transformCollection($conferences->all()), $conferences);
 	}
 
     public function show($id){
-		$data = Conference::find($id);
+		$data = Conference::findOrFail($id);
 		return $this->responder->respond($this->transform->transform($data->toArray()));
 	}
 

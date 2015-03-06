@@ -66,7 +66,7 @@ class Responder {
      * @param array $headers
      * @return \Illuminate\Http\JsonResponse
      */
-    public function respondWithError($error, $error_description, $errors, array $metadata = [], $headers = [])
+    public function respondWithError($error, $error_description, $errors = [], array $metadata = [], $headers = [])
     {
         $outputData = array_merge([
             'error' => $error,

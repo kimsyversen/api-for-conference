@@ -44,11 +44,11 @@ Route::group(['prefix' => 'api/v1'], function() {
     Route::get('users/me', [ 'as' => 'users_path', 'uses' => 'UsersController@getMe', 'before' => 'oauth']);
     Route::get('users/{id}', [ 'as' => 'users_path', 'uses' => 'UsersController@getUserById', 'before' => 'oauth']);
 
-    Route::get('conferences',                           ['as' => 'api.v1.conferences.index',  'uses' => 'ConferencesController@index']);
-//    Route::get('conferences/{$id}',                     ['as' => 'api.v1.conferences.index',  'uses' => 'ConferencesController@index']);
-//    Route::get('conferences/{$id}/sessions',            ['as' => 'api.v1.conferences.index',  'uses' => 'ConferencesController@index']);
-//    Route::get('conferences/{$id}/sessions/{$id2}',     ['as' => 'api.v1.conferences.index',  'uses' => 'ConferencesController@index']);
-//    Route::get('conferences/{$id}/agendas',             ['as' => 'api.v1.conferences.index',  'uses' => 'ConferencesController@index']);
+    Route::get('conferences',                           ['as' => 'api.v1.conferences.index',    'uses' => 'ConferencesController@index']);
+    Route::get('conferences/{conferences}',             ['as' => 'api.v1.conferences.show',     'uses' => 'ConferencesController@show']);
+//    Route::get('conferences/{$id}/sessions',            ['as' => 'api.v1.conferences.index',    'uses' => 'ConferencesController@index']);
+//    Route::get('conferences/{$id}/sessions/{$id2}',     ['as' => 'api.v1.conferences.index',    'uses' => 'ConferencesController@index']);
+//    Route::get('conferences/{$id}/agendas',             ['as' => 'api.v1.conferences.index',    'uses' => 'ConferencesController@index']);
 
 });
 
