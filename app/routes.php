@@ -1,5 +1,11 @@
 <?php
 
+/**
+ * This resource exists purely for testing purposes.
+ * The resource, and its controller counterpart can
+ * safely be removed from the project.
+ */
+Route::resource('testing', 'DevelopmentTestingController');
 
 Route::post('oauth/access_token', 'OAuthController@postAccessToken');
 Route::post('register', ['as' => 'register_path',  'uses' => 'RegistrationController@store' ]);
