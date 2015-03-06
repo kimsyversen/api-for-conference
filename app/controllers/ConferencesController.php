@@ -1,6 +1,6 @@
 <?php
 
-use Uninett\Api\Formatters\OutputFormatter;
+use Uninett\Api\Responders\Responder;
 use Uninett\Api\Transformers\ConferenceTransformer;
 use Uninett\Eloquent\Conferences\Conference;
 
@@ -8,9 +8,9 @@ class ConferencesController extends ApiController  {
 
     private $transform;
 
-	function __construct(ConferenceTransformer $transform, OutputFormatter $outputFormatter)
+	function __construct(ConferenceTransformer $transform, Responder $responder)
 	{
-		parent::__construct($outputFormatter);
+		parent::__construct($responder);
 
 		$this->transform = $transform;
 	}
@@ -22,12 +22,12 @@ class ConferencesController extends ApiController  {
 //        return $this->respondWithPagination($conferences, $this->transform->transformCollection($conferences->all()));
 
 		$data = Conference::all();
-		return $this->respond($this->transform->transformCollection($data->toArray()));
+		return $this->responder->respond($this->transform->transformCollection($data->toArray()));
 	}
 
     public function show($id){
 		$data = Conference::find($id);
-		return $this->respond($this->transform->transform($data->toArray()));
+		return $this->responder->respond($this->transform->transform($data->toArray()));
 	}
 
 }

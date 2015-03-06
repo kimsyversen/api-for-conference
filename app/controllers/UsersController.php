@@ -1,15 +1,15 @@
 <?php
 
-use Uninett\Api\Formatters\OutputFormatter;
+use Uninett\Api\Responders\Responder;
 use Uninett\Api\Transformers\UserTransformer;
 use Uninett\Eloquent\Users\User;
 
 class UsersController extends ApiController {
 	private $transform;
 
-	function __construct(UserTransformer $transform, OutputFormatter $outputFormatter)
+	function __construct(UserTransformer $transform, Responder $responder)
 	{
-		parent::__construct($outputFormatter);
+		parent::__construct($responder);
 
 		$this->transform = $transform;
 	}
@@ -20,17 +20,16 @@ class UsersController extends ApiController {
 
 		$user = User::where('id', '=', $user_id)->get()->first();
 
-		return $this->respond($this->transform->transform($user->toArray()));
+		return $this->responder->respond($this->transform->transform($user->toArray()));
 	}
 
 	public function getUserById($id)
 	{
 		$user = User::findOrFail($id);
 
-		return $this->respond([
-			'data' => $this->transform->transform($user->toArray())
-		]);
+		return $this->responder->respond($this->transform->transform($user->toArray()));
 	}
+
 	public function asdf()
 	{
 		/**

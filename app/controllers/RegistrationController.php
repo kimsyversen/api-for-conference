@@ -1,6 +1,6 @@
 <?php
 
-use Uninett\Api\Formatters\OutputFormatter;
+use Uninett\Api\Responders\Responder;
 use Uninett\Api\Transformers\UserTransformer;
 use Uninett\Users\Registration\RegisterUserCommand;
 use Uninett\Users\Registration\VerifyUserCommand;
@@ -9,9 +9,9 @@ class RegistrationController extends ApiController {
 
 	private $transform;
 
-	function __construct(UserTransformer $transform, OutputFormatter $outputFormatter)
+	function __construct(UserTransformer $transform, Responder $responder)
 	{
-		parent::__construct($outputFormatter);
+		parent::__construct($responder);
 
 		$this->transform = $transform;
 	}
@@ -20,7 +20,7 @@ class RegistrationController extends ApiController {
 	{
 		$user = $this->execute(RegisterUserCommand::class);
 
-		return $this->respondCreated('Account was successfully created.');
+		return $this->responder->respondCreated('Account was successfully created.');
 
 		//return $this->respondWithError('Something went wrong.');
 	}
@@ -29,9 +29,7 @@ class RegistrationController extends ApiController {
 	{
 		$user = $this->execute(VerifyUserCommand::class, ['confirmation_code' => $confirmation_code] );
 
-		return $this->respond([
-			'data' => $this->transform->transform($user->toArray())
-		]);
+		return $this->responder->respond($this->transform->transform($user->toArray()));
 
 	}
 }

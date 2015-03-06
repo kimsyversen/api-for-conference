@@ -1,90 +1,20 @@
 <?php
-use Illuminate\Http\Response as HttpResponse;
+
 use Laracasts\Commander\CommanderTrait;
-use Illuminate\Pagination\Paginator as Paginator;
-use Laracasts\Commander\Events\DispatchableTrait;
-use Uninett\Api\Formatters\OutputFormatter;
-use Uninett\Api\Requests\LogRequestCommand;
-use Uninett\Eloquent\Statistics\Statistic;
+use Uninett\Api\Responders\Responder;
 
 class ApiController extends \BaseController {
 
-	use CommanderTrait;
+    use CommanderTrait;
 
-	protected $statusCode = 200;
+	protected $responder;
 
-	protected $limit = 100;
-
-	protected $outputFormatter;
-
-	/**
-	 * @param OutputFormatter $outputFormatter
-	 */
-	function __construct(OutputFormatter $outputFormatter)
+    /**
+     * @param Responder $responder
+     */
+    function __construct(Responder $responder)
 	{
-		$this->outputFormatter = $outputFormatter;
-
-	}
-
-	/**
-	 * @return int
-	 */
-	public function getStatusCode()
-	{
-		return $this->statusCode;
-	}
-
-	/**
-	 * @param $statusCode
-	 * @return $this
-	 */
-	public function setStatusCode($statusCode)
-	{
-		$this->statusCode = $statusCode;
-
-		return $this;
-	}
-
-	/**
-	 * @param $data
-	 * @param array $headers
-	 * @return mixed
-	 */
-	public function respond($data, $headers = [])
-	{
-		//TODO: This should probably be placed a place before the response is made. However, this works "for now".
-		//This is for logging statistics
-		$this->execute(LogRequestCommand::class, ['request' => Request::server('PATH_INFO') ]);
-
-		return $this->outputFormatter->response($data, HttpResponse::HTTP_OK, $headers);
-	}
-
-	/**
-	 * @param Paginator $items
-	 * @param $data
-	 * @return mixed
-	 */
-	public function respondWithPagination(Paginator $items, $data)
-	{
-		$data = array_merge($data, [
-			'paginator' => [
-				'total_count'  => $items->getTotal(),
-				'total_pages'  => ceil($items->getTotal() / $items->getPerPage()),
-				'current_page' => $items->getCurrentPage(),
-				'limit'        => $items->getPerPage()
-			]
-		]);
-
-		return $this->respond($data);
-	}
-
-	/**
-	 * @param $message
-	 * @return mixed
-	 */
-	public function respondCreated($message)
-	{
-		return  $this->outputFormatter->response($message, HttpResponse::HTTP_CREATED, []);
+		$this->responder = $responder;
 	}
 
 	/**

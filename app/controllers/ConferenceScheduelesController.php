@@ -1,7 +1,6 @@
 <?php
 
-use Uninett\Api\Formatters\OutputFormatter;
-
+use Uninett\Api\Responders\Responder;
 use Uninett\Api\Transformers\SchedulesTransformer;
 use Uninett\Eloquent\Schedules\ConferenceSchedule;
 use Uninett\Eloquent\Schedules\ScheduelesRepository;
@@ -12,9 +11,9 @@ class ConferenceScheduelesController extends ApiController {
 	private $transform;
 	private $scheduelesRepository;
 
-	function __construct(SchedulesTransformer $transform, OutputFormatter $outputFormatter, ScheduelesRepository $scheduelesRepository)
+	function __construct(SchedulesTransformer $transform, Responder $responder, ScheduelesRepository $scheduelesRepository)
 	{
-		parent::__construct($outputFormatter);
+		parent::__construct($responder);
 
 		$this->transform = $transform;
 
@@ -31,8 +30,7 @@ class ConferenceScheduelesController extends ApiController {
 	{
 		$schedueles =  $this->scheduelesRepository->find($id);
 
-
-		return $this->respond($this->transform->transformCollection($schedueles->toArray()));
+		return $this->responder->respond($this->transform->transformCollection($schedueles->toArray()));
 	}
 
 

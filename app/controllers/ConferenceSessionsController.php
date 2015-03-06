@@ -1,6 +1,6 @@
 <?php
 
-use Uninett\Api\Formatters\OutputFormatter;
+use Uninett\Api\Responders\Responder;
 use Uninett\Api\Transformers\SessionsTransformer;
 use Uninett\Eloquent\Conferences\Conference;
 
@@ -41,9 +41,9 @@ class ConferenceSessionsController extends \ApiController {
 
     private $transform;
 
-    function __construct(SessionsTransformer $transform, OutputFormatter $outputFormatter)
+    function __construct(SessionsTransformer $transform, Responder $responder)
     {
-        parent::__construct($outputFormatter);
+        parent::__construct($responder);
 
         $this->transform = $transform;
     }
@@ -66,7 +66,7 @@ class ConferenceSessionsController extends \ApiController {
             $data = array_merge($data, $conference['sessions']->only($session_ids)->toArray());
         }
 
-        return $this->respond($this->transform->transformCollection($data));
+        return $this->$responder->respond($this->transform->transformCollection($data));
 	}
 
 	/**
