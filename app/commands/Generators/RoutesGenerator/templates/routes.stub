@@ -1,0 +1,38 @@
+<?php
+{{=<% %>=}}
+
+//Route::model('<% name %>', '<% model %>');
+
+Route::get('<% name %>', [
+    'as' => '<% group %>.<% name %>.index',
+    'uses' => '<% controller %>@index'
+]);
+Route::get('<% name %>/create', [
+    'as' => '<% group %>.<% name %>.create',
+    'uses' => '<% controller %>@create'
+]);
+Route::post('<% name %>', [
+    'as' => '<% group %>.<% name %>.store',
+    'uses' => '<% controller %>@store'
+]);
+Route::get('<% name %>/{<% name %>}', [
+    'as' => '<% group %>.<% name %>.show',
+    'uses' => '<% controller %>@show'
+]);
+Route::get('<% name %>/{<% name %>}/edit', [
+    'as' => '<% group %>.<% name %>.edit',
+    'uses' => '<% controller %>@edit'
+]);
+Route::put('<% name %>/{<% name %>}', [
+    'as' => '<% group %>.<% name %>.update',
+    'uses' => '<% controller %>@update'
+]);
+Route::patch('<% name %>/{<% name %>}', [
+    'as' => '',
+    'uses' => '<% controller %>@update'
+]);
+Route::delete('<% name %>/{<% name %>}', [
+    'as' => '<% group %>.<% name %>.destroy',
+    'uses' => '<% controller %>@destroy'
+]);
+<%={{ }}=%>

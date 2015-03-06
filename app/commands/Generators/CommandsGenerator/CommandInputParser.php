@@ -1,4 +1,4 @@
-<?php namespace commands\CommandsGenerator;
+<?php namespace commands\Generators\CommandsGenerator;
 
 class CommandInputParser {
 

@@ -1,4 +1,4 @@
-<?php namespace commands\CommandsGenerator;
+<?php namespace commands\Generators\CommandsGenerator;
 
 use Illuminate\Console\Command;
 use Symfony\Component\Console\Input\InputOption;
@@ -26,16 +26,6 @@ class CommanderGenerateCommand extends Command {
      * @var string
      */
     protected $description = 'Generate a new command structure';
-
-    /**
-     * @var Filesystem
-     */
-    protected $file;
-
-    /**
-     * @var Mustache_Engine
-     */
-    protected $mustache;
 
     /**
      * @var CommandInputParser
@@ -68,7 +58,6 @@ class CommanderGenerateCommand extends Command {
      */
     public function fire()
     {
-        // php artisan generate:command Uninett/Eloquent/Maps/*SomeShit* --properties="param1, param2"
         $path = $this->argument('path');
         $properties = $this->option('properties');
         $base = $this->option('base');

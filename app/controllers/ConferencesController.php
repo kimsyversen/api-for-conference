@@ -2,9 +2,11 @@
 
 use Uninett\Api\Formatters\OutputFormatter;
 use Uninett\Api\Transformers\ConferenceTransformer;
+use Uninett\Eloquent\Conferences\Conference;
 
 class ConferencesController extends ApiController  {
-	private $transform;
+
+    private $transform;
 
 	function __construct(ConferenceTransformer $transform, OutputFormatter $outputFormatter)
 	{
@@ -15,12 +17,16 @@ class ConferencesController extends ApiController  {
 
 	public function index()
 	{
-		$data = Uninett\Eloquent\Conferences\Conference::all();
+//        $limit = Input::get('limit') ?:3;
+//        $conferences = Conference::paginate($limit);
+//        return $this->respondWithPagination($conferences, $this->transform->transformCollection($conferences->all()));
+
+		$data = Conference::all();
 		return $this->respond($this->transform->transformCollection($data->toArray()));
 	}
 
     public function show($id){
-		$data = Uninett\Eloquent\Conferences\Conference::find($id);
+		$data = Conference::find($id);
 		return $this->respond($this->transform->transform($data->toArray()));
 	}
 

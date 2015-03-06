@@ -11,4 +11,5 @@
 |
 */
 
-Artisan::resolve('commands\CommandsGenerator\CommanderGenerateCommand');
+Artisan::resolve('commands\Generators\CommandsGenerator\CommanderGenerateCommand');
+Artisan::resolve('commands\Generators\RoutesGenerator\RoutesGeneratorCommand');
