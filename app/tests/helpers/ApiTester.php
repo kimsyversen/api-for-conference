@@ -1,10 +1,12 @@
 <?php
 use Faker\Factory as Faker;
 
+abstract class ApiTester extends tests\TestCase {
 
-abstract class ApiTester extends TestCase {
-
-	protected $fake;
+    /**
+     * @var Faker
+     */
+    protected $fake;
 
 	/**
 	 * The base url for the api
@@ -13,50 +15,47 @@ abstract class ApiTester extends TestCase {
 	protected $base_url;
 
 
-
-	function __construct()
+    /**
+     *
+     */
+    function __construct()
 	{
 		$this->fake = Faker::create();
 	}
 
-	public function setUp()
+
+    public function setUp()
 	{
 		parent::setUp();
 
-		Artisan::call('db:seed');
+        // Seed the database manually?
+		//Artisan::call('db:seed');
 	}
 
-	protected function getJson($uri, $method = 'GET', $parameters = [])
+    /**
+     * @param $uri
+     * @param string $method
+     * @param array $parameters
+     * @param bool $returnArray
+     * @return mixed
+     */
+    protected function getJson($uri, $method = 'GET', $parameters = [], $returnArray = false)
 	{
-		return json_decode($this->call($method, $uri, $parameters)->getContent());
+		return json_decode($this->call($method, $uri, $parameters)->getContent(), $returnArray);
 	}
 
-	protected function assertObjectHasAttributes()
+    /**
+     * Assert object has any number of attributes
+     */
+    protected function assertObjectHasAttributes()
 	{
 		$args = func_get_args();
 
 		$object = array_shift($args);
 
 		foreach ($args as $attribute)
-			$this->assertObjectHasAttribute($attribute, $object);
-	}
-
-	public function getStub()
-	{
-		throw new BadMethodCallException('Create your own getStub method to declare your fields');
-	}
-
-	/**
-	 * @return array
-	 */
-	protected function getParametersToAquireAccesstoken()
-	{
-		return 	[
-			'client_id' => 1,
-			'client_secret' => 'asdf',
-			'username' => 'admin@example.com',
-			'password' => 'secret',
-			'grant_type' => 'password'
-		];
+        {
+            $this->assertObjectHasAttribute($attribute, $object);
+        }
 	}
 }

@@ -25,16 +25,13 @@
 			"app/controllers",
 			"app/database/migrations",
 			"app/database/seeds",
-			"app/tests/TestCase.php",
+            "app/tests/helpers",
             "app/database/seeds/fakeSeed"
 		],
-        "files": [
-            "app/tests/helpers/ApiTester.php",
-            "app/tests/helpers/OAuthApiTester.php"
-        ],
       "psr-4": {
         "Uninett\\": "app/Uninett",
-        "commands\\" : "app/commands"
+        "commands\\" : "app/commands",
+        "tests\\" : "app/tests"
       }
 	},
 	"scripts": {

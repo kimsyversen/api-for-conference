@@ -81,7 +81,7 @@ class CommanderGenerateCommand extends Command {
         $this->generator->make(
             $handlerInput,
             __DIR__.'/templates/handler.stub',
-            "{$base}/{$path}Handler.php"
+            "{$base}/{$path}CommandHandler.php"
         );
 
         $this->generator->make(

@@ -18,6 +18,7 @@ class EloquentConferenceRepositoryTest extends \Codeception\TestCase\Test
     protected function _before()
     {
         $this->repo = $this->tester->grabService('Uninett\Eloquent\Conferences\Repositories\EloquentConferenceRepository');
+
     }
 
     protected function _after()
@@ -33,12 +34,11 @@ class EloquentConferenceRepositoryTest extends \Codeception\TestCase\Test
         // When I fetch all paginated conferences with a limit of 5
         $paginatedConferences = $this->repo->getPaginator(5);
 
-        // Then I should receive only the relevant ones
-        $this->assertCount(5, $paginatedConferences->getCollection());
-        $this->assertEquals(15, $paginatedConferences->getTotal());
-        $this->assertEquals(3, $paginatedConferences->getLastPage());
-        $this->assertEquals(1, $paginatedConferences->getCurrentPage());
-        $this->assertEquals(5, $paginatedConferences->getPerPage());
+        // Then the result should be an instance of a paginator
+        $this->assertInstanceOf('Illuminate\Pagination\Paginator', $paginatedConferences);
+
+        // And the instance in the paginated collection should be a conference
+        $this->assertInstanceOf('Uninett\Eloquent\Conferences\Conference', $paginatedConferences->getCollection()[0]);
     }
 
 }

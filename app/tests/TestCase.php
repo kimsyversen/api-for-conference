@@ -1,6 +1,6 @@
-<?php
+<?php namespace tests;
 
-class TestCase extends Illuminate\Foundation\Testing\TestCase {
+class TestCase extends \Illuminate\Foundation\Testing\TestCase {
 
 	/**
 	 * Creates the application.
@@ -13,7 +13,7 @@ class TestCase extends Illuminate\Foundation\Testing\TestCase {
 
 		$testEnvironment = 'testing';
 
-		Laracasts\TestDummy\Factory::$factoriesPath = 'app/tests/factories';
+		\Laracasts\TestDummy\Factory::$factoriesPath = 'app/tests/factories';
 
 		return require __DIR__.'/../../bootstrap/start.php';
 	}

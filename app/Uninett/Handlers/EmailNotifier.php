@@ -1,7 +1,6 @@
 <?php namespace Uninett\Handlers;
 
 use Laracasts\Commander\Events\EventListener;
-use Uninett\Api\Mailers\UserMailer;
 use Uninett\Mailers\MailerInterface;
 use Uninett\Users\Registration\Events\UserHasRegistered;
 

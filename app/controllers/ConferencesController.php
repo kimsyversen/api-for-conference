@@ -3,21 +3,17 @@
 use Uninett\Api\Responders\Responder;
 use Uninett\Api\Transformers\ConferenceTransformer;
 use Uninett\Eloquent\Conferences\Conference;
-use Uninett\Eloquent\Conferences\Repositories\ConferenceRepositoryInterface;
+use Uninett\Eloquent\Conferences\RequestAllConferencesCommand\RequestAllConferencesCommand;
 
 class ConferencesController extends \ApiController {
 
     private $transform;
 
-    private $conference;
-
-    function __construct(ConferenceTransformer $transform, Responder $responder, ConferenceRepositoryInterface $conference)
+    function __construct(ConferenceTransformer $transform, Responder $responder)
     {
         parent::__construct($responder);
 
         $this->transform = $transform;
-
-        $this->conference = $conference;
     }
 
 	/**
@@ -28,11 +24,7 @@ class ConferencesController extends \ApiController {
 	 */
 	public function index()
 	{
-        // TODO: Do we need a command here? I can't see the benefit...
-
-        $limit = Input::get('limit') ?: 10;
-
-        $conferencePaginator = $this->conference->getPaginator($limit);
+        $conferencePaginator = $this->execute(RequestAllConferencesCommand::class);
 
         return $this->responder->respondWithPagination(
             $this->transform->transformCollection($conferencePaginator->all()),

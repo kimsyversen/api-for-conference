@@ -22,9 +22,6 @@ class ConferenceScheduleRepositoryTest extends \Codeception\TestCase\Test
 	/** @test */
 	public function it_can_find_schedules_for_a_conference()
 	{
-        // TODO: Fix this failing test.
-        $t = TestDummy::times(1)->create('Uninett\Eloquent\Schedules\ConferenceSchedule');
-
 		$result = $this->scheduleRepository->find(1);
 
 		$this->assertNotEmpty($result);

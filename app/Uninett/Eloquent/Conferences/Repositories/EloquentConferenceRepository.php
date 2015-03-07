@@ -1,8 +1,12 @@
 <?php namespace Uninett\Eloquent\Conferences\Repositories;
 
+use Laracasts\Commander\Events\EventGenerator;
 use Uninett\Eloquent\Conferences\Conference;
+use Uninett\Eloquent\Conferences\Events\ConferencesIsRequested;
 
-class EloquentConferenceRepository implements ConferenceRepositoryInterface{
+class EloquentConferenceRepository implements ConferenceRepositoryInterface {
+
+    use EventGenerator;
 
     /**
      * @param $limit
@@ -10,7 +14,11 @@ class EloquentConferenceRepository implements ConferenceRepositoryInterface{
      */
     public function getPaginator($limit)
     {
-        return Conference::paginate($limit);
+        $conferencePaginator = Conference::paginate($limit);
+
+        $this->raise(new ConferencesIsRequested($conferencePaginator));
+
+        return $conferencePaginator;
     }
 
 }
