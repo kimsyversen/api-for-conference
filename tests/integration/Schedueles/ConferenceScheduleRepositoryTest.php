@@ -1,9 +1,9 @@
 <?php
 use Carbon\Carbon;
 use Laracasts\TestDummy\Factory as TestDummy;
-use Uninett\Eloquent\Schedules\ScheduelesRepository;
+use Uninett\Eloquent\Schedules\ConferenceScheduleRepository;
 
-class ScheduelesRepositoryTest extends \Codeception\TestCase\Test
+class ConferenceScheduleRepositoryTest extends \Codeception\TestCase\Test
 {
 	/**
 	 * @var \IntegrationTester
@@ -13,7 +13,7 @@ class ScheduelesRepositoryTest extends \Codeception\TestCase\Test
 
 	protected function _before()
 	{
-		$this->scheduleRepository = new ScheduelesRepository();
+		$this->scheduleRepository = new ConferenceScheduleRepository();
 	}
 
 	protected function _after(){}
@@ -22,6 +22,9 @@ class ScheduelesRepositoryTest extends \Codeception\TestCase\Test
 	/** @test */
 	public function it_can_find_schedules_for_a_conference()
 	{
+        // TODO: Fix this failing test.
+        $t = TestDummy::times(1)->create('Uninett\Eloquent\Schedules\ConferenceSchedule');
+
 		$result = $this->scheduleRepository->find(1);
 
 		$this->assertNotEmpty($result);

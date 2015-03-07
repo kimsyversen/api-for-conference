@@ -1,4 +1,26 @@
 <?php
+
+use Carbon\Carbon;
+
+$factory('Uninett\Eloquent\Conferences\Conference', [
+    'name' => $faker->word,
+    'description' => $faker->sentence(),
+    'banner' => 'http://www.3in.no/wp-content/uploads/Nokios_trondheim_28.-30.oktober_2014.png'
+]);
+
+$factory('Uninett\Eloquent\Sessions\Session', [
+    'conference_id' => 'factory:Uninett\Eloquent\Conferences\Conference',
+    'title' => $faker->sentence(),
+    'description' => $faker->text(),
+    'location' => $faker->address,
+    'start_time' => Carbon::now(),
+    'end_time' => Carbon::now(),
+]);
+
+$factory('Uninett\Eloquent\Schedules\ConferenceSchedule', [
+    'conference_id' => 'factory:Uninett\Eloquent\Conferences\Conference'
+]);
+
 $factory('Uninett\Eloquent\Users\User', [
 	'email' => $faker->safeEmail,
 	'password' => 'password',

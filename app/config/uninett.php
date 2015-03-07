@@ -5,6 +5,11 @@ return [
 
     'listeners' => [
         'Uninett\Handlers\EmailNotifier',
+    ],
 
-    ]
+    'bindings' => [
+        'Uninett\Eloquent\Conferences\Repositories\ConferenceRepositoryInterface' =>
+            'Uninett\Eloquent\Conferences\Repositories\EloquentConferenceRepository',
+
+    ],
 ];

@@ -95,6 +95,7 @@ return array(
 
 	'providers' => array(
 
+        // Laravel providers
 		'Illuminate\Foundation\Providers\ArtisanServiceProvider',
 		'Illuminate\Auth\AuthServiceProvider',
 		'Illuminate\Cache\CacheServiceProvider',
@@ -121,11 +122,16 @@ return array(
 		'Illuminate\Validation\ValidationServiceProvider',
 		'Illuminate\View\ViewServiceProvider',
 		'Illuminate\Workbench\WorkbenchServiceProvider',
+
+        //Package providers
 		'Laracasts\Commander\CommanderServiceProvider',
-        'Uninett\Validators\ValidationServiceProvider',
-        'Uninett\Providers\EventingServiceProvider',
 		'LucaDegasperi\OAuth2Server\Storage\FluentStorageServiceProvider',
 		'LucaDegasperi\OAuth2Server\OAuth2ServerServiceProvider',
+
+        // Domain specific providers
+        'Uninett\Providers\InterfaceBindingServiceProvider',
+        'Uninett\Providers\EventingServiceProvider',
+        'Uninett\Validators\ValidationServiceProvider',
 
 	),
 

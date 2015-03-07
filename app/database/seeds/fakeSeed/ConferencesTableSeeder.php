@@ -14,7 +14,7 @@ class ConferencesTableSeeder extends Seeder {
 	{
 		$this->faker = Faker::create();
 
-        $user_ids = User::lists('id');
+        //$user_ids = User::lists('id');
 
 		foreach(range(1, 10) as $index)
 		{
