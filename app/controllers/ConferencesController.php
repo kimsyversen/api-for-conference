@@ -64,6 +64,7 @@ class ConferencesController extends \ApiController {
 	public function show($id)
 	{
         $data = Conference::findOrFail($id);
+
         return $this->responder->respond($this->transform->transform($data->toArray()));
 	}
 

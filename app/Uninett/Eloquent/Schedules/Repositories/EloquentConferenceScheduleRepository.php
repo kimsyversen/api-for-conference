@@ -13,7 +13,7 @@ class EloquentConferenceScheduleRepository implements ConferenceScheduleReposito
 	public function getAllForConference($id){
 		//$schedueles = ConferenceSchedule::with('sessions')->where('conference_id', '=', $id)->where('active', '=', true)->get();
 
-		return ConferenceSchedule::with('sessions')->where('conference_id', '=', $id)->get();
+		return ConferenceSchedule::with('sessions')->where('conference_id', $id)->get();
 	}
 
     /**
@@ -50,7 +50,7 @@ class EloquentConferenceScheduleRepository implements ConferenceScheduleReposito
      * @param $sessions
      * @return array
      */
-    public function calculateParallelSessions($sessions)
+    private function calculateParallelSessions($sessions)
     {
         $sessions = $sessions->sortBy('start_time')->toArray();
 

@@ -26,7 +26,7 @@ class ConferencesTest extends OAuthApiTester {
 
         $this->assertObjectHasAttributes($response, 'data', 'paginator');
 
-        $this->assertObjectHasAttributes($response->data[0], 'link', 'name', 'banner', 'description', 'begins', 'ends');
+        $this->assertObjectHasAttributes($response->data[0], 'link', 'name', 'banner', 'description', 'created_at', 'updated_at');
 
         $this->assertObjectHasAttributes($response->paginator, 'total_count', 'total_pages', 'current_page', 'limit');
     }
