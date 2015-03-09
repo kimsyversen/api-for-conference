@@ -19,7 +19,7 @@ class Conference extends Eloquent {
      */
     public function conferenceSchedules()
     {
-        return $this->hasMany('Uninett\Eloquent\Schedule\ConferenceSchedule');
+        return $this->hasMany('Uninett\Eloquent\Schedules\ConferenceSchedule');
     }
 
     /**
@@ -29,7 +29,7 @@ class Conference extends Eloquent {
      */
     public function personalSchedules()
     {
-        return $this->hasMany('Uninett\Eloquent\Schedule\PersonalSchedule');
+        return $this->hasMany('Uninett\Eloquent\Schedules\PersonalSchedule');
     }
 
     /**

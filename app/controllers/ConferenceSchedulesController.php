@@ -1,23 +1,19 @@
 <?php
 
 use Uninett\Api\Responders\Responder;
-use Uninett\Api\Transformers\SchedulesTransformer;
-use Uninett\Eloquent\Schedules\ConferenceSchedule;
-use Uninett\Eloquent\Schedules\ConferenceScheduleRepository;
+use Uninett\Api\Transformers\SessionsTransformer;
+use Uninett\Eloquent\Schedules\RequestActiveScheduleCommand\RequestActiveScheduleCommand;
 
 
-class ConferenceScheduelesController extends ApiController {
+class ConferenceSchedulesController extends ApiController {
 
-	private $transform;
-	private $scheduelesRepository;
+    private $sessionsTransformer;
 
-	function __construct(SchedulesTransformer $transform, Responder $responder, ConferenceScheduleRepository $scheduelesRepository)
+	function __construct(SessionsTransformer $sessionsTransformer, Responder $responder)
 	{
 		parent::__construct($responder);
 
-		$this->transform = $transform;
-
-		$this->scheduelesRepository = $scheduelesRepository;
+        $this->sessionsTransformer = $sessionsTransformer;
 	}
 
 
@@ -28,9 +24,9 @@ class ConferenceScheduelesController extends ApiController {
 	 */
 	public function index($id)
 	{
-		$schedueles =  $this->scheduelesRepository->find($id);
-
-		return $this->responder->respond($this->transform->transformCollection($schedueles->toArray()));
+//		$schedueles =  $this->scheduelesRepository->find($id);
+//
+//		return $this->responder->respond($this->transform->transformCollection($schedueles->toArray()));
 	}
 
 
@@ -103,5 +99,12 @@ class ConferenceScheduelesController extends ApiController {
 //		//
 //	}
 
+
+    public function showActive($conference_id)
+    {
+        $activeSchedule = $this->execute(RequestActiveScheduleCommand::class, ['conference_id' => $conference_id]);
+
+        return $this->responder->respond($this->sessionsTransformer->transformCollection($activeSchedule->toArray()));
+    }
 
 }
