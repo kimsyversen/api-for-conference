@@ -9,8 +9,21 @@ use Uninett\Eloquent\Users\User;
 
 class UserRepositoryTest extends IntegrationTest
 {
+	/**
+	 * @var \IntegrationTester
+	 */
 	protected $tester;
+
+	/**
+	 * @var repository
+	 */
 	protected $repository;
+
+	/**
+	 * Namespace to the user model
+	 * @var string
+	 */
+	protected $user = 'Uninett\Eloquent\Users\User';
 
 	/*
 	 * Om vi importerer Factory tror jeg vi kan gjøre noe sånt som dette:
@@ -26,19 +39,16 @@ class UserRepositoryTest extends IntegrationTest
 		];
 	}
 
-	/**
-	 * @var \IntegrationTester
-	 */
-
 	protected function _before()
 	{
 		$this->repository = new UserRepository;
+
+		//Clean database on every test run
 		$this->cleanDatabase();
 	}
 
 	protected function _after()
 	{
-
 	}
 
 	/** @test **/
@@ -46,7 +56,7 @@ class UserRepositoryTest extends IntegrationTest
 	{
 		$numberOfUsersToCreate = 5;
 
-		TestDummy::times($numberOfUsersToCreate)->create('Uninett\Eloquent\Users\User');
+		TestDummy::times($numberOfUsersToCreate)->create($this->user);
 
 		$users = User::all()->count();
 
@@ -56,29 +66,19 @@ class UserRepositoryTest extends IntegrationTest
 	/** @test **/
 	public function it_can_save_a_user()
 	{
-		$user = [
-			'email' => 'someUsername@someEmail.com',
-			'password' => 'password',
-			'confirmation_code' => str_random(40),
-			'created_at' => Carbon::now(),
-			'updated_at' => Carbon::now(),
-		];
+		TestDummy::times(1)->create($this->user);
 
-
-		$result = User::create($user);
-
-		$this->assertNotNull($result);
-
+		$this->assertNotNull(User::find(1));
 	}
 
 	/** @test **/
 	public function it_can_verify_a_user()
 	{
-		$created_user =  TestDummy::create('Uninett\Eloquent\Users\User');
+		$created_user =  TestDummy::create($this->user);
 
 		$result = $this->repository->verify($created_user->confirmation_code);
 
-		$this->assertInstanceOf('\Uninett\Eloquent\Users\User', $result);
+		$this->assertInstanceOf($this->user, $result);
 
 	}
 }
