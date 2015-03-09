@@ -1,19 +1,19 @@
 <?php
 
 use Uninett\Api\Responders\Responder;
-use Uninett\Api\Transformers\SessionsTransformer;
+use Uninett\Api\Transformers\SchedulesTransformer;
 use Uninett\Eloquent\Schedules\RequestActiveScheduleCommand\RequestActiveScheduleCommand;
 
 
 class ConferenceSchedulesController extends ApiController {
 
-    private $sessionsTransformer;
+    private $schedulesTransformer;
 
-	function __construct(SessionsTransformer $sessionsTransformer, Responder $responder)
+	function __construct(SchedulesTransformer $schedulesTransformer, Responder $responder)
 	{
 		parent::__construct($responder);
 
-        $this->sessionsTransformer = $sessionsTransformer;
+        $this->schedulesTransformer = $schedulesTransformer;
 	}
 
 
@@ -104,7 +104,7 @@ class ConferenceSchedulesController extends ApiController {
     {
         $activeSchedule = $this->execute(RequestActiveScheduleCommand::class, ['conference_id' => $conference_id]);
 
-        return $this->responder->respond($this->sessionsTransformer->transformCollection($activeSchedule->toArray()));
+        return $this->responder->respond($this->schedulesTransformer->transformCollection($activeSchedule));
     }
 
 }
