@@ -1,13 +1,16 @@
 <?php namespace Uninett\Eloquent\Schedules\RequestActiveScheduleCommand;
 
 use Laracasts\Commander\CommandHandler;
-use Uninett\Eloquent\Schedules\Repositories\ConferenceScheduleRepository;
+use Laracasts\Commander\Events\DispatchableTrait;
+use Uninett\Eloquent\Schedules\Repositories\ConferenceScheduleRepositoryInterface;
 
 class RequestActiveScheduleCommandHandler implements CommandHandler {
 
+    use DispatchableTrait;
+
     private $repo;
 
-    function __construct(ConferenceScheduleRepository $repo)
+    function __construct(ConferenceScheduleRepositoryInterface $repo)
     {
         $this->repo = $repo;
     }
@@ -21,6 +24,8 @@ class RequestActiveScheduleCommandHandler implements CommandHandler {
     public function handle($command)
     {
         $activeSchedule = $this->repo->getActiveScheduleForConference($command->conference_id);
+
+        $this->dispatchEventsFor($this->repo);
 
         return $this->repo->getSessionsForSchedule($activeSchedule);
     }

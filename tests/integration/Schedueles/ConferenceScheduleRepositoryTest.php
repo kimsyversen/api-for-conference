@@ -1,7 +1,6 @@
 <?php
-use Carbon\Carbon;
-use Laracasts\TestDummy\Factory as TestDummy;
-use Uninett\Eloquent\Schedules\ConferenceScheduleRepository;
+
+use Uninett\Eloquent\Schedules\Repositories\EloquentConferenceScheduleRepository;
 
 class ConferenceScheduleRepositoryTest extends \Codeception\TestCase\Test
 {
@@ -13,7 +12,7 @@ class ConferenceScheduleRepositoryTest extends \Codeception\TestCase\Test
 
 	protected function _before()
 	{
-		$this->scheduleRepository = new ConferenceScheduleRepository();
+		$this->scheduleRepository = new EloquentConferenceScheduleRepository();
 	}
 
 	protected function _after(){}
@@ -22,7 +21,7 @@ class ConferenceScheduleRepositoryTest extends \Codeception\TestCase\Test
 	/** @test */
 	public function it_can_find_schedules_for_a_conference()
 	{
-		$result = $this->scheduleRepository->find(1);
+		$result = $this->scheduleRepository->getAllForConference(1);
 
 		$this->assertNotEmpty($result);
 		$this->assertNotNull($result);
@@ -31,7 +30,7 @@ class ConferenceScheduleRepositoryTest extends \Codeception\TestCase\Test
 	/** @test */
 	public function it_can_not_find_schedules_for_a_conference_that_does_not_exist()
 	{
-		$result = $this->scheduleRepository->find(99999999);
+		$result = $this->scheduleRepository->getAllForConference(99999999);
 
 		$this->assertEmpty($result);
 

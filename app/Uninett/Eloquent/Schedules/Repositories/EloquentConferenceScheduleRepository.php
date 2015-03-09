@@ -1,15 +1,17 @@
 <?php namespace Uninett\Eloquent\Schedules\Repositories;
 
+use Laracasts\Commander\Events\EventGenerator;
 use Uninett\Eloquent\Conferences\Conference;
 use Uninett\Eloquent\Schedules\ConferenceSchedule;
+use Uninett\Eloquent\Schedules\Events\ActiveScheduleWasRequested;
 
-class ConferenceScheduleRepository {
+class EloquentConferenceScheduleRepository implements ConferenceScheduleRepositoryInterface {
 
-	public function find($id){
+    use EventGenerator;
+
+	public function getAllForConference($id){
 		//$schedueles = ConferenceSchedule::with('sessions')->where('conference_id', '=', $id)->where('active', '=', true)->get();
 
-        // TODO: Change the name of the method.
-        // Metodenavnet er missvisende med tanke på konvensjon. Foreslår getAllForConference($id)
 		return ConferenceSchedule::with('sessions')->where('conference_id', '=', $id)->get();
 	}
 
@@ -23,9 +25,19 @@ class ConferenceScheduleRepository {
     {
         $activeScheduleId = Conference::findOrFail($conference_id)['active_schedule_id'];
 
-        return ConferenceSchedule::with('sessions')->findOrFail($activeScheduleId);
+        $activeSchedule = ConferenceSchedule::with('sessions')->findOrFail($activeScheduleId);
+
+        $this->raise(new ActiveScheduleWasRequested($activeSchedule));
+
+        return $activeSchedule;
     }
 
+    /**
+     * Get the sessions for a specific schedule
+     *
+     * @param $schedule
+     * @return mixed
+     */
     public function getSessionsForSchedule($schedule)
     {
         return $schedule->sessions;

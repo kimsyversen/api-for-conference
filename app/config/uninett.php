@@ -10,6 +10,11 @@ return [
     'bindings' => [
         'Uninett\Eloquent\Conferences\Repositories\ConferenceRepositoryInterface' =>
             'Uninett\Eloquent\Conferences\Repositories\EloquentConferenceRepository',
+        'Uninett\Eloquent\Schedules\Repositories\ConferenceScheduleRepositoryInterface' =>
+            'Uninett\Eloquent\Schedules\Repositories\EloquentConferenceScheduleRepository',
+        'Uninett\Mailers\MailerInterface' =>
+            'Uninett\Api\Mailers\UserMailer',
+
 
     ],
 ];

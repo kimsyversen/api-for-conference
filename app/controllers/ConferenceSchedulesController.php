@@ -104,7 +104,7 @@ class ConferenceSchedulesController extends ApiController {
     {
         $activeSchedule = $this->execute(RequestActiveScheduleCommand::class, ['conference_id' => $conference_id]);
 
-        return $this->responder->respond($this->sessionsTransformer->transformCollection($activeSchedule->toArray()));
+        //return $this->responder->respond($this->sessionsTransformer->transformCollection($activeSchedule->toArray()));
     }
 
 }
