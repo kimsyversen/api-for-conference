@@ -55,7 +55,7 @@ class DatabaseSeeder extends Seeder {
 	];
 
 
-	private function cleanDatabase()
+	public function cleanDatabase()
 	{
 		DB::statement('SET FOREIGN_KEY_CHECKS=0');
 

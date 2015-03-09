@@ -6,7 +6,7 @@ use Laracasts\TestDummy\Factory as TestDummy;
 use Uninett\Eloquent\Users\Repositories\UserRepository;
 use Uninett\Eloquent\Users\User;
 
-class UserRepositoryTest extends \Codeception\TestCase\Test
+class UserRepositoryTest extends IntegrationTest
 {
 	/**
 	 * @var \IntegrationTester
@@ -18,6 +18,8 @@ class UserRepositoryTest extends \Codeception\TestCase\Test
 	protected function _before()
 	{
 		$this->repository = new UserRepository();
+
+		$this->cleanDatabase();
 	}
 
 	protected function _after()
