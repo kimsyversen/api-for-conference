@@ -52,6 +52,14 @@ class UserRepositoryTest extends IntegrationTest
 	}
 
 	/** @test **/
+	public function database_is_empty()
+	{
+		$users = User::all()->count();
+
+		$this->assertEquals(0, $users);
+
+	}
+	/** @test **/
 	public function it_can_create_users()
 	{
 		$numberOfUsersToCreate = 5;
