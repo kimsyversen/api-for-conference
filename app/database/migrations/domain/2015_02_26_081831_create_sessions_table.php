@@ -17,7 +17,7 @@ class CreateSessionsTable extends Migration {
 			$table->increments('id');
             $table->integer('conference_id')->unsigned()->index();
             $table->string('title');
-            $table->string('description');
+            $table->longText('description');
             $table->string('location');
             $table->timestamp('start_time');
             $table->timestamp('end_time');

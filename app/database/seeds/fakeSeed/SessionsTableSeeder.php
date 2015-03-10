@@ -24,7 +24,7 @@ class SessionsTableSeeder extends UninettSeeder {
 			Session::create([
                 'conference_id' => $faker->randomElement($conference_ids),
                 'title' => $faker->sentence(),
-                'description' => $faker->text(),
+                'description' => $faker->paragraph() . ' ' . $faker->paragraph() . ' ' . $faker->paragraph() . ' ' . $faker->paragraph(),
                 'location' => $faker->address,
                 'start_time' => $startDate,
                 'end_time' => $endDate,

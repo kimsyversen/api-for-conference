@@ -21,7 +21,7 @@ class ConferencesTableSeeder extends Seeder {
 		{
 			$conference = Conference::create([
                 'name' => $this->faker->word,
-                'description' => $this->faker->sentence(),
+                'description' => $this->faker->paragraph() . ' ' . $this->faker->paragraph() . ' ' . $this->faker->paragraph() . ' ' . $this->faker->paragraph(),
                 'banner' => 'http://www.3in.no/wp-content/uploads/Nokios_trondheim_28.-30.oktober_2014.png',
                 'start_date' => Carbon::now(),
                 'end_date' => Carbon::now(),
