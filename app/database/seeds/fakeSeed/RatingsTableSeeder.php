@@ -1,6 +1,7 @@
 <?php
 
 use Faker\Factory as Faker;
+use Faker\Factory;
 use Uninett\Eloquent\Conferences\Conference;
 use Uninett\Eloquent\Users\User;
 use Uninett\Eloquent\Sessions\Session;
@@ -35,7 +36,11 @@ class RatingsTableSeeder extends Seeder {
             $uniqueUser = $this->faker->unique($reset = true)->randomElement($user_ids);
 
             foreach (range(1, $numberOfRatings) as $ratingNumber) {
-                $model->ratings()->create(['user_id' => $uniqueUser, 'score' => $this->faker->numberBetween(1, 10)]);
+                $model->ratings()->create([
+                    'user_id' => $uniqueUser,
+                    'score' => $this->faker->numberBetween(1, 10),
+                    'text' => $this->faker->paragraph()
+                ]);
                 if (!($ratingNumber == $numberOfRatings)) $uniqueUser = $this->faker->unique()->randomElement($user_ids);
             }
         }

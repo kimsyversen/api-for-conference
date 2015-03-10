@@ -18,6 +18,7 @@ class CreateRatingsTable extends Migration {
 			$table->integer('ratable_id')->unsigned()->index();
 			$table->string('ratable_type');
 			$table->integer('score');
+            $table->text('text');
 			$table->primary(['user_id','ratable_id','ratable_type']);
             $table->timestamps();
 		});

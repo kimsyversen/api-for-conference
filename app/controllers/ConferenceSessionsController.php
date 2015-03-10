@@ -1,14 +1,14 @@
 <?php
 
 use Uninett\Api\Responders\Responder;
-use Uninett\Api\Transformers\SessionsTransformer;
+use Uninett\Api\Transformers\FullSessionsTransformer;
 use Uninett\Eloquent\Sessions\RequestSessionCommand\RequestSessionCommand;
 
 class ConferenceSessionsController extends \ApiController {
 
     private $transformer;
 
-    function __construct(SessionsTransformer $transformer, Responder $responder)
+    function __construct(FullSessionsTransformer $transformer, Responder $responder)
     {
         parent::__construct($responder);
 
