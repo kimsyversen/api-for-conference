@@ -30,6 +30,9 @@ abstract class ApiTester extends tests\TestCase {
 
         // Seed the database manually?
 		//Artisan::call('db:seed');
+
+		$seed = new DatabaseSeeder();
+		$seed->cleanDatabase();
 	}
 
     /**
@@ -58,4 +61,14 @@ abstract class ApiTester extends tests\TestCase {
             $this->assertObjectHasAttribute($attribute, $object);
         }
 	}
+
+	protected function getSecrets()
+	{
+		return [
+			'client_id' => 1,
+			'client_secret' => 'asdf',
+			'grant_type' => 'password'
+		];
+	}
+
 }

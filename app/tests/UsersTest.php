@@ -3,6 +3,7 @@
 
 class UsersTest extends OAuthApiTester {
 
+	protected $user = 'Uninett\Eloquent\Users\User';
 
 	public function setUp()
 	{
@@ -13,12 +14,12 @@ class UsersTest extends OAuthApiTester {
 		Route::enableFilters();
 	}
 
-
-
 	/** @test */
 	public function it_can_retrieve_me()
 	{
-        $accessToken = $this->user('admin@example.com')->getAccesstoken();
+		$user = Laracasts\TestDummy\Factory::create('Uninett\Eloquent\Users\User');
+
+        $accessToken = $this->getAccesstoken($user);
 
 		$response = $this->getJson($this->base_url . 'users/me', 'GET', $accessToken)->data;
 

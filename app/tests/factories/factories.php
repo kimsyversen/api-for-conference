@@ -2,6 +2,16 @@
 
 use Carbon\Carbon;
 
+$factory('Uninett\Eloquent\Users\User', [
+	'email' => $faker->safeEmail,
+	'password' => 'secret',
+	'confirmation_code' => str_random(40),
+	'created_at' => $faker->date(),
+	'updated_at' => $faker->date()
+]);
+
+
+
 $factory('Uninett\Eloquent\Conferences\Conference', [
     'name' => $faker->word,
     'description' => $faker->sentence(),
@@ -21,22 +31,6 @@ $factory('Uninett\Eloquent\Schedules\ConferenceSchedule', [
     'conference_id' => 'factory:Uninett\Eloquent\Conferences\Conference'
 ]);
 
-$factory('Uninett\Eloquent\Users\User', [
-	'email' => $faker->safeEmail,
-	'password' => 'password',
-	'confirmation_code' => str_random(40),
-	'created_at' => $faker->date(),
-	'updated_at' => $faker->date()
-]);
-
-
-$factory('Uninett\Eloquent\Users\User', [
-	'email' => 'foo@example.com',
-	'password' => 'foo',
-	'confirmed' => 1,
-	'created_at' => $faker->date(),
-	'updated_at' => $faker->date()
-]);
 
 $factory('Uninett\Eloquent\Statistics\Statistic', [
 	'hits' =>  1,

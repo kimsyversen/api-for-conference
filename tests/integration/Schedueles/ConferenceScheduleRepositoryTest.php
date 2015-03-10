@@ -24,6 +24,8 @@ class ConferenceScheduleRepositoryTest extends \Codeception\TestCase\Test
 	{
         // TODO: Denne må produsere sin egen data...
 
+
+
 		$result = $this->scheduleRepository->getAllForConference(1);
 
 		$this->assertNotEmpty($result);

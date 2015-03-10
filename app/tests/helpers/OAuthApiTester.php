@@ -4,7 +4,7 @@ class OAuthApiTester extends ApiTester {
     private $user = [
         'client_id' => 1,
         'client_secret' => 'asdf',
-        'username' => 'admin@example.com',
+        'email' => 'admin@example.com',
         'password' => 'secret',
         'grant_type' => 'password'
     ];
@@ -19,19 +19,31 @@ class OAuthApiTester extends ApiTester {
 		}
 	 * @return mixed
 	 */
-	protected function getAccesstoken()
+	protected function getAccesstoken($user)
 	{
-        return $this->getJson('oauth/access_token', 'POST', $this->user, true);
+		$secrets = [
+			'client_id' => 1,
+			'client_secret' => 'asdf',
+			'grant_type' => 'password',
+
+		];
+
+		$userInfo = [
+			'username' => $user->email,
+			'password' => 'secret'
+		];
+
+		$data = array_merge($secrets, $userInfo);
+
+        return $this->getJson('oauth/access_token', 'POST', $data, true);
 	}
 
     protected function user($email)
     {
         $this->user = [
-            'client_id' => 1,
-            'client_secret' => 'asdf',
-            'username' => $email,
-            'password' => 'secret',
-            'grant_type' => 'password'
+
+            'email' => $email,
+            'password' => 'secret'
         ];
 
         return $this;
