@@ -12,6 +12,8 @@ class ConferenceTransformer extends Transformer {
 			'name' => $item['name'],
 			'banner' => $item['banner'],
 			'description' => $item['description'],
+            'start_date' => $item['start_date'],
+            'end_date' => $item['end_date'],
 			'created_at' => $item['created_at'],
             'updated_at' => $item['updated_at']
 		];

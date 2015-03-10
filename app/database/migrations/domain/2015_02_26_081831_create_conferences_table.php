@@ -19,6 +19,8 @@ class CreateConferencesTable extends Migration {
             $table->text('description');
             $table->string('banner');
             $table->integer('active_schedule_id')->unsigned()->nullable()->index();
+            $table->dateTime('start_date');
+            $table->dateTime('end_date');
             $table->timestamps();
 		});
 	}

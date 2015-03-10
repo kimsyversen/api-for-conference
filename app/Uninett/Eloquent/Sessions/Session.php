@@ -1,5 +1,6 @@
 <?php namespace Uninett\Eloquent\Sessions;
 
+use Carbon\Carbon;
 use Eloquent;
 
 class Session extends Eloquent {
@@ -11,6 +12,20 @@ class Session extends Eloquent {
      */
     protected $fillable = [];
 
+    public function getStartTimeAttribute($value)
+    {
+        return Carbon::createFromFormat('Y-m-d H:i:s', $value);
+    }
+
+    public function getEndTimeAttribute($value)
+    {
+        return Carbon::createFromFormat('Y-m-d H:i:s', $value);
+    }
+
+    public function getUpdatedAtAttribute($value)
+    {
+        return Carbon::createFromFormat('Y-m-d H:i:s', $value);
+    }
 
     /**
      * A session may exist in many schedules

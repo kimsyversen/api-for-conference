@@ -1,5 +1,6 @@
 <?php namespace Uninett\Eloquent\Conferences;
 
+use Carbon\Carbon;
 use Eloquent;
 
 class Conference extends Eloquent {
@@ -11,6 +12,27 @@ class Conference extends Eloquent {
      */
 	protected $fillable = [];
 
+    /**
+     * Return the start date as a carbon instance
+     *
+     * @param $value
+     * @return static
+     */
+    public function getStartDateAttribute($value)
+    {
+        return Carbon::createFromFormat('Y-m-d H:i:s', $value);
+    }
+
+    /**
+     * Return the end date as a carbon instance
+     *
+     * @param $value
+     * @return static
+     */
+    public function getEndDateAttribute($value)
+    {
+        return Carbon::createFromFormat('Y-m-d H:i:s', $value);
+    }
 
     /**
      * A conference has many conference schedules

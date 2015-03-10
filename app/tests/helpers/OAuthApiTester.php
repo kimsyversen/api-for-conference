@@ -1,15 +1,6 @@
 <?php
 class OAuthApiTester extends ApiTester {
 
-    private $user = [
-        'client_id' => 1,
-        'client_secret' => 'asdf',
-        'email' => 'admin@example.com',
-        'password' => 'secret',
-        'grant_type' => 'password'
-    ];
-
-
 	/**
 	 * Get OAuth2 access token
 	 * {
@@ -37,17 +28,6 @@ class OAuthApiTester extends ApiTester {
 
         return $this->getJson('oauth/access_token', 'POST', $data, true);
 	}
-
-    protected function user($email)
-    {
-        $this->user = [
-
-            'email' => $email,
-            'password' => 'secret'
-        ];
-
-        return $this;
-    }
 
 
 }
