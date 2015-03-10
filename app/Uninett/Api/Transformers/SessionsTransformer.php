@@ -16,7 +16,7 @@ class SessionsTransformer extends Transformer {
 				    'uri' => 'conferences/' . $item['conference_id'] . '/sessions/' . $item['id'],
 			    ],
 			    'rate' => [
-				    'uri' => 'conferences/' . $item['conference_id'] . '/sessions/' . $item['id'] . "/rating/" . 1,
+				    'uri' => 'conferences/' . $item['conference_id'] . '/sessions/' . $item['id'] . "/rating/"
 			    ]
 		    ],
 		    'id' => $item['id'],
