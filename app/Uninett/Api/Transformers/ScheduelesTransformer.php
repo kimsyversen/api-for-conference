@@ -16,8 +16,8 @@ class SchedulesTransformer extends Transformer {
 
         return [
             'sessions' => $this->sessionsTransformer->transformCollection($item['sessions']),
-            'starts' => $item['start_time'],
-            'ends' => $item['end_time']
+            'start_date' => $item['start_time'],
+            'end_date' => $item['end_time']
         ];
 	}
 
