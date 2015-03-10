@@ -12,6 +12,8 @@ return [
             'Uninett\Eloquent\Conferences\Repositories\EloquentConferenceRepository',
         'Uninett\Eloquent\Schedules\Repositories\ConferenceScheduleRepositoryInterface' =>
             'Uninett\Eloquent\Schedules\Repositories\EloquentConferenceScheduleRepository',
+        'Uninett\Eloquent\Sessions\Repositories\ConferenceSessionRepositoryInterface' =>
+            'Uninett\Eloquent\Sessions\Repositories\EloquentConferenceSessionRepository',
         'Uninett\Mailers\MailerInterface' =>
             'Uninett\Api\Mailers\UserMailer',
 

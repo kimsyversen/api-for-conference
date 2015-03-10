@@ -9,6 +9,7 @@ use Uninett\Eloquent\Users\User;
 
 class UserRepositoryTest extends IntegrationTest
 {
+
 	//TODO: Se over http://codeception.com/06-28-2014/unit-testing-with-database.html
 	// Der står det litt om testing med codeception
 

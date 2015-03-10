@@ -13,7 +13,7 @@ class UsersTest extends OAuthApiTester {
 
 		Route::enableFilters();
 	}
-	
+
 	/** @test */
 	public function it_can_retrieve_me()
 	{

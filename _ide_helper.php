@@ -1,7 +1,7 @@
 <?php
 /**
  * An helper file for Laravel 4, to provide autocomplete information to your IDE
- * Generated for Laravel 4.2.17 on 2015-03-04.
+ * Generated for Laravel 4.2.17 on 2015-03-10.
  *
  * @author Barry vd. Heuvel <barryvdh@gmail.com>
  * @see https://github.com/barryvdh/laravel-ide-helper
@@ -1281,7 +1281,7 @@ namespace {
         /**
          * Finds a command by name or alias.
          * 
-         * Contrary to get, this command tries to find the best
+         * Contrary to get, this command tries to getAllForConference the best
          * match if you give it an abbreviation of a name or alias.
          *
          * @param string $name A command name or a command alias

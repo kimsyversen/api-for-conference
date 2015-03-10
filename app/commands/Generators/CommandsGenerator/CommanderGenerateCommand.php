@@ -3,8 +3,6 @@
 use Illuminate\Console\Command;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Input\InputArgument;
-use Illuminate\Filesystem\Filesystem;
-use Mustache_Engine;
 
 /**
  * This code is a modification of the commander package
