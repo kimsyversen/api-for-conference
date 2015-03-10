@@ -2,7 +2,7 @@
 
 use Uninett\Api\Responders\Responder;
 use Uninett\Api\Transformers\SessionsTransformer;
-use Uninett\Eloquent\Conferences\Conference;
+use Uninett\Eloquent\Sessions\RequestSessionCommand\RequestSessionCommand;
 
 class ConferenceSessionsController extends \ApiController {
 
@@ -58,10 +58,8 @@ class ConferenceSessionsController extends \ApiController {
      * @internal param int $id
      */
 	public function show($conference_id, $session_id)
-	{
-        $conference = Conference::with('sessions')->find($conference_id);
-
-        $session = $conference['sessions']->only($session_id)->first()->toArray();
+    {
+        $session = $this->execute(RequestSessionCommand::class, compact('conference_id', 'session_id'));
 
         return $this->responder->respond($this->transformer->transform($session));
 	}
