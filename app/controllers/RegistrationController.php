@@ -9,11 +9,11 @@ class RegistrationController extends ApiController {
 
 	private $transform;
 
-	function __construct(UserTransformer $transform, Responder $responder)
+	function __construct(UserTransformer $transformer, Responder $responder)
 	{
 		parent::__construct($responder);
 
-		$this->transform = $transform;
+		$this->transform = $transformer;
 	}
 
 	public function store()

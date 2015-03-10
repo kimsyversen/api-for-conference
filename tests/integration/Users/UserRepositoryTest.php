@@ -9,6 +9,8 @@ use Uninett\Eloquent\Users\User;
 
 class UserRepositoryTest extends IntegrationTest
 {
+
+    use Factory;
 	/**
 	 * @var \IntegrationTester
 	 */

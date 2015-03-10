@@ -9,11 +9,11 @@ class ConferencesController extends \ApiController {
 
     private $transform;
 
-    function __construct(ConferenceTransformer $transform, Responder $responder)
+    function __construct(ConferenceTransformer $transformer, Responder $responder)
     {
         parent::__construct($responder);
 
-        $this->transform = $transform;
+        $this->transform = $transformer;
     }
 
 	/**
