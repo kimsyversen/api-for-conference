@@ -9,6 +9,9 @@ use Uninett\Eloquent\Users\User;
 
 class UserRepositoryTest extends IntegrationTest
 {
+	//TODO: Se over http://codeception.com/06-28-2014/unit-testing-with-database.html
+	// Der står det litt om testing med codeception
+
 	/**
 	 * @var \IntegrationTester
 	 */
@@ -43,6 +46,7 @@ class UserRepositoryTest extends IntegrationTest
 	{
 		$this->repository = new UserRepository;
 
+
 		//Clean database on every test run
 		$this->cleanDatabase();
 	}
@@ -51,14 +55,7 @@ class UserRepositoryTest extends IntegrationTest
 	{
 	}
 
-	/** @test **/
-	public function database_is_empty()
-	{
-		$users = User::all()->count();
 
-		$this->assertEquals(0, $users);
-
-	}
 	/** @test **/
 	public function it_can_create_users()
 	{
@@ -78,7 +75,14 @@ class UserRepositoryTest extends IntegrationTest
 
 		$this->assertNotNull(User::find(1));
 	}
+	/** @test **/
+	public function database_is_empty()
+	{
+		$users = User::all()->count();
 
+		$this->assertEquals(0, $users);
+
+	}
 	/** @test **/
 	public function it_can_verify_a_user()
 	{
