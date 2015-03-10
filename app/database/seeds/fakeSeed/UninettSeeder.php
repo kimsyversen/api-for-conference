@@ -2,7 +2,7 @@
 
 abstract class UninettSeeder extends Seeder {
 
-    /**
+	/**
      * Get the specified number of random elements from the collection
      *
      * @param $collection
