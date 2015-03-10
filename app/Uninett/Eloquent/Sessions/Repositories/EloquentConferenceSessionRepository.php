@@ -1,5 +1,6 @@
 <?php namespace Uninett\Eloquent\Sessions\Repositories;
 
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Laracasts\Commander\Events\EventGenerator;
 use Uninett\Eloquent\Conferences\Conference;
 use Uninett\Eloquent\Sessions\Events\SessionWasRequested;
@@ -8,16 +9,22 @@ class EloquentConferenceSessionRepository implements ConferenceSessionRepository
 {
     use EventGenerator;
 
+    /**
+     * @param $conference_id
+     * @param $session_id
+     * @return mixed
+     */
     public function getConferenceSession($conference_id, $session_id)
     {
-        $conference = Conference::with('sessions')->find($conference_id);
+        $conference = Conference::with('sessions')->findOrFail($conference_id);
 
-        $session = $conference['sessions']->only($session_id)->first()->toArray();
+        $session = $conference['sessions']->only($session_id)->first();
+
+        if (empty($session)) throw new ModelNotFoundException;
 
         $this->raise(new SessionWasRequested($session));
 
         return $session;
-
     }
 
 }
