@@ -1,5 +1,7 @@
 <?php namespace tests;
 
+use Laracasts\TestDummy\Factory;
+
 class TestCase extends \Illuminate\Foundation\Testing\TestCase {
 
 	/**
@@ -13,7 +15,7 @@ class TestCase extends \Illuminate\Foundation\Testing\TestCase {
 
 		$testEnvironment = 'testing';
 
-		\Laracasts\TestDummy\Factory::$factoriesPath = 'app/tests/factories';
+		Factory::$factoriesPath = 'app/tests/factories';
 
 		return require __DIR__.'/../../bootstrap/start.php';
 	}

@@ -14,10 +14,16 @@ class SessionsTest extends OAuthApiTester {
 	}
 
     /** @test */
-    public function it_can_retreive_a_specific_conference_session()
+    public function it_is_a_dummy_test()
     {
 
     }
+
+//    /** @test */
+//    public function it_can_retreive_a_specific_conference_session()
+//    {
+//
+//    }
 
 }
 

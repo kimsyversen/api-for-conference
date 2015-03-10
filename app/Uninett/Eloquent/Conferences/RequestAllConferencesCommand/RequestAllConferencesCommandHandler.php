@@ -28,7 +28,7 @@ class RequestAllConferencesCommandHandler implements CommandHandler {
      */
     public function handle($command)
     {
-        $limit = Input::get('limit') ?: 10;
+        $limit = Input::get('limit') ?: 1000;
 
         $conferences = $this->conferenceRepo->getPaginator($limit);
 

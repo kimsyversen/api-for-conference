@@ -55,6 +55,16 @@ class DatabaseSeeder extends Seeder {
 	];
 
 
+    public function seed($seeders)
+    {
+        Eloquent::unguard();
+
+        $this->cleanDatabase();
+        foreach($seeders as $seeder)
+            $this->call($seeder);
+    }
+
+
 	public function cleanDatabase()
 	{
 		DB::statement('SET FOREIGN_KEY_CHECKS=0');

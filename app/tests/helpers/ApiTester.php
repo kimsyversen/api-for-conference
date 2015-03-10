@@ -1,5 +1,6 @@
 <?php
 use Faker\Factory as Faker;
+use tests\helpers\CustomBuilder;
 
 abstract class ApiTester extends tests\TestCase {
 
@@ -31,8 +32,10 @@ abstract class ApiTester extends tests\TestCase {
         // Seed the database manually?
 		//Artisan::call('db:seed');
 
-		$seed = new DatabaseSeeder();
-		$seed->cleanDatabase();
+        \Laracasts\TestDummy\Factory::$databaseProvider = new CustomBuilder;
+
+		//$seed = new DatabaseSeeder();
+		//$seed->cleanDatabase();
 	}
 
     /**
