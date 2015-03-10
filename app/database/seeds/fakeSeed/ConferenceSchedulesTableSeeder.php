@@ -1,6 +1,7 @@
 <?php
 
 // Composer: "fzaninotto/faker": "v1.3.0"
+use Carbon\Carbon;
 use Faker\Factory as Faker;
 use Uninett\Eloquent\Conferences\Conference;
 use Uninett\Eloquent\Schedules\ConferenceSchedule;
@@ -32,7 +33,8 @@ class ConferenceSchedulesTableSeeder extends UninettSeeder {
 
     private function createActiveSchedulesToConferences($conferences)
     {
-        foreach ($conferences as $conference)
+
+       foreach ($conferences as $conference)
         {
             $conferenceSchedule = ConferenceSchedule::create([
                 'conference_id' => $conference['id']
@@ -42,10 +44,22 @@ class ConferenceSchedulesTableSeeder extends UninettSeeder {
 
             $conference->save();
 
-            $this->addSessionsToSchedule($conferenceSchedule);
+            $this->addSessionsToActiveSchedule($conference, $conferenceSchedule);
         }
     }
 
+	private function addSessionsToActiveSchedule(Conference $conference, ConferenceSchedule $conferenceSchedule)
+	{
+		$sessions = Session::where('conference_id', '=', $conference->id)->get();
+
+		foreach ($sessions as $session)
+		{
+			$conferenceSchedule->sessions()->save($session);
+		}
+
+
+
+	}
     private function addSessionsToSchedule(ConferenceSchedule $conferenceSchedule)
     {
         $sessions = Session::where('conference_id', '=', $conferenceSchedule['conference_id'])->get();

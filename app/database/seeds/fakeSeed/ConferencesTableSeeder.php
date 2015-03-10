@@ -15,16 +15,16 @@ class ConferencesTableSeeder extends Seeder {
 	{
 		$this->faker = Faker::create();
 
-        //$user_ids = User::lists('id');
+		$duration = 2;
 
 		foreach(range(1, 10) as $index)
 		{
-			$conference = Conference::create([
+			Conference::create([
                 'name' => $this->faker->word,
-                'description' => $this->faker->sentence(),
+                'description' => $this->faker->paragraph() . ' ' . $this->faker->paragraph() . ' ' . $this->faker->paragraph() . ' ' . $this->faker->paragraph(),
                 'banner' => 'http://www.3in.no/wp-content/uploads/Nokios_trondheim_28.-30.oktober_2014.png',
-                'start_date' => Carbon::now(),
-                'end_date' => Carbon::now(),
+                'start_date' => Carbon::now()->addDays($index)->hour(8)->minute(0)->second(0),
+                'end_date' => Carbon::now()->addDays($index + $duration)->hour(22)->minute(0)->second(0),
 			]);
 		}
 	}
