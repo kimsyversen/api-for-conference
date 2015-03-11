@@ -1,18 +1,19 @@
 <?php
 
 use Uninett\Api\Responders\Responder;
-use Uninett\Api\Transformers\ConfirmationTransformer;
+use Uninett\Api\Transformers\RatingsTransformer;
 use Uninett\Eloquent\Ratings\RequestCreateRatingCommand\RequestCreateRatingCommand;
+use Uninett\Eloquent\Ratings\RequestStoreRatingCommand\RequestStoreRatingCommand;
 
 class ConferenceSessionRatingsController extends \ApiController {
 
-    private $transformer;
+    private $ratingTransformer;
 
-    function __construct(ConfirmationTransformer $transformer, Responder $responder)
+    function __construct(RatingsTransformer $ratingsTransformer, Responder $responder)
     {
         parent::__construct($responder);
 
-        $this->transformer = $transformer;
+        $this->ratingTransformer = $ratingsTransformer;
     }
 
 //	/**
@@ -43,17 +44,27 @@ class ConferenceSessionRatingsController extends \ApiController {
         return $this->responder->respond(['rateable' => $response]);
 	}
 
-//	/**
-//	 * Store a newly created resource in storage.
-//	 * POST /conferencesessionratings
-//	 *
-//	 * @return Response
-//	 */
-//	public function store()
-//	{
-//		//
-//	}
-//
+    /**
+     * Store a newly created resource in storage.
+     * POST /conferencesessionratings
+     *
+     * @param $conference_id
+     * @param $session_id
+     * @return Response
+     */
+	public function store($conference_id, $session_id)
+	{
+        Request::merge([
+            'conference_id' => $conference_id,
+            'session_id' => $session_id,
+            'user_id' => $this->getUserId()
+        ]);
+
+        $rating = $this->execute(RequestStoreRatingCommand::class);
+
+        return $this->responder->respond($this->ratingTransformer->transform($rating->toArray()));
+	}
+
 //	/**
 //	 * Display the specified resource.
 //	 * GET /conferencesessionratings/{id}

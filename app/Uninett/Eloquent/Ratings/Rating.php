@@ -9,7 +9,7 @@ class Rating extends Eloquent {
      *
      * @var array
      */
-    protected $fillable = [];
+    protected $fillable = ['user_id', 'score', 'text'];
 
     /**
      * A rating can belong to a lot of models

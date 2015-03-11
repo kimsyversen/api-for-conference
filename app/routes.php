@@ -55,7 +55,7 @@ Route::group(['prefix' => 'api/v1'], function() {
      * Ratings
      */
     Route::get('conferences/{conferences}/sessions/{sessions}/ratings/create', ['as' => 'api.v1.conferences.sessions.ratings.create', 'uses' => 'ConferenceSessionRatingsController@create', 'before' => 'oauth']);
-    Route::post('conferences/{conferences}/sessions/{sessions}/ratings', [ 'as' => 'api.v1.conferences.sessions.ratings.store', 'uses' => 'ConferenceSessionRatingsController@store' ]);
+    Route::post('conferences/{conferences}/sessions/{sessions}/ratings', [ 'as' => 'api.v1.conferences.sessions.ratings.store', 'uses' => 'ConferenceSessionRatingsController@store', 'before' => 'oauth']);
 
 
 //    Route::get('conferences/{$id}/sessions',            ['as' => 'api.v1.conferences.index',    'uses' => 'ConferencesController@index']);
