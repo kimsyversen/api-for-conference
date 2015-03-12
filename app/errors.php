@@ -27,5 +27,11 @@ App::error(function(\Uninett\Exceptions\VerifyUserException $exception, $code)
                           ->respondWithError('verification_failed', $exception->getMessage(), $exception->getErrors());
 });
 
+App::error(function(\Uninett\Exceptions\NotRateableException $exception, $code)
+{
+    return (new Responder)->setStatusCode($exception->getCode())
+        ->respondWithError('unrateable', $exception->getMessage(), $exception->getErrors());
+});
+
 
 

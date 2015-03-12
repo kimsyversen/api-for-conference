@@ -1,10 +1,13 @@
 <?php namespace Uninett\Eloquent\Ratings\RequestStoreRatingCommand;
 
 use Laracasts\Commander\CommandHandler;
+use Laracasts\Commander\Events\DispatchableTrait;
 use Uninett\Eloquent\Ratings\Rating;
 use Uninett\Eloquent\Ratings\Repositories\EloquentRatingRepository;
 
 class RequestStoreRatingCommandHandler implements CommandHandler {
+
+    use DispatchableTrait;
 
     private $ratingRepository;
 
@@ -21,7 +24,11 @@ class RequestStoreRatingCommandHandler implements CommandHandler {
      */
     public function handle($command)
     {
-        return $this->ratingRepository->postRating($command->conference_id, $command->session_id, $command->user_id, $command->score, $command->comment);
+        $rating = $this->ratingRepository->postSessionRating($command->conference_id, $command->session_id, $command->user_id, $command->score, $command->comment);
+
+        $this->dispatchEventsFor($this->ratingRepository);
+
+        return $rating;
     }
 
 }

@@ -21,7 +21,7 @@ class RequestCreateRatingCommandHandler implements CommandHandler {
      */
     public function handle($command)
     {
-        return $this->ratingRepository->userCanRateSession($command->conference_id, $command->session_id, $command->user_id);
+        return $this->ratingRepository->canUserRateSession($command->conference_id, $command->session_id, $command->user_id);
     }
 
 }

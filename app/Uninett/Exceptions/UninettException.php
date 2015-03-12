@@ -20,8 +20,6 @@ class UninettException extends Exception {
 	{
 		$this->errors = $errors;
 
-        $this->message = $message;
-
 		parent::__construct($message, $code, $previous);
 	}
 

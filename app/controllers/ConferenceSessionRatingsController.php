@@ -41,7 +41,7 @@ class ConferenceSessionRatingsController extends \ApiController {
 
         $response = $this->execute(RequestCreateRatingCommand::class, compact('conference_id', 'session_id', 'user_id'));
 
-        return $this->responder->respond(['rateable' => $response]);
+        return $this->responder->respond($response);
 	}
 
     /**
