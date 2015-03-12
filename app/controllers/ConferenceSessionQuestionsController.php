@@ -1,7 +1,5 @@
 <?php
 
-use Carbon\Carbon;
-use Uninett\Eloquent\Sessions\Session;
 use Uninett\Eloquent\Questions\RequestCreateQuestionCommand\RequestCreateQuestionCommand;
 
 class ConferenceSessionQuestionsController extends \ApiController {

@@ -32,7 +32,15 @@ class EloquentRatingRepository {
     {
         $this->session = $this->getSession($session_id);
 
-        $errors = $this->getCreateSessionRatingErrors($conference_id, $session_id, $user_id);
+        $statuses = $this->getCreateSessionRatingStatus($conference_id, $session_id, $user_id);
+
+        $errors = [];
+
+        if ($statuses[0]['code'] != 0)
+            foreach ($statuses as $status)
+            {
+                $errors[] = [$status['message']];
+            }
 
         if (! empty($errors))
             throw new NotRateableException('unratable', $errors, 422);
@@ -50,6 +58,7 @@ class EloquentRatingRepository {
         return $rating;
     }
 
+
     /**
      * Check if the user can rate a session
      *
@@ -59,26 +68,25 @@ class EloquentRatingRepository {
      * @return array
      * @throws NotRateableException
      */
-    public function getCreateSessionRatingErrors($conference_id, $session_id, $user_id)
+    public function getCreateSessionRatingStatus($conference_id, $session_id, $user_id)
     {
         $this->session = $this->getSession($session_id);
 
-        $errors = [];
+        $status = [];
 
         // Check that the session is on the right conference
         if ($this->session->conference->id != $conference_id)
-            $errors[] = [
-                'code' => 0,
+            $status[] = [
+                'code' => 1,
                 'message' => 'The session is not hosted by the current conference.'
             ];
 
         // Check that the session is done (one can't rate what one hasn't seen)
         if ($this->session->end_time > Carbon::now())
-            $errors[] = [
-                'code' => 1,
+            $status[] = [
+                'code' => 2,
                 'message' => 'The session must end before it can be rated.'
             ];
-
 
         // TODO: Check that the user has attended the session
         // TODO: Check that the user is registered at the conference
@@ -88,24 +96,19 @@ class EloquentRatingRepository {
             ->where('ratable_id', $session_id)
             ->where('ratable_type', 'Uninett\Eloquent\Sessions\Session')->first();
 
-        if (! empty($rating))
-            $errors[] = [
-                'code' => 2,
+        if (!empty($rating))
+            $status[] = [
+                'code' => 3,
                 'message' => 'The user has already rated this session.'
             ];
 
-        return $errors;
-    }
+        if (empty($status))
+            $status[] = [
+                'code' => 0,
+                'message' => 'The user can rate this session.'
+            ];
 
-    public function canUserRateSession($conference_id, $session_id, $user_id)
-    {
-        $errors = $this->getCreateSessionRatingErrors($conference_id, $session_id, $user_id);
-
-        return [
-            'rateable' => empty($errors),
-            'errors' => $errors
-        ];
-
+        return $status;
     }
 
     /**
