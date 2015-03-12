@@ -27,7 +27,13 @@ App::error(function(\Uninett\Exceptions\VerifyUserException $exception, $code)
                           ->respondWithError('verification_failed', $exception->getMessage(), $exception->getErrors());
 });
 
-App::error(function(\Uninett\Exceptions\NotRateableException $exception, $code)
+App::error(function(\Uninett\Exceptions\RatingValidationException $exception, $code)
+{
+    return (new Responder)->setStatusCode($exception->getCode())
+        ->respondWithError('unrateable', $exception->getMessage(), $exception->getErrors());
+});
+
+App::error(function(\Uninett\Exceptions\QuestionValidationException $exception, $code)
 {
     return (new Responder)->setStatusCode($exception->getCode())
         ->respondWithError('unrateable', $exception->getMessage(), $exception->getErrors());

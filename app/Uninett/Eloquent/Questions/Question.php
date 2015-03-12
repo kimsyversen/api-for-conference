@@ -9,7 +9,7 @@ class Question extends Eloquent {
      *
      * @var array
      */
-    protected $fillable = [];
+    protected $fillable = ['user_id', 'text', 'session_id'];
 
     /**
      * A question belongs to a user

@@ -1,9 +1,9 @@
-<?php namespace Uninett\Eloquent\Ratings\RequestCreateRatingCommand;
+<?php namespace Uninett\Eloquent\Ratings\RequestCreateSessionRatingCommand;
 
 use Laracasts\Commander\CommandHandler;
 use Uninett\Eloquent\Ratings\Repositories\EloquentRatingRepository;
 
-class RequestCreateRatingCommandHandler implements CommandHandler {
+class RequestCreateSessionRatingCommandHandler implements CommandHandler {
 
     private $ratingRepository;
 
@@ -21,7 +21,7 @@ class RequestCreateRatingCommandHandler implements CommandHandler {
      */
     public function handle($command)
     {
-        return $this->ratingRepository->getCreateSessionRatingStatus($command->conference_id, $command->session_id, $command->user_id);
+        return $this->ratingRepository->getCreateSessionRatingStatuses($command->conference_id, $command->session_id, $command->user_id);
     }
 
 }

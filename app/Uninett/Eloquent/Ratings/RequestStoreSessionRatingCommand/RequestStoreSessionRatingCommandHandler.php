@@ -1,11 +1,11 @@
-<?php namespace Uninett\Eloquent\Ratings\RequestStoreRatingCommand;
+<?php namespace Uninett\Eloquent\Ratings\RequestStoreSessionRatingCommand;
 
 use Laracasts\Commander\CommandHandler;
 use Laracasts\Commander\Events\DispatchableTrait;
 use Uninett\Eloquent\Ratings\Rating;
 use Uninett\Eloquent\Ratings\Repositories\EloquentRatingRepository;
 
-class RequestStoreRatingCommandHandler implements CommandHandler {
+class RequestStoreSessionRatingCommandHandler implements CommandHandler {
 
     use DispatchableTrait;
 

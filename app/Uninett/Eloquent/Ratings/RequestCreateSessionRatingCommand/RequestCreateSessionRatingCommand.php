@@ -1,6 +1,6 @@
-<?php namespace Uninett\Eloquent\Ratings\RequestCreateRatingCommand;
+<?php namespace Uninett\Eloquent\Ratings\RequestCreateSessionRatingCommand;
 
-class RequestCreateRatingCommand {
+class RequestCreateSessionRatingCommand {
 
     /**
      * @var string

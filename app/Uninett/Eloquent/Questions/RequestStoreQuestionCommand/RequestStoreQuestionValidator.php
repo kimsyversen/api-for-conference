@@ -1,8 +1,8 @@
-<?php namespace Uninett\Eloquent\Ratings\RequestCreateRatingCommand;
+<?php namespace Uninett\Eloquent\Questions\RequestStoreQuestionCommand;
 
 use Uninett\Validators\FormValidator;
 
-class RequestCreateRatingValidator extends FormValidator{
+class RequestStoreQuestionValidator extends FormValidator{
 
     /**
      * Validation rules
@@ -13,6 +13,7 @@ class RequestCreateRatingValidator extends FormValidator{
         'conference_id' => 'required',
         'session_id' => 'required',
         'user_id' => 'required',
+        'question' => 'required',
     ];
 
 }

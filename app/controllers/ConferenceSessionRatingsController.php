@@ -2,8 +2,8 @@
 
 use Uninett\Api\Responders\Responder;
 use Uninett\Api\Transformers\RatingsTransformer;
-use Uninett\Eloquent\Ratings\RequestCreateRatingCommand\RequestCreateRatingCommand;
-use Uninett\Eloquent\Ratings\RequestStoreRatingCommand\RequestStoreRatingCommand;
+use Uninett\Eloquent\Ratings\RequestCreateSessionRatingCommand\RequestCreateSessionRatingCommand;
+use Uninett\Eloquent\Ratings\RequestStoreSessionRatingCommand\RequestStoreSessionRatingCommand;
 
 class ConferenceSessionRatingsController extends \ApiController {
 
@@ -39,7 +39,7 @@ class ConferenceSessionRatingsController extends \ApiController {
 	{
         $user_id = $this->getUserid();
 
-        $response = $this->execute(RequestCreateRatingCommand::class, compact('conference_id', 'session_id', 'user_id'));
+        $response = $this->execute(RequestCreateSessionRatingCommand::class, compact('conference_id', 'session_id', 'user_id'));
 
         return $this->responder->respond($response);
 	}
@@ -60,7 +60,7 @@ class ConferenceSessionRatingsController extends \ApiController {
             'user_id' => $this->getUserId()
         ]);
 
-        $rating = $this->execute(RequestStoreRatingCommand::class);
+        $rating = $this->execute(RequestStoreSessionRatingCommand::class);
 
         return $this->responder->respond($this->ratingTransformer->transform($rating->toArray()));
 	}

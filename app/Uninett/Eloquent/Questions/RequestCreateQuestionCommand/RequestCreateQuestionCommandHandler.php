@@ -1,18 +1,16 @@
 <?php namespace Uninett\Eloquent\Questions\RequestCreateQuestionCommand;
 
-use Carbon\Carbon;
 use Laracasts\Commander\CommandHandler;
-use Uninett\Eloquent\Sessions\Session;
+use Uninett\Eloquent\Questions\Repositories\EloquentQuestionRepository;
 
 class RequestCreateQuestionCommandHandler implements CommandHandler {
 
     private $questionRepository;
 
-    function __construct($questionRepository)
+    function __construct(EloquentQuestionRepository $questionRepository)
     {
         $this->questionRepository = $questionRepository;
     }
-
 
     /**
      * Handle the command.
@@ -22,16 +20,7 @@ class RequestCreateQuestionCommandHandler implements CommandHandler {
      */
     public function handle($command)
     {
-//        $response = $this->questionRepository
-
-        $session = Session::findOrFail($command->session_id);
-
-        $now = Carbon::now();
-
-        if (! ($command->session_id->start_time < $now && $now < $command->session_id->end_time))
-            dd('Du kan ikke sende inn spørsmål');
-
-        return true;
+        return $this->questionRepository->getCreateQuestionStatuses($command->conference_id, $command->session_id, $command->user_id);
     }
 
 }

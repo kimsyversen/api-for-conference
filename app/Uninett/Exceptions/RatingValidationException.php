@@ -2,7 +2,7 @@
 
 use Exception;
 
-class NotRateableException extends UninettException {
+class RatingValidationException extends UninettException {
 
 	function __construct($message, $errors, $code, Exception $previous = null)
 	{
