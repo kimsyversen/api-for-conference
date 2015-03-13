@@ -39,7 +39,7 @@ class SessionsTableSeeder extends UninettSeeder {
 		//Finne diff på timer for en konferanse?
 		$conference_duration_hours = 8;
 
-		$numberOfConferences = count($conference_ids) -1;
+		$numberOfConferences = count($conference_ids);
 
 		foreach(range(1, $numberOfConferences) as $index)
 		{

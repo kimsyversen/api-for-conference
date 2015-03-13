@@ -20,7 +20,7 @@ class ConferencesTableSeeder extends Seeder {
 		foreach(range(1, 10) as $index)
 		{
 			Conference::create([
-                'name' => $this->faker->word,
+                'name' => ucfirst($this->faker->sentence()),
                 'description' => $this->faker->paragraph() . ' ' . $this->faker->paragraph() . ' ' . $this->faker->paragraph() . ' ' . $this->faker->paragraph(),
                 'banner' => 'http://www.3in.no/wp-content/uploads/Nokios_trondheim_28.-30.oktober_2014.png',
                 'start_date' => Carbon::now()->addDays($index)->hour(8)->minute(0)->second(0),
