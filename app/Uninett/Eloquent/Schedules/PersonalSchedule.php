@@ -7,7 +7,7 @@ class PersonalSchedule extends Schedule {
      *
      * @var array
      */
-	protected $fillable = [];
+	protected $fillable = ['conference_id'];
 
     /**
      * A personal schedule belongs to a user
