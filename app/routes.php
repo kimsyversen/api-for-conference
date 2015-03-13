@@ -42,10 +42,17 @@ Route::group(['prefix' => 'api/v1'], function() {
     Route::get('conferences/{conferences}',                     ['as' => 'api.v1.conferences.show',             'uses' => 'ConferencesController@show']);
 
     /**
-     * Schedules
+     * Conference schedules
      */
     Route::get('conferences/{conferences}/schedule',            ['as' => 'api.v1.conferences.schedules.active', 'uses' => 'ConferenceSchedulesController@showActive']);
-    Route::get('conferences/{conferences}/schedule/personal',   ['as' => 'api.v1.conferences.schedules.personal', 'uses' => 'PersonalSchedulesController@showActive', 'before' => 'oauth']);
+
+    /**
+     * Personal schedules
+     */
+    Route::get('conferences/{conferences}/schedule/personal',   ['as' => 'api.v1.conferences.schedules.personal.active', 'uses' => 'PersonalSchedulesController@showActive', 'before' => 'oauth']);
+    Route::post('conferences/{conferences}/schedule/personal', [ 'as' => 'api.v1.conferences.schedules.personal.session.store', 'uses' => 'PersonalSchedulesController@store', 'before' => 'oauth']);
+    Route::delete('conferences/{conferences}/schedule/personal/{session}', ['as' => 'api.v1.conferences.schedules.personal.session.destroy', 'uses' => 'PersonalSchedulesController@destroy', 'before' => 'oauth']);
+
 
     /**
      * Sessions
