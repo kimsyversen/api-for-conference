@@ -1,6 +1,6 @@
 <?php namespace Uninett\Eloquent\Schedules\Repositories;
 
-
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Laracasts\Commander\Events\EventGenerator;
 use Uninett\Api\Transformers\SessionGroupTrait;
 use Uninett\Eloquent\Conferences\Conference;
@@ -52,6 +52,11 @@ class EloquentPersonalScheduleRepository {
         }
 
         $session = Session::findOrFail($session_id);
+
+        if ($session->conference_id != $conference_id)
+        {
+            throw new ModelNotFoundException();
+        }
 
         $personalSchedule->sessions()->save($session);
 
