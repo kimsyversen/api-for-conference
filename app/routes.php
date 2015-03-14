@@ -75,6 +75,11 @@ Route::group(['prefix' => 'api/v1'], function() {
      */
     Route::get('conferences/{conferences}/maps',                     ['as' => 'api.v1.conferences.maps.index',             'uses' => 'MapsController@index']);
 
+    /**
+     * Newsfeeds
+     */
+    Route::get('conferences/{conferences}/newsfeeds', ['as' => 'api.v1.conferences.newsfeeds.index', 'uses' => 'NewsfeedsController@index']);
+
 
 //    Route::get('conferences/{$id}/sessions',            ['as' => 'api.v1.conferences.index',    'uses' => 'ConferencesController@index']);
 //    Route::get('conferences/{$id}/sessions/{$id2}',     ['as' => 'api.v1.conferences.index',    'uses' => 'ConferencesController@index']);

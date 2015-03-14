@@ -35,7 +35,7 @@ class EloquentPersonalScheduleRepository {
                 return $item->conference_id == $conference_id;
             })->first();
 
-        $personalSchedule = $personalSchedule ?: $this->getUser($user_id)->personalSchedules()->create([
+        $personalSchedule ?: $personalSchedule = $this->getUser($user_id)->personalSchedules()->create([
             'conference_id' => Conference::findOrFail($conference_id)->id
         ]);
 
