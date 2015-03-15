@@ -21,6 +21,8 @@ class CreateConferencesTable extends Migration {
             $table->integer('active_schedule_id')->unsigned()->nullable()->index();
             $table->dateTime('start_date');
             $table->dateTime('end_date');
+			$table->string('country');
+			$table->string('city');
             $table->timestamps();
 		});
 	}
