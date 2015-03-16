@@ -17,7 +17,7 @@ class MapsTableSeeder extends Seeder {
 		{
 			Map::create([
                 'conference_id' => $faker->randomElement($conference_ids),
-                'uri' => $faker->url,
+                'uri' => 'http://www.nokios.no/_media/nokios-konferansekart.jpg',
                 'description' => $faker->text()
 			]);
 		}
