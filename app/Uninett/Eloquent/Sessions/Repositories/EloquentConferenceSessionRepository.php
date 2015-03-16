@@ -53,7 +53,7 @@ class EloquentConferenceSessionRepository implements ConferenceSessionRepository
         // Did I find the conference session in the users
         // personal schedule? If I did not, I'll add
         // the field that i could not find it
-        $session['in_personal_schedule'] ?: $conferenceSession['in_personal_schedule'] = false;
+        $session['in_personal_schedule'] ?: $session['in_personal_schedule'] = false;
 
         return $session;
     }
