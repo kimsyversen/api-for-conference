@@ -19,4 +19,16 @@ interface ConferenceScheduleRepositoryInterface
      * @return mixed
      */
     public function getSessionsForSchedule($schedule);
+
+    /**
+     * Add a true/false field to the schedule indicating
+     * that a session is within the users personal
+     * schedule or not.
+     *
+     * @param $conference_id
+     * @param $user_id
+     * @param $conferenceSchedule
+     * @return mixed
+     */
+    public function checkPersonalSchedule($conference_id, $user_id, $conferenceSchedule);
 }

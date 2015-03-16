@@ -1,6 +1,5 @@
 <?php namespace Uninett\Eloquent\Schedules\Repositories;
 
-use Carbon\Carbon;
 use Laracasts\Commander\Events\EventGenerator;
 use Uninett\Api\Transformers\SessionGroupTrait;
 use Uninett\Eloquent\Conferences\Conference;
@@ -11,7 +10,15 @@ class EloquentConferenceScheduleRepository implements ConferenceScheduleReposito
 
     use EventGenerator, SessionGroupTrait;
 
-	public function getAllForConference($id){
+    private $personalScheduleRepo;
+
+    function __construct(EloquentPersonalScheduleRepository $personalScheduleRepo)
+    {
+        $this->personalScheduleRepo = $personalScheduleRepo;
+    }
+
+
+    public function getAllForConference($id){
 		//$schedueles = ConferenceSchedule::with('sessions')->where('conference_id', '=', $id)->where('active', '=', true)->get();
 
 		return ConferenceSchedule::with('sessions')->where('conference_id', $id)->get();
@@ -47,14 +54,39 @@ class EloquentConferenceScheduleRepository implements ConferenceScheduleReposito
         return $this->calculateParallelSessions($sessions);
     }
 
-//    /**
-//     * Get the sessions for a specific schedule
-//     *
-//     * @param $schedule
-//     * @return mixed
-//     */
-//    public function getSessionsForSchedule($schedule)
-//    {
-//        return $schedule->sessions;
-//    }
+    /**
+     * Add a true/false field to the schedule indicating
+     * that a session is within the users personal
+     * schedule or not.
+     *
+     * @param $conference_id
+     * @param $user_id
+     * @param $conferenceSchedule
+     * @return mixed
+     */
+    public function checkPersonalSchedule($conference_id, $user_id, $conferenceSchedule)
+    {
+        $personalSchedule = $this->personalScheduleRepo->getOrCreatePersonalSchedule($conference_id, $user_id);
+
+        foreach ($conferenceSchedule->sessions as $conferenceSession)
+        {
+            foreach ($personalSchedule->sessions as $personalSession)
+            {
+                if ($conferenceSession->id == $personalSession->id)
+                {
+                    // I could find the conference session in the users
+                    // personal schedule
+                    $conferenceSession['in_personal_schedule'] = true;
+                    break;
+                }
+            }
+
+            // Did I find the conference session in the users
+            // personal schedule? If I did not, I'll add
+            // the field that i could not find it
+            $conferenceSession['in_personal_schedule'] ?: $conferenceSession['in_personal_schedule'] = false;
+        }
+
+        return $conferenceSchedule;
+    }
 }

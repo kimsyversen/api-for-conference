@@ -1,19 +1,23 @@
 <?php
 
 use Uninett\Api\Responders\Responder;
+use Uninett\Api\Transformers\ConferenceSchedulesTransformer;
 use Uninett\Api\Transformers\SchedulesTransformer;
 use Uninett\Eloquent\Schedules\RequestActiveScheduleCommand\RequestActiveScheduleCommand;
-
 
 class ConferenceSchedulesController extends ApiController {
 
     private $schedulesTransformer;
 
-	function __construct(SchedulesTransformer $schedulesTransformer, Responder $responder)
+    private $conferenceScheduleTransformer;
+
+	function __construct(SchedulesTransformer $schedulesTransformer, ConferenceSchedulesTransformer $conferenceSchedulesTransformer, Responder $responder)
 	{
 		parent::__construct($responder);
 
         $this->schedulesTransformer = $schedulesTransformer;
+
+        $this->conferenceScheduleTransformer = $conferenceSchedulesTransformer;
 	}
 
 
@@ -102,9 +106,22 @@ class ConferenceSchedulesController extends ApiController {
 
     public function showActive($conference_id)
     {
-        $activeSchedule = $this->execute(RequestActiveScheduleCommand::class, ['conference_id' => $conference_id]);
+        Request::merge(compact('conference_id'));
+
+        $activeSchedule = $this->execute(RequestActiveScheduleCommand::class);
 
         return $this->responder->respond($this->schedulesTransformer->transformCollection($activeSchedule));
+    }
+
+    public function showAuthenticated($conference_id)
+    {
+        $user_id = $this->getUserId();
+
+        Request::merge(compact('conference_id', 'user_id'));
+
+        $activeSchedule = $this->execute(RequestActiveScheduleCommand::class);
+
+        return $this->responder->respond($this->conferenceScheduleTransformer->transformCollection($activeSchedule));
     }
 
 }

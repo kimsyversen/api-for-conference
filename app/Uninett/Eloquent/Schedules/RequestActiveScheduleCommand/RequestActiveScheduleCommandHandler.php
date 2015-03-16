@@ -25,6 +25,11 @@ class RequestActiveScheduleCommandHandler implements CommandHandler {
     {
         $activeSchedule = $this->repo->getActiveScheduleForConference($command->conference_id);
 
+        if ($command->user_id)
+        {
+            $activeSchedule = $this->repo->checkPersonalSchedule($command->conference_id, $command->user_id, $activeSchedule);
+        }
+
         $this->dispatchEventsFor($this->repo);
 
         return $this->repo->getSessionsForSchedule($activeSchedule);

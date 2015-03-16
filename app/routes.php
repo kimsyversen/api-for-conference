@@ -44,7 +44,8 @@ Route::group(['prefix' => 'api/v1'], function() {
     /**
      * Conference schedules
      */
-    Route::get('conferences/{conferences}/schedule',            ['as' => 'api.v1.conferences.schedules.active', 'uses' => 'ConferenceSchedulesController@showActive']);
+    Route::get('conferences/{conferences}/schedule',                          ['as' => 'api.v1.conferences.schedules.active', 'uses' => 'ConferenceSchedulesController@showActive']);
+    Route::get('conferences/{conferences}/schedule/authenticated',            ['as' => 'api.v1.conferences.schedules.active.authenticated', 'uses' => 'ConferenceSchedulesController@showAuthenticated', 'before' => 'oauth']);
 
     /**
      * Personal schedules
