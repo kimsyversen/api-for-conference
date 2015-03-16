@@ -21,7 +21,7 @@ class NewspostsTableSeeder extends Seeder {
 			Newspost::create([
                 'newsfeed_id' => $faker->randomElement($newsfeed_ids),
                 'user_id' => $faker->randomElement($user_ids),
-                'title' => $faker->word,
+                'title' => $faker->sentence(),
                 'body' => $faker->text()
 			]);
 		}
