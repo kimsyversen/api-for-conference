@@ -16,8 +16,7 @@ class FullSessionsTransformer extends Transformer {
 
     public function transform($item)
     {
-        //dd($item);
-        return [
+        $output = [
             'links' => [
                 'session' => [
                     'uri' => 'conferences/' . $item['conference_id'] . '/sessions/' . $item['id'],
@@ -39,5 +38,10 @@ class FullSessionsTransformer extends Transformer {
             'questions' => $this->questionsTransformer->transformCollection($item['questions']->toArray()),
             'ratings' => $this->ratingsTransformer->transformCollection($item['ratings']->toArray())
         ];
+
+        if(array_key_exists('in_personal_schedule', $item->toArray()))
+            $output['in_personal_schedule'] = $item['in_personal_schedule'];
+
+        return $output;
     }
 }

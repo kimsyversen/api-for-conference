@@ -58,6 +58,7 @@ Route::group(['prefix' => 'api/v1'], function() {
      * Sessions
      */
     Route::get('conferences/{conferences}/sessions/{sessions}', ['as' => 'api.v1.conferences.sessions.show',    'uses' => 'ConferenceSessionsController@show']);
+    Route::get('conferences/{conferences}/sessions/{sessions}/authenticated', ['as' => 'api.v1.conferences.sessions.show.authenticated',    'uses' => 'ConferenceSessionsController@showAuthenticated', 'before' => 'oauth']);
 
     /**
      * Ratings

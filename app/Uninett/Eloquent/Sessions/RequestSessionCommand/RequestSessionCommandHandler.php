@@ -26,6 +26,11 @@ class RequestSessionCommandHandler implements CommandHandler {
     {
         $session = $this->repository->getConferenceSession($command->conference_id, $command->session_id);
 
+        if ($command->user_id)
+        {
+            $session = $this->repository->checkPersonalProgram($command->conference_id, $command->user_id, $session);
+        }
+
         $this->dispatchEventsFor($this->repository);
 
         return $session;

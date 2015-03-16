@@ -59,10 +59,23 @@ class ConferenceSessionsController extends \ApiController {
      */
 	public function show($conference_id, $session_id)
     {
-        $session = $this->execute(RequestSessionCommand::class, compact('conference_id', 'session_id'));
+        Request::merge(compact('conference_id', 'session_id'));
+
+        $session = $this->execute(RequestSessionCommand::class);
 
         return $this->responder->respond($this->transformer->transform($session));
 	}
+
+    public function showAuthenticated($conference_id, $session_id)
+    {
+        $user_id = $this->getUserId();
+
+        Request::merge(compact('conference_id', 'session_id', 'user_id'));
+
+        $session = $this->execute(RequestSessionCommand::class);
+
+        return $this->responder->respond($this->transformer->transform($session));
+    }
 
 //	/**
 //	 * Show the form for editing the specified resource.
