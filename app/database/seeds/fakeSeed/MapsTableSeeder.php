@@ -13,14 +13,22 @@ class MapsTableSeeder extends Seeder {
 
         $conference_ids = Conference::lists('id');
 
-		foreach(range(1, 50) as $index)
+		foreach($conference_ids as $conference_id)
+		{
+			Map::create([
+				'conference_id' => $conference_id,
+				'uri' => 'http://www.nokios.no/_media/nokios-konferansekart.jpg',
+				'description' => $faker->text()
+			]);
+		}
+/*		foreach(range(1, 50) as $index)
 		{
 			Map::create([
                 'conference_id' => $faker->randomElement($conference_ids),
                 'uri' => 'http://www.nokios.no/_media/nokios-konferansekart.jpg',
                 'description' => $faker->text()
 			]);
-		}
+		}*/
 	}
 
 }
