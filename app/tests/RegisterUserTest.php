@@ -23,7 +23,7 @@ class RegisterUserTest extends ApiTester {
 //			'password_confirmation' => 'secret',
 //		];
 //
-//		$asdf = array_merge($data, $this->getApiSecrets());
+//		$asdf = array_merge($data, $this->getClientSecrets());
 //
 //		$this->getJson('register', 'POST', $asdf)->data;
 //	}

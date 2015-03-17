@@ -15,13 +15,39 @@ $factory('Uninett\Eloquent\Conferences\Conference', [
     'city' => $faker->city,
 ]);
 
-//$factory('Uninett\Eloquent\Users\User', [
-//	'email' => $faker->safeEmail,
-//	'password' => 'secret',
-//	'confirmation_code' => str_random(40),
-//	'created_at' => $faker->date(),
-//	'updated_at' => $faker->date()
-//]);
+
+/**
+ * Users
+ */
+$factory('Uninett\Eloquent\Users\User', [
+    'email' => $faker->safeEmail,
+    'password' => 'secret',
+    'title' => $faker->word,
+    'about' => $faker->paragraph,
+    'first_name' => $faker->firstName,
+    'last_name' => $faker->lastName,
+    'country' => $faker->country,
+    'company' => $faker->company,
+    'position' => $faker->sentence,
+    'confirmed' => 1,
+    'confirmation_code' => str_random(40),
+]);
+$factory('Uninett\Eloquent\Users\User', 'my_user', [
+    'email' => 'me@example.com',
+    'password' => 'secret',
+    'title' => 'Myself',
+    'about' => 'I am just myself',
+    'first_name' => 'Ola',
+    'last_name' => 'Nordmann',
+    'country' => 'Norway',
+    'company' => 'Me inc.',
+    'position' => 'Me',
+    'confirmed' => 1,
+    'confirmation_code' => str_random(40),
+]);
+
+
+
 //
 //$factory('Uninett\Eloquent\Statistics\Statistic', [
 //    'hits' =>  1,

@@ -16,27 +16,34 @@ abstract class ApiTester extends \tests\TestCase {
 	protected $base_url;
 
 
-    /**
-     *
-     */
-    function __construct()
-	{
-		$this->fake = Faker::create();
-	}
-
-
     public function setUp()
 	{
 		parent::setUp();
 
-        // Seed the database manually?
-		//Artisan::call('db:seed');
+        Route::enableFilters();
 
-        //\Laracasts\TestDummy\Factory::$databaseProvider = new CustomBuilder;
+        $this->prepareDatabase();
 
-		$seed = new DatabaseSeeder();
-		$seed->cleanDatabase();
+        $this->fake = Faker::create();
 	}
+
+    /**
+     * Prepare the database for a new test
+     */
+    private function prepareDatabase()
+    {
+        // Clean the database
+        $seed = new DatabaseSeeder();
+        $seed->cleanDatabase();
+
+        // Add oauth client secrets
+        $values = [1, 'asdf', 'browser', date('Y-m-d H:i:s'), date('Y-m-d H:i:s')];
+        DB::insert('insert into oauth_clients (id, secret, name, created_at, updated_at) values (?, ?, ?, ?, ?)', $values);
+
+        // Seed the database manually?
+        //Artisan::call('db:seed');
+        //\Laracasts\TestDummy\Factory::$databaseProvider = new CustomBuilder;
+    }
 
     /**
      * @param $uri
@@ -45,9 +52,9 @@ abstract class ApiTester extends \tests\TestCase {
      * @param bool $returnArray
      * @return mixed
      */
-    protected function getJson($uri, $method = 'GET', $parameters = [], $returnArray = false)
+    protected function getJson($uri, $method = 'GET', $parameters = [], $files = [], $server = [], $content = null, $changeHistory = true, $returnArray = false)
 	{
-		return json_decode($this->call($method, $uri, $parameters)->getContent(), $returnArray);
+		return json_decode($this->call($method, $uri, $parameters, $files, $server, $content, $changeHistory)->getContent(), $returnArray);
 	}
 
     /**
@@ -65,7 +72,7 @@ abstract class ApiTester extends \tests\TestCase {
         }
 	}
 
-	protected function getApiSecrets()
+	protected function getClientSecrets()
 	{
 		return [
 			'client_id' => 1,
@@ -86,9 +93,9 @@ abstract class ApiTester extends \tests\TestCase {
         $data = array_merge([
             'username' => $email,
             'password' => $password
-        ], $this->getApiSecrets());
+        ], $this->getClientSecrets());
 
-        return $this->getJson('oauth/access_token', 'POST', $data, true);
+        return $this->getJson('oauth/access_token', 'POST', $data, true)['access_token'];
     }
 
 }

@@ -1,5 +1,6 @@
 <?php
 
+use Laracasts\TestDummy\Factory as TestDummy;
 
 class UsersTest extends ApiTester {
 
@@ -10,29 +11,27 @@ class UsersTest extends ApiTester {
 		parent::setUp();
 
 		$this->base_url = Config::get('uninett.base_url');
-
-		Route::enableFilters();
 	}
 
-    /** @test */
-    public function it_is_a_dummy_test()
-    {
+	/** @test */
+	public function it_can_retrieve_me()
+	{
+        TestDummy::create('my_user');
 
-    }
+        $accessToken = $this->getAccesstoken('me@example.com', 'secret');
 
-//	/** @test */
-//	public function it_can_retrieve_me()
-//	{
-//		$user = Laracasts\TestDummy\Factory::create('Uninett\Eloquent\Users\User');
-//
-//        $accessToken = $this->getAccesstoken($user);
-//
-//		$response = $this->getJson($this->base_url . 'users/me', 'GET', $accessToken)->data;
-//
-//		$this->assertResponseOk();
-//
-//		$this->assertNotEmpty($response);
-//	}
+//        dd($accessToken);
+
+		$response = $this->getJson('http://localhost:8000/api/v1/users/me', 'GET', [], [], [
+            'HTTP_Authorization' => $accessToken
+        ]);
+
+        dd($response);
+
+		$this->assertResponseOk();
+
+		$this->assertNotEmpty($response);
+	}
 //
 //
 //	/**
