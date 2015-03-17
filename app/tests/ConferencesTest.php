@@ -4,11 +4,6 @@ use Laracasts\TestDummy\Factory as TestDummy;
 
 class ConferencesTest extends ApiTester {
 
-	public function setUp()
-	{
-		parent::setUp();
-	}
-
     /** @test */
     public function it_fetches_conferences()
     {

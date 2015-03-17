@@ -18,7 +18,7 @@ class UsersController extends ApiController {
 	{
 		$user_id = $this->getUserId();
 
-		$user = User::find($user_id);
+		$user = User::findOrFail($user_id);
 
 		return $this->responder->respond($this->transform->transform($user->toArray()));
 	}

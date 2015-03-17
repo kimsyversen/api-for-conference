@@ -15,6 +15,11 @@ abstract class ApiTester extends \tests\TestCase {
 	 */
 	protected $base_url;
 
+    private function buildUrl($url)
+    {
+        return $this->base_url.$url;
+    }
+
 
     public function setUp()
 	{
@@ -25,6 +30,8 @@ abstract class ApiTester extends \tests\TestCase {
         $this->prepareDatabase();
 
         $this->fake = Faker::create();
+
+        $this->base_url = Config::get('uninett.base_url');
 	}
 
     /**
@@ -45,16 +52,20 @@ abstract class ApiTester extends \tests\TestCase {
         //\Laracasts\TestDummy\Factory::$databaseProvider = new CustomBuilder;
     }
 
+
     /**
      * @param $uri
      * @param string $method
-     * @param array $parameters
+     * @param array $body
+     * @param array $header
      * @param bool $returnArray
      * @return mixed
      */
-    protected function getJson($uri, $method = 'GET', $parameters = [], $files = [], $server = [], $content = null, $changeHistory = true, $returnArray = false)
+    protected function getJson($uri, $method = 'GET', $body = [], $header = [], $returnArray = false)
 	{
-		return json_decode($this->call($method, $uri, $parameters, $files, $server, $content, $changeHistory)->getContent(), $returnArray);
+        $uri = $this->buildUrl($uri);
+
+		return json_decode($this->call($method, $uri, $body, [], $header, null, true)->getContent(), $returnArray);
 	}
 
     /**
@@ -95,7 +106,7 @@ abstract class ApiTester extends \tests\TestCase {
             'password' => $password
         ], $this->getClientSecrets());
 
-        return $this->getJson('oauth/access_token', 'POST', $data, true)['access_token'];
+        return $this->getJson('oauth/access_token', 'POST', $data, [], true)['access_token'];
     }
 
 }
