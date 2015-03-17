@@ -17,7 +17,7 @@ class NewsfeedsTableSeeder extends Seeder {
 		foreach($conference_ids as $id)
 			Newsfeed::create([
 				'conference_id' => $id,
-				'twitter_hashtag' => 'nokios2015',
+				'user_twitter' => 'nokios2015',
 			]);
 
 	}

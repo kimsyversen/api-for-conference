@@ -16,7 +16,7 @@ class CreateNewsfeedsTable extends Migration {
 		{
 			$table->increments('id');
 			$table->integer('conference_id')->unsigned()->index();
-			$table->string('twitter_hashtag')->nullable();
+			$table->string('user_twitter')->nullable();
             $table->timestamps();
 		});
 	}

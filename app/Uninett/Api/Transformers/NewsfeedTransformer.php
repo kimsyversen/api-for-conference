@@ -16,7 +16,7 @@ class NewsfeedTransformer extends Transformer {
     {
 
         return [
-            'twitter_hashtag' => $item['twitter_hashtag'],
+            'user_twitter' => $item['user_twitter'],
 	        'newsposts' => $this->newspostTransformer->transformCollection($item['newsposts'])
         ];
     }
