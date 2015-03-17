@@ -88,5 +88,3 @@ Route::group(['prefix' => 'api/v1'], function() {
 //    Route::get('conferences/{$id}/agendas',             ['as' => 'api.v1.conferences.index',    'uses' => 'ConferencesController@index']);
 
 });
-
-
