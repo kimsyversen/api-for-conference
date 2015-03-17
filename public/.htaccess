@@ -5,6 +5,10 @@
 
     RewriteEngine On
 
+    #If we want to put Authorization in headers, these two are needed
+    RewriteCond %{HTTP:Authorization} .
+    RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+
     # Redirect Trailing Slashes...
     RewriteRule ^(.*)/$ /$1 [L,R=301]
 
