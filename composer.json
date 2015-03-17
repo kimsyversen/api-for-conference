@@ -6,13 +6,13 @@
 	"require": {
 		"laravel/framework": "4.2.*",
         "laracasts/commander": "~1.0",
-        "lucadegasperi/oauth2-server-laravel": "3.*"
+        "lucadegasperi/oauth2-server-laravel": "3.*",
+        "fzaninotto/faker": "1.5.*@dev"
 	},
     "require-dev": {
       "barryvdh/laravel-debugbar": "~1.8",
       "codeception/codeception" : "~2.0",
       "laracasts/testdummy": "~2.0",
-      "fzaninotto/faker": "1.5.*@dev",
       "barryvdh/laravel-ide-helper": "1.*@dev",
       "zircote/swagger-php": "0.9.*@dev",
       "way/generators": "~2.0",
