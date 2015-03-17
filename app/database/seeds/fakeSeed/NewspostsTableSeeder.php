@@ -16,15 +16,15 @@ class NewspostsTableSeeder extends Seeder {
 
         $newsfeed_ids = Newsfeed::lists('id');
 
-		foreach(range(1, 20) as $index)
-		{
-			Newspost::create([
-                'newsfeed_id' => $faker->randomElement($newsfeed_ids),
-                'user_id' => $faker->randomElement($user_ids),
-                'title' => $faker->sentence(),
-                'body' => $faker->text()
-			]);
-		}
+		foreach($newsfeed_ids as $newsfeed_id)
+			foreach(range(1, 3) as $index)
+				Newspost::create([
+	                'newsfeed_id' => $newsfeed_id,
+	                'user_id' => $faker->randomElement($user_ids),
+	                'title' => $faker->sentence(),
+	                'body' => $faker->text()
+				]);
+
 	}
 
 }
