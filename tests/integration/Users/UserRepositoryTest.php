@@ -7,7 +7,7 @@ use Laracasts\TestDummy\Factory as TestDummy;
 use Uninett\Eloquent\Users\Repositories\UserRepository;
 use Uninett\Eloquent\Users\User;
 
-class UserRepositoryTest extends IntegrationTest
+class UserRepositoryTest extends \Codeception\TestCase\Test
 {
 
 	//TODO: Se over http://codeception.com/06-28-2014/unit-testing-with-database.html

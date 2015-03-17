@@ -28,9 +28,6 @@
             "app/tests/helpers",
             "app/database/seeds/fakeSeed"
 		],
-      "files": [
-        "tests/integration/IntegrationTest.php"
-      ],
       "psr-4": {
         "Uninett\\": "app/Uninett",
         "commands\\" : "app/commands",
