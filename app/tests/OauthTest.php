@@ -2,7 +2,7 @@
 use Uninett\Eloquent\Users\User;
 use Laracasts\TestDummy\Factory as TestDummy;
 
-class OauthTest extends OAuthApiTester {
+class OauthTest extends ApiTester {
 
 	public function setUp()
 	{

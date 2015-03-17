@@ -1,7 +1,7 @@
 <?php
 
 
-class UsersTest extends OAuthApiTester {
+class UsersTest extends ApiTester {
 
 	protected $user = 'Uninett\Eloquent\Users\User';
 

@@ -1,8 +1,8 @@
 <?php
-use Faker\Factory as Faker;
-use tests\helpers\CustomBuilder;
 
-abstract class ApiTester extends tests\TestCase {
+use Faker\Factory as Faker;
+
+abstract class ApiTester extends \tests\TestCase {
 
     /**
      * @var Faker
@@ -32,10 +32,10 @@ abstract class ApiTester extends tests\TestCase {
         // Seed the database manually?
 		//Artisan::call('db:seed');
 
-        \Laracasts\TestDummy\Factory::$databaseProvider = new CustomBuilder;
+        //\Laracasts\TestDummy\Factory::$databaseProvider = new CustomBuilder;
 
-		//$seed = new DatabaseSeeder();
-		//$seed->cleanDatabase();
+		$seed = new DatabaseSeeder();
+		$seed->cleanDatabase();
 	}
 
     /**
@@ -65,7 +65,7 @@ abstract class ApiTester extends tests\TestCase {
         }
 	}
 
-	protected function getSecrets()
+	protected function getApiSecrets()
 	{
 		return [
 			'client_id' => 1,
@@ -73,5 +73,22 @@ abstract class ApiTester extends tests\TestCase {
 			'grant_type' => 'password'
 		];
 	}
+
+    /**
+     * Get OAuth2 access token
+     *
+     * @param $email
+     * @param $password
+     * @return mixed
+     */
+    protected function getAccesstoken($email, $password)
+    {
+        $data = array_merge([
+            'username' => $email,
+            'password' => $password
+        ], $this->getApiSecrets());
+
+        return $this->getJson('oauth/access_token', 'POST', $data, true);
+    }
 
 }

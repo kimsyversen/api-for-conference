@@ -1,5 +1,6 @@
-<?php namespace tests; 
-class RegisterUserTest extends \ApiTester {
+<?php
+
+class RegisterUserTest extends ApiTester {
 
 
 	public function setUp()
@@ -22,7 +23,7 @@ class RegisterUserTest extends \ApiTester {
 //			'password_confirmation' => 'secret',
 //		];
 //
-//		$asdf = array_merge($data, $this->getSecrets());
+//		$asdf = array_merge($data, $this->getApiSecrets());
 //
 //		$this->getJson('register', 'POST', $asdf)->data;
 //	}

@@ -2,8 +2,7 @@
 
 use Laracasts\TestDummy\Factory as TestDummy;
 
-class ConferencesTest extends OAuthApiTester {
-
+class ConferencesTest extends ApiTester {
 
 	public function setUp()
 	{
@@ -13,9 +12,14 @@ class ConferencesTest extends OAuthApiTester {
 	}
 
     /** @test */
-    public function it_can_retrieve_conferences()
+    public function it_fetches_conferences()
     {
-        $conference = TestDummy::create('default_conference');
+        TestDummy::times(10)->create('Uninett\Eloquent\Conferences\Conference');
+
+        $response = $this->getJson('http://localhost:8000/api/v1/conferences');
+
+        dd($response);
+
 
         //dd($conference);
 

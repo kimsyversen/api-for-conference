@@ -1,7 +1,7 @@
 <?php
 
 
-class SessionsTest extends OAuthApiTester {
+class SessionsTest extends ApiTester {
 
 
 	public function setUp()
