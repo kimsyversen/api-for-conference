@@ -121,7 +121,7 @@ class Responder {
     {
         //TODO: This should probably be placed a place before the response is made. However, this works "for now".
         //This is for logging statistics
-        $this->execute(LogRequestCommand::class, ['request' => Request::server('PATH_INFO') ]);
+        $this->execute(LogRequestCommand::class, ['request' => $_SERVER['REQUEST_URI'] ]);
 
         // If the api is to offer more output formats, add them here.
         // For now we are just offering json.

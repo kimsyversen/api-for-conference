@@ -88,3 +88,7 @@ Route::group(['prefix' => 'api/v1'], function() {
 //    Route::get('conferences/{$id}/agendas',             ['as' => 'api.v1.conferences.index',    'uses' => 'ConferencesController@index']);
 
 });
+
+Route::get('/', function() {
+	return "It works. Databasename is " . getenv('API_DATABASE');
+});
