@@ -1,7 +1,6 @@
 <?php
 
 use Uninett\Api\Responders\Responder;
-use Uninett\Api\Transformers\ConferenceSchedulesTransformer;
 use Uninett\Api\Transformers\SchedulesTransformer;
 use Uninett\Eloquent\Schedules\RequestActiveScheduleCommand\RequestActiveScheduleCommand;
 
@@ -9,15 +8,11 @@ class ConferenceSchedulesController extends ApiController {
 
     private $schedulesTransformer;
 
-    private $conferenceScheduleTransformer;
-
-	function __construct(SchedulesTransformer $schedulesTransformer, ConferenceSchedulesTransformer $conferenceSchedulesTransformer, Responder $responder)
+	function __construct(SchedulesTransformer $schedulesTransformer, Responder $responder)
 	{
 		parent::__construct($responder);
 
         $this->schedulesTransformer = $schedulesTransformer;
-
-        $this->conferenceScheduleTransformer = $conferenceSchedulesTransformer;
 	}
 
 
@@ -121,7 +116,7 @@ class ConferenceSchedulesController extends ApiController {
 
         $activeSchedule = $this->execute(RequestActiveScheduleCommand::class);
 
-        return $this->responder->respond($this->conferenceScheduleTransformer->transformCollection($activeSchedule));
+        return $this->responder->respond($this->schedulesTransformer->transformCollection($activeSchedule));
     }
 
 }
