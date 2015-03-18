@@ -15,7 +15,7 @@ return array(
 	|
 	*/
 
-	'driver' => 'smtp',
+	'driver' => 'mandrill',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -54,7 +54,7 @@ return array(
 	|
 	*/
 
-	'from' => array('address' => getenv('MAIL_ADDRESS'), 'name' => 'The conference administration team'),
+	'from' => array('address' => getenv('MAIL_ADDRESS'), 'name' => getenv('MAIL_NAME')),
 
 	/*
 	|--------------------------------------------------------------------------
@@ -80,7 +80,7 @@ return array(
 	|
 	*/
 
-	'username' => getenv('MAIL_USERNAME'),
+	'username' => null,
 
 	/*
 	|--------------------------------------------------------------------------
@@ -93,7 +93,7 @@ return array(
 	|
 	*/
 
-	'password' => getenv('MAIL_PASSWORD'),
+	'password' => null,
 
 	/*
 	|--------------------------------------------------------------------------

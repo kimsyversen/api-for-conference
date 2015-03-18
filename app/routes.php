@@ -15,6 +15,16 @@
 //    }
 //}
 
+Route::get('/', function()
+{
+    Mail::send('emails.welcome', [], function($message)
+    {
+        $message->to('magnus.sandgren91@gmail.com')->subject('Test Email');
+    });
+
+    return 'Message sendt';
+});
+
 /**
  * Apply the CSRF filter for every route with
  * post, put, or patch verbs.
@@ -87,8 +97,4 @@ Route::group(['prefix' => 'api/v1'], function() {
 //    Route::get('conferences/{$id}/sessions/{$id2}',     ['as' => 'api.v1.conferences.index',    'uses' => 'ConferencesController@index']);
 //    Route::get('conferences/{$id}/agendas',             ['as' => 'api.v1.conferences.index',    'uses' => 'ConferencesController@index']);
 
-});
-
-Route::get('/', function() {
-	return "It works. Databasename is " . getenv('API_DATABASE');
 });

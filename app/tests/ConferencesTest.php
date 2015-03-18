@@ -30,5 +30,11 @@ class ConferencesTest extends ApiTester {
         $this->assertObjectHasAttributes($response->paginator, 'total_count', 'total_pages', 'current_page', 'limit');
     }
 
+    /** @test */
+    public function it_fetches_a_single_conference()
+    {
+
+    }
+
 }
 
