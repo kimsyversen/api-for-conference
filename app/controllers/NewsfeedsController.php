@@ -1,18 +1,19 @@
 <?php
 
 use Uninett\Api\Responders\Responder;
+use Uninett\Api\Transformers\NewsfeedTransformer;
 use Uninett\Api\Transformers\NewspostTransformer;
 use Uninett\Eloquent\Newsfeeds\RequestNewsfeedCommand\RequestNewsfeedCommand;
 
 class NewsfeedsController extends \ApiController {
 
-    private $newspostTransformer;
+    private $newsfeedTransformer;
 
-    function __construct(NewspostTransformer $newspostTransformer, Responder $responder)
+    function __construct(NewsfeedTransformer $newsfeedTransformer, Responder $responder)
     {
         parent::__construct($responder);
 
-        $this->newspostTransformer = $newspostTransformer;
+        $this->newsfeedTransformer = $newsfeedTransformer;
     }
 
 
@@ -28,7 +29,7 @@ class NewsfeedsController extends \ApiController {
 
         $newsposts = $this->execute(RequestNewsfeedCommand::class);
 
-		return $this->responder->respond($this->newspostTransformer->transformCollection($newsposts->toArray()));
+		return $this->responder->respond($this->newsfeedTransformer->transform($newsposts->toArray()));
 	}
 
 

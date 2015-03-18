@@ -13,12 +13,13 @@ class NewsfeedsTableSeeder extends Seeder {
 
         $conference_ids = Conference::lists('id');
 
-		foreach(range(1, 20) as $index)
-		{
+
+		foreach($conference_ids as $id)
 			Newsfeed::create([
-                'conference_id' => $faker->randomElement($conference_ids)
+				'conference_id' => $id,
+				'user_twitter' => 'nokios2015',
 			]);
-		}
+
 	}
 
 }

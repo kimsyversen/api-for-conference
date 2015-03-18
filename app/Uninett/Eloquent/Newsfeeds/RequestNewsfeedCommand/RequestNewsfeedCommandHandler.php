@@ -22,9 +22,10 @@ class RequestNewsfeedCommandHandler implements CommandHandler {
     {
         $newsfeed = $this->repository->getOrCreateNewsfeedForConference($command->conference_id);
 
-        $newsposts = $this->repository->getNewspostsForNewsfeed($newsfeed);
+	    return $newsfeed;
 
-        return $newsposts;
+        //$newsposts = $this->repository->getNewspostsForNewsfeed($newsfeed);
+		//return $newsposts;
     }
 
 }
