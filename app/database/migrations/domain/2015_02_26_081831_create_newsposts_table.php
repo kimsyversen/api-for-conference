@@ -16,7 +16,7 @@ class CreateNewspostsTable extends Migration {
 		{
 			$table->increments('id');
 			$table->integer('newsfeed_id')->unsigned()->index();
-			$table->integer('user_id')->unsigned()->index();
+			$table->integer('user_id')->unsigned()->index()->nullable();
             $table->string('title');
             $table->text('body');
             $table->timestamps();

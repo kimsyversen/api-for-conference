@@ -15,15 +15,15 @@
 //    }
 //}
 
-Route::get('/', function()
-{
-    Mail::send('emails.welcome', [], function($message)
-    {
-        $message->to('magnus.sandgren91@gmail.com')->subject('Test Email');
-    });
-
-    return 'Message sendt';
-});
+//Route::get('/', function()
+//{
+//    Mail::send('emails.welcome', [], function($message)
+//    {
+//        $message->to('magnus.sandgren91@gmail.com')->subject('Test Email');
+//    });
+//
+//    return 'Message sendt ' . getenv('MANDRILL_SECRET');
+//});
 
 /**
  * Apply the CSRF filter for every route with

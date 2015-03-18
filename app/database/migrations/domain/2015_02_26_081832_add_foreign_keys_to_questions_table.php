@@ -14,8 +14,8 @@ class AddForeignKeysToQuestionsTable extends Migration {
 	{
 		Schema::table('questions', function(Blueprint $table)
 		{
-			$table->foreign('session_id')->references('id')->on('sessions')->onUpdate('NO ACTION')->onDelete('NO ACTION');
-			$table->foreign('user_id')->references('id')->on('users')->onUpdate('NO ACTION')->onDelete('NO ACTION');
+			$table->foreign('session_id')->references('id')->on('sessions')->onUpdate('cascade')->onDelete('cascade');
+			$table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('set null');
 		});
 	}
 

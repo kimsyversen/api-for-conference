@@ -15,6 +15,6 @@ return array(
 	|
 	*/
 
-	'driver' => 'mandrill',
+	'driver' => 'log',
 
 );

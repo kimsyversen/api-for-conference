@@ -14,7 +14,7 @@ class AddForeignKeysToChatablesTable extends Migration {
 	{
 		Schema::table('chatables', function(Blueprint $table)
 		{
-			$table->foreign('chat_id')->references('id')->on('chats')->onUpdate('NO ACTION')->onDelete('NO ACTION');
+			$table->foreign('chat_id')->references('id')->on('chats')->onUpdate('cascade')->onDelete('cascade');
 		});
 	}
 

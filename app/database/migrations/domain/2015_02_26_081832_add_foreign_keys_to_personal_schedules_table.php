@@ -14,8 +14,8 @@ class AddForeignKeysToPersonalSchedulesTable extends Migration {
 	{
 		Schema::table('personal_schedules', function(Blueprint $table)
 		{
-			$table->foreign('conference_id')->references('id')->on('conferences')->onUpdate('NO ACTION')->onDelete('NO ACTION');
-			$table->foreign('user_id')->references('id')->on('users')->onUpdate('NO ACTION')->onDelete('NO ACTION');
+			$table->foreign('conference_id')->references('id')->on('conferences')->onUpdate('cascade')->onDelete('cascade');
+			$table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
 		});
 	}
 
