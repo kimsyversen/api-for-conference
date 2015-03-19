@@ -1,5 +1,6 @@
 <?php namespace Uninett\Eloquent\Chats;
 
+use Carbon\Carbon;
 use Eloquent;
 
 class Chat extends Eloquent {
@@ -10,6 +11,28 @@ class Chat extends Eloquent {
      * @var array
      */
     protected $fillable = [];
+
+    /**
+     * Get the updated_at attribute as a carbon instance
+     *
+     * @param $value
+     * @return static
+     */
+    public function getUpdatedAtAttribute($value)
+    {
+        return Carbon::createFromFormat('Y-m-d H:i:s', $value);
+    }
+
+    /**
+     * * Get the created_at attribute as a carbon instance
+     *
+     * @param $value
+     * @return static
+     */
+    public function getCreatedAtAttribute($value)
+    {
+        return Carbon::createFromFormat('Y-m-d H:i:s', $value);
+    }
 
     /**
      * A chat has many messages

@@ -16,6 +16,7 @@ class CreateChatsTable extends Migration {
 		{
 			$table->increments('id');
 			$table->integer('conference_id')->unsigned()->index();
+            $table->string('name')->nullable();
             $table->timestamps();
 		});
 	}

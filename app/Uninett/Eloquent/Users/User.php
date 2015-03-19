@@ -37,12 +37,13 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 		$this->attributes['password'] = Hash::make($password);
 	}
 
-	/**
-	 * Register a new user
-	 * @param $username
-	 * @param $email
-	 * @param $password
-	 */
+    /**
+     * Register a new user
+     * @param $email
+     * @param $password
+     * @param null $confirmation_code
+     * @return static
+     */
 	public static function register($email, $password, $confirmation_code = null)
 	{
 		$user = new static(compact('email', 'password', 'confirmation_code'));
@@ -109,7 +110,7 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
      */
     public function groups()
     {
-        return $this->belongsToMany('Uninett\Eloquent\Groups\Group');
+        return $this->belongsToMany('Uninett\Eloquent\Groups\Group')->withTimestamps();
     }
 
     /**

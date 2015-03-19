@@ -18,6 +18,7 @@ class ChatsTableSeeder extends Seeder {
 		{
 			$chat = Chat::create([
                 'conference_id' => $faker->randomElement($conference_ids),
+                'name' => $faker->word
 			]);
 
             //Add groups

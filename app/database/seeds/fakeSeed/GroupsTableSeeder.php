@@ -4,6 +4,7 @@
 use Faker\Factory as Faker;
 use Uninett\Eloquent\Conferences\Conference;
 use Uninett\Eloquent\Groups\Group;
+use Uninett\Eloquent\Users\User;
 
 class GroupsTableSeeder extends Seeder {
 
@@ -13,12 +14,22 @@ class GroupsTableSeeder extends Seeder {
 
         $conference_ids = Conference::lists('id');
 
-		foreach(range(1, count($conference_ids) * 2) as $index)
+        $users = User::all();
+
+		foreach(range(1, count($conference_ids) * 3) as $index)
 		{
-			Group::create([
+			$group = Group::create([
                 'conference_id' => $faker->randomElement($conference_ids),
                 'name' => $faker->word
 			]);
+
+            $userPool = $users->random($users->count() / 2);
+
+            foreach ($userPool as $user)
+            {
+                $group->users()->save($user);
+            }
+
 		}
 	}
 

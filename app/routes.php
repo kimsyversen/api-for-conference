@@ -25,6 +25,11 @@
 //    return 'Message sendt ' . getenv('MANDRILL_SECRET');
 //});
 
+//Event::listen('illuminate.query', function($query)
+//{
+//    var_dump($query);
+//});
+
 /**
  * Apply the CSRF filter for every route with
  * post, put, or patch verbs.
@@ -49,7 +54,7 @@ Route::group(['prefix' => 'api/v1'], function() {
      * Conferences
      */
     Route::get('conferences',                                   ['as' => 'api.v1.conferences.index',            'uses' => 'ConferencesController@index']);
-    Route::get('conferences/{conferences}',                     ['as' => 'api.v1.conferences.show',             'uses' => 'ConferencesController@show']);
+//    Route::get('conferences/{conferences}',                     ['as' => 'api.v1.conferences.show',             'uses' => 'ConferencesController@show']);
 
     /**
      * Conference schedules
@@ -91,6 +96,11 @@ Route::group(['prefix' => 'api/v1'], function() {
      * Newsfeeds
      */
     Route::get('conferences/{conferences}/newsfeeds', ['as' => 'api.v1.conferences.newsfeeds.index', 'uses' => 'NewsfeedsController@index']);
+
+    /**
+     * Chats
+     */
+    Route::get('conferences/{conferences}/chats', ['as' => 'api.v1.conferences.chats.index', 'uses' => 'ChatsController@index', 'before' => 'oauth']);
 
 
 //    Route::get('conferences/{$id}/sessions',            ['as' => 'api.v1.conferences.index',    'uses' => 'ConferencesController@index']);

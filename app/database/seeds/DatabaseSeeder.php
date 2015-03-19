@@ -14,7 +14,7 @@ class DatabaseSeeder extends Seeder {
         'conference_roles',
         'conference_schedules',
         'conferences',
-        'group_conference_user',
+        'group_user',
         'groups',
         'maps',
         'messages',
@@ -44,7 +44,6 @@ class DatabaseSeeder extends Seeder {
         'UserConferenceRolesTableSeeder',
 
         'GroupsTableSeeder',
-        'GroupConferenceUsersTableSeeder',
 
         'ChatsTableSeeder',
         'MessagesTableSeeder',

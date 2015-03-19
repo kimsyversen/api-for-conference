@@ -38,7 +38,7 @@ class Group extends Eloquent {
      */
     public function users()
     {
-        return $this->belongsToMany('Uninett\Eloquent\Users\User');
+        return $this->belongsToMany('Uninett\Eloquent\Users\User')->withTimestamps();
     }
 
 }

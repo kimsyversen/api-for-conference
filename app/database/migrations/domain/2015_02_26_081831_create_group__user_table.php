@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class CreateGroupConferenceUserTable extends Migration {
+class CreateGroupUserTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,12 +12,11 @@ class CreateGroupConferenceUserTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('group_conference_user', function(Blueprint $table)
+		Schema::create('group_user', function(Blueprint $table)
 		{
-			$table->integer('conference_id')->unsigned()->index();
 			$table->integer('group_id')->unsigned()->index();
 			$table->integer('user_id')->unsigned()->index();
-			$table->primary(['conference_id','group_id','user_id']);
+			$table->primary(['group_id','user_id']);
             $table->timestamps();
 		});
 	}
@@ -30,7 +29,7 @@ class CreateGroupConferenceUserTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('group_conference_user');
+		Schema::drop('group_user');
 	}
 
 }
