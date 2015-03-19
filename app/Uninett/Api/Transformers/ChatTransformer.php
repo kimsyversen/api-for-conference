@@ -1,23 +1,36 @@
 <?php namespace Uninett\Api\Transformers;
 
+use Uninett\Eloquent\Messages\Message;
+
 class ChatTransformer extends Transformer {
 
     private $userTransformer;
 
-    function __construct(UserTransformer $userTransformer)
+    private $messageTransformer;
+
+    function __construct(UserTransformer $userTransformer, MessageTransformer $messageTransformer)
     {
         $this->userTransformer = $userTransformer;
+
+        $this->messageTransformer = $messageTransformer;
     }
 
 
     public function transform($item)
 	{
-		return [
+        $output = [
             'id' => $item['id'],
-			'name' => $item['name'],
-            'recipients' => $this->userTransformer->transformCollection($item['recipients']),
+            'name' => $item['name'],
             'created_at' => $item['created_at'],
             'updated_at' => $item['updated_at']
-		];
+        ];
+
+        if (array_key_exists('recipients', $item))
+            $output['recipients'] = $this->userTransformer->transformCollection($item['recipients']);
+
+        if (array_key_exists('messages', $item))
+            $output['messages'] = $this->messageTransformer->transformCollection($item['messages']);
+
+		return $output;
 	}
 }

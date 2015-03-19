@@ -2,8 +2,8 @@
 
 use Uninett\Api\Responders\Responder;
 use Uninett\Api\Transformers\ChatTransformer;
-use Uninett\Eloquent\Chats\Chat;
 use Uninett\Eloquent\Chats\RequestConferenceChatsCommand\RequestConferenceChatsCommand;
+use Uninett\Eloquent\Chats\RequestConferenceChatCommand\RequestConferenceChatCommand;
 
 class ChatsController extends \ApiController {
 
@@ -57,16 +57,23 @@ class ChatsController extends \ApiController {
 		//
 	}
 
-	/**
-	 * Display the specified resource.
-	 * GET /chats/{id}
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function show($id)
+    /**
+     * Display the specified resource.
+     * GET /chats/{id}
+     *
+     * @param $conference_id
+     * @param $chat_id
+     * @return Response
+     */
+	public function show($conference_id, $chat_id)
 	{
-		//
+        $user_id = $this->getUserId();
+
+        Request::merge(compact('conference_id', 'chat_id', 'user_id'));
+
+        $chat = $this->execute(RequestConferenceChatCommand::class);
+
+        return $this->responder->respond($this->chatTransformer->transform($chat));
 	}
 
 	/**

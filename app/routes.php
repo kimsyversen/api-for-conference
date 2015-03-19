@@ -101,6 +101,8 @@ Route::group(['prefix' => 'api/v1'], function() {
      * Chats
      */
     Route::get('conferences/{conferences}/chats', ['as' => 'api.v1.conferences.chats.index', 'uses' => 'ChatsController@index', 'before' => 'oauth']);
+    Route::get('conferences/{conferences}/chats/{chats}', ['as' => 'api.v1.conferences.chats.show', 'uses' => 'ChatsController@show', 'before' => 'oauth']);
+
 
 
 //    Route::get('conferences/{$id}/sessions',            ['as' => 'api.v1.conferences.index',    'uses' => 'ConferencesController@index']);

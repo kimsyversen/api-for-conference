@@ -1,9 +1,75 @@
 <?php namespace Uninett\Eloquent\Chats\Repositories;
 
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Uninett\Eloquent\Chats\Chat;
 use Uninett\Eloquent\Users\User;
 
 class EloquentChatRepository {
+
+    /**
+     * A buffer for the chat model object to reduce
+     * db queries.
+     *
+     * @var chat
+     */
+    private $chat;
+
+    /**
+     * The recipients for the chat with chat_id
+     * equal $this->chat_id
+     *
+     * @var array
+     */
+    private $recipients;
+
+    /**
+     * The current $this->recipients chat_id
+     *
+     * @var int
+     */
+    private $chat_id;
+
+    /**
+     * Get the chat with a specific chat_id with
+     * users, groups and messages eager loaded.
+     *
+     * @param $chat_id
+     * @return Chat
+     */
+    private function getChat($chat_id)
+    {
+        if ($this->chat && $this->chat->id == $chat_id)
+        {
+            return $this->chat;
+        }
+
+        return $this->chat = Chat::with('users')->with('groups.users')->with('messages')->with('messages.user')->findOrFail($chat_id);
+    }
+
+    /**
+     * Get the recipients for the chat
+     *
+     * @param $chat_id
+     * @return mixed
+     */
+    public function getRecipients($chat_id)
+    {
+        if ($this->recipients && $this->chat_id == $chat_id)
+        {
+            return $this->recipients;
+        }
+
+        $this->chat_id = $chat_id;
+
+        $recipients = $this->getChat($chat_id)->users;
+
+        foreach($this->getChat($chat_id)->groups as $group)
+        {
+            $recipients = $recipients->merge($group->users);
+        }
+
+        return $this->recipients = $recipients->toArray();
+    }
 
     /**
      * Get all the chats for a specific user on a specific
@@ -35,22 +101,57 @@ class EloquentChatRepository {
     }
 
     /**
+     * Find a specific chat on a conference which the
+     * user can access. If the user can't access
+     * the chat, a ModelNotFoundException
+     * is thrown.
      *
-     *
+     * @param $conference_id
      * @param $chat_id
-     * @return mixed
+     * @param $user_id
+     * @return array
      */
-    public function getRecipients($chat_id)
+    public function find($conference_id, $chat_id, $user_id)
     {
-        $chat = Chat::with('users')->with('groups.users')->findOrFail($chat_id);
+        $chat = $this->getChat($chat_id);
 
-        $recipients = $chat->users;
-
-        foreach($chat->groups as $group)
+        if (! $this->chatHasRecipient($chat_id, $user_id) || $chat->conference_id != $conference_id)
         {
-            $recipients = $recipients->merge($group->users);
+            throw new ModelNotFoundException();
         }
 
-        return $recipients->toArray();
+        return $chat->toArray();
+    }
+
+    /**
+     * Check if a chat has a specific user as a
+     * recipient.
+     *
+     * @param $chat_id
+     * @param $user_id
+     * @return bool
+     */
+    public function chatHasRecipient($chat_id, $user_id)
+    {
+        foreach ($this->getRecipients($chat_id) as $recipient)
+        {
+            if ($recipient['id'] == $user_id)
+                return true;
+        }
+
+        return false;
+    }
+
+    /**
+     * Get the messages for a specific chat
+     *
+     * @param $chat_id
+     * @return array
+     */
+    public function getMessages($chat_id)
+    {
+        $messages = $this->getChat($chat_id)->messages;
+
+        return $messages->toArray();
     }
 }
