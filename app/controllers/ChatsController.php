@@ -32,7 +32,7 @@ class ChatsController extends \ApiController {
 
         $chats = $this->execute(RequestConferenceChatsCommand::class);
 
-        return $this->responder->respond($this->chatTransformer->transformCollection($chats->toArray()));
+        return $this->responder->respond($this->chatTransformer->transformCollection($chats));
 	}
 
 	/**
