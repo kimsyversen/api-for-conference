@@ -1,7 +1,5 @@
 <?php namespace Uninett\Api\Transformers;
 
-use Uninett\Eloquent\Messages\Message;
-
 class ChatTransformer extends Transformer {
 
     private $userTransformer;
@@ -19,7 +17,7 @@ class ChatTransformer extends Transformer {
     public function transform($item)
 	{
         $output = [
-            'id' => $item['id'],
+            'link' => 'conferences/' . $item['conference_id'] . '/chats/' . $item['id'],
             'name' => $item['name'],
             'created_at' => $item['created_at'],
             'updated_at' => $item['updated_at']
