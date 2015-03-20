@@ -50,9 +50,9 @@ class EloquentChatRepository {
      * Get the recipients for the chat
      *
      * @param $chat_id
-     * @return mixed
+     * @return array
      */
-    public function getRecipients($chat_id)
+    public function getAllUserRecipients($chat_id)
     {
         if ($this->recipients && $this->chat_id == $chat_id)
         {
@@ -61,14 +61,36 @@ class EloquentChatRepository {
 
         $this->chat_id = $chat_id;
 
-        $recipients = $this->getChat($chat_id)->users;
+        $recipients = $this->getDirectUserRecipients($chat_id);
 
-        foreach($this->getChat($chat_id)->groups as $group)
+        foreach($this->getGroupRecipients($chat_id) as $group)
         {
             $recipients = $recipients->merge($group->users);
         }
 
         return $this->recipients = $recipients->toArray();
+    }
+
+    /**
+     * Get the ungrouped user recipients of the chat
+     *
+     * @param $chat_id
+     * @return mixed
+     */
+    public function getDirectUserRecipients($chat_id)
+    {
+        return $this->getChat($chat_id)->users;
+    }
+
+    /**
+     * Get the grouped recipients of the chat
+     *
+     * @param $chat_id
+     * @return mixed
+     */
+    public function getGroupRecipients($chat_id)
+    {
+        return $this->getChat($chat_id)->groups;
     }
 
     /**
@@ -78,7 +100,7 @@ class EloquentChatRepository {
      *
      * @param $conference_id
      * @param $user_id
-     * @return mixed
+     * @return array
      */
     public function getAllForUserOnConference($conference_id, $user_id)
     {
@@ -133,7 +155,7 @@ class EloquentChatRepository {
      */
     public function chatHasRecipient($chat_id, $user_id)
     {
-        foreach ($this->getRecipients($chat_id) as $recipient)
+        foreach ($this->getAllUserRecipients($chat_id) as $recipient)
         {
             if ($recipient['id'] == $user_id)
                 return true;
@@ -153,5 +175,18 @@ class EloquentChatRepository {
         $messages = $this->getChat($chat_id)->messages;
 
         return $messages->toArray();
+    }
+
+    /**
+     * Get the last message for a specific chat
+     *
+     * @param $chat_id
+     * @return array
+     */
+    public function getLastMessage($chat_id)
+    {
+        $message = $this->getChat($chat_id)->messages->sortByDesc('created_at')->first();
+
+        return $message;
     }
 }

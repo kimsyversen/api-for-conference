@@ -1,5 +1,6 @@
 <?php namespace Uninett\Eloquent\Messages;
 
+use Carbon\Carbon;
 use Eloquent;
 
 class Message extends Eloquent {
@@ -10,6 +11,28 @@ class Message extends Eloquent {
      * @var array
      */
     protected $fillable = [];
+
+    /**
+     * Get the created at attribute as a carbon instance
+     *
+     * @param $value
+     * @return Carbon
+     */
+    public function getCreatedAtAttribute($value)
+    {
+        return Carbon::createFromFormat('Y-m-d H:i:s', $value);
+    }
+
+    /**
+     * Get the updated at attribute as a carbon instance
+     *
+     * @param $value
+     * @return Carbon
+     */
+    public function getUpdatedAtAttribute($value)
+    {
+        return Carbon::createFromFormat('Y-m-d H:i:s', $value);
+    }
 
     /**
      * A message belongs to a user

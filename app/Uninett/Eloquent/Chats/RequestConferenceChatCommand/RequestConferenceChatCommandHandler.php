@@ -28,7 +28,7 @@ class RequestConferenceChatCommandHandler implements CommandHandler {
     {
         $chat = $this->chatRepository->find($command->conference_id, $command->chat_id, $command->user_id);
 
-        $chat['recipients'] = $this->chatRepository->getRecipients($command->chat_id);
+        $chat['recipients'] = $this->chatRepository->getAllUserRecipients($command->chat_id);
 
         $chat['messages'] = $this->chatRepository->getMessages($command->chat_id);
 
