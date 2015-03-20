@@ -15,13 +15,19 @@ class MessagesTableSeeder extends Seeder {
 
         $user_ids = User::lists('id');
 
-		foreach(range(1, 50) as $index)
+		$now = Carbon\Carbon::now();
+		foreach($chat_ids as $chat_id)
 		{
-			Message::create([
-                'chat_id' => $faker->randomElement($chat_ids),
-                'user_id' => $faker->randomElement($user_ids),
-                'text' => $faker->text()
-			]);
+			foreach(range(1, 5) as $index)
+			{
+				Message::create([
+					'chat_id' => $chat_id,
+					'user_id' => $faker->randomElement($user_ids),
+					'text' => ucfirst($faker->paragraph()),
+					'created_at' => $now->addMinutes($index),
+					'updated_at' => $now->addMinutes($index)
+				]);
+			}
 		}
 	}
 

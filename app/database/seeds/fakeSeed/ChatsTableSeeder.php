@@ -14,24 +14,25 @@ class ChatsTableSeeder extends Seeder {
 
         $conference_ids = Conference::lists('id');
 
-		foreach(range(1, 10) as $index)
+		$users = User::all();
+
+		foreach($conference_ids as $conference_id)
 		{
-			$chat = Chat::create([
-                'conference_id' => $faker->randomElement($conference_ids),
-                'name' => $faker->word
-			]);
+			$groups = Group::where('conference_id', '=', $conference_id)->get();
 
-            //Add groups
-            $groups = Group::where('conference_id', '=', $chat['conference_id'])->get();
-            if( ! $groups->isEmpty() )
-                foreach(range(0, count($groups)-1) as $groupIndex)
-                    $chat->groups()->save($groups[$groupIndex]);
+			foreach($users as $user)
+			{
+				$chat = Chat::create([
+					'conference_id' => $conference_id,
+					'name' => ucfirst($faker->word)
+				]);
 
-            //Add individual users
-            $users = User::all();
-            if( ! $users->isEmpty() )
-                foreach(range(0, count($users)-1) as $userIndex)
-                    $chat->users()->save($users[$userIndex]);
+				foreach($groups as $group)
+					$chat->groups()->save($group);
+
+
+				$chat->users()->save($user);
+			}
 		}
 	}
 
