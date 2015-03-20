@@ -30,6 +30,7 @@ class RequestConferenceChatsCommandHandler implements CommandHandler {
         $chats = $this->chatRepository->getAllForUserOnConference($command->conference_id, $command->user_id);
 
         $chats = array_map(function($chat) {
+            $chat['total_recipients'] = $this->chatRepository->getTotalRecipients($chat['id']);
             $chat['group_recipients'] = $this->chatRepository->getGroupRecipients($chat['id'])->toArray();
             $chat['user_recipients'] = $this->chatRepository->getDirectUserRecipients($chat['id'])->toArray();
             $chat['last_message'] = $this->chatRepository->getLastMessage($chat['id']);

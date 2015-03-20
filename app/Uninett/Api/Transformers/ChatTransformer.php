@@ -27,17 +27,20 @@ class ChatTransformer extends Transformer {
             'updated_at' => $item['updated_at']
         ];
 
+        if (array_key_exists('total_recipients', $item))
+            $output['total_recipients'] = $item['total_recipients'];
+
         if (array_key_exists('group_recipients', $item))
             $output['group_recipients'] = $this->groupTransformer->transformCollection($item['group_recipients']);
 
         if (array_key_exists('user_recipients', $item))
             $output['user_recipients'] = $this->userTransformer->transformCollection($item['user_recipients']);
 
-        if (array_key_exists('messages', $item))
-            $output['messages'] = $this->messageTransformer->transformCollection($item['messages']);
-
         if (array_key_exists('last_message', $item))
             $output['last_message'] = $this->messageTransformer->transform($item['last_message']);
+
+        if (array_key_exists('messages', $item))
+            $output['messages'] = $this->messageTransformer->transformCollection($item['messages']);
 
 		return $output;
 	}

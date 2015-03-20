@@ -189,4 +189,16 @@ class EloquentChatRepository {
 
         return $message;
     }
+
+    /**
+     * Get the total number of recipients in the
+     * chat
+     *
+     * @param $chat_id
+     * @return int
+     */
+    public function getTotalRecipients($chat_id)
+    {
+        return count($this->getAllUserRecipients($chat_id));
+    }
 }
