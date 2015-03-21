@@ -172,9 +172,9 @@ class EloquentChatRepository {
      */
     public function getMessages($chat_id)
     {
-        $messages = $this->getChat($chat_id)->messages;
+        $messages = $this->getChat($chat_id)->messages->sortByDesc('created_at');
 
-        return $messages->toArray();
+        return array_values($messages->toArray());
     }
 
     /**

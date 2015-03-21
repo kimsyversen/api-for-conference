@@ -27,7 +27,8 @@
 
 //Event::listen('illuminate.query', function($query)
 //{
-//    var_dump($query);
+//    Log::debug($query);
+//    //var_dump($query);
 //});
 
 /**
