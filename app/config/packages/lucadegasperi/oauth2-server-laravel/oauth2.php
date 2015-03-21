@@ -90,7 +90,7 @@ return [
 				    return false;
 			    }
 		    },
-		    'access_token_ttl' => 7200
+		    'access_token_ttl' => 604800
 	    ]
     ],
 
