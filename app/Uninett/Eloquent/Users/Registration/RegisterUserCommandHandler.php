@@ -7,16 +7,15 @@ use Laracasts\Commander\CommandHandler;
 use Laracasts\Commander\Events\DispatchableTrait;
 use Uninett\Eloquent\Users\Repositories\UserRepository;
 
-
 class RegisterUserCommandHandler implements  CommandHandler {
 
 	use DispatchableTrait;
 
-	protected $repository;
+	protected $userRepository;
 
-	function __construct(UserRepository $repository)
+	function __construct(UserRepository $userRepository)
 	{
-		$this->repository = $repository;
+		$this->userRepository = $userRepository;
 	}
 
 	/**
@@ -27,13 +26,9 @@ class RegisterUserCommandHandler implements  CommandHandler {
 	 */
 	public function handle($command)
 	{
-		$confirmation_code = str_random(40);
+        $user = $this->userRepository->register($command->email, $command->password, $command->confirmation_code);
 
-		$user = User::register($command->email, $command->password, $confirmation_code);
-
-		$this->repository->save($user);
-
-		$this->dispatchEventsFor($user);
+		$this->dispatchEventsFor($this->userRepository);
 
 		return $user;
 	}

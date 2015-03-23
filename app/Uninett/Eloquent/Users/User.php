@@ -7,12 +7,11 @@ use Illuminate\Auth\Reminders\RemindableTrait;
 use Illuminate\Auth\Reminders\RemindableInterface;
 
 use Illuminate\Support\Facades\Hash;
-use Laracasts\Commander\Events\EventGenerator;
 use Uninett\Users\Registration\Events\UserHasRegistered;
 
 class User extends Eloquent implements UserInterface, RemindableInterface {
 
-	use UserTrait, RemindableTrait, EventGenerator;
+	use UserTrait, RemindableTrait;
 
 	/**
 	 * The database table used by the model.
@@ -35,22 +34,6 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	public function setPasswordAttribute($password)
 	{
 		$this->attributes['password'] = Hash::make($password);
-	}
-
-    /**
-     * Register a new user
-     * @param $email
-     * @param $password
-     * @param null $confirmation_code
-     * @return static
-     */
-	public static function register($email, $password, $confirmation_code = null)
-	{
-		$user = new static(compact('email', 'password', 'confirmation_code'));
-
-		$user->raise(new UserHasRegistered($user));
-
-		return $user;
 	}
 
     /**
