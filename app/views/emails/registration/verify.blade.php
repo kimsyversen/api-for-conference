@@ -8,7 +8,7 @@
 
 <div>
     Hi chief! Thanks for registering. You must verify your account before you use it. Click on the link below.
-    {{ URL::to('register/verify/' . $confirmation_code ) }}.<br/>
+    {{ $confirmation_url }}.<br/>
 
 </div>
 
