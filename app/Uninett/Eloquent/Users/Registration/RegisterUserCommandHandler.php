@@ -35,8 +35,6 @@ class RegisterUserCommandHandler implements  CommandHandler {
 
 		$this->dispatchEventsFor($user);
 
-		Log::info('Created new user');
-
 		return $user;
 	}
 

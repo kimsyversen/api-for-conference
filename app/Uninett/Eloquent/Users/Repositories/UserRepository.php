@@ -7,9 +7,9 @@ class UserRepository {
 
 	public function save(User $user)
 	{
-     /*   // TODO: Kan vi fjerne denne?
+        // TODO: Kan vi fjerne denne?
 		if($user->confirmation_code === null)
-			$user->confirmed = 1;*/
+			$user->confirmed = 1;
 
 		return $user->save();
 	}
