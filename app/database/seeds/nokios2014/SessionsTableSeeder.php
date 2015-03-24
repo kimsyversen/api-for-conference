@@ -320,7 +320,7 @@ Resultatene fra workshopen er tenkt brukt senere i konferansen. Vel møtt til en
 		 * NEW DAY
 		 */
 
-		$today = Carbon::now()->addDays(1);
+		$todays = Carbon::now()->addDays(1);
 
         Session::create(array(
 	        'conference_id' => $conferenceId,
@@ -623,11 +623,190 @@ Dessert: Pasjonsfrukt panna cotta med mangokompott og sukkerbrød.',
 	        'location' => 'Clarion Hotel & Congress',
 
 	        'confirmed' => true,
-	        'category' => 'professional',
+	        'category' => 'social',
 	        'start_time' => Carbon::create($todays->year, $todays->month, $todays->day, 19, 30, 1),
 	        'end_time' => Carbon::create($todays->year, $todays->month, $todays->day, 23, 30, 0),
         ));
 
+
+		/**
+		 * NEW DAY
+		 */
+		$todays = Carbon::now()->addDays(1);
+
+		Session::create(array(
+			'conference_id' => $conferenceId,
+			'title' => 'Kaffe',
+			'description' => 'Kaffe',
+			'location' => 'Ankomsthallen',
+			'confirmed' => true,
+			'category' => 'break',
+			'start_time' => Carbon::create($todays->year, $todays->month, $todays->day, 8, 30, 1),
+			'end_time' => Carbon::create($todays->year, $todays->month, $todays->day, 9, 00, 0),
+		));
+
+		Session::create(array(
+			'conference_id' => $conferenceId,
+			'title' => 'Plenum',
+			'description' => 'Med blå-blå vind i forenklingsseilet.',
+			'location' => 'Cosmos 1',
+			'confirmed' => true,
+			'category' => 'professional',
+			'start_time' => Carbon::create($todays->year, $todays->month, $todays->day, 9, 00, 1),
+			'end_time' => Carbon::create($todays->year, $todays->month, $todays->day, 10, 30, 0),
+		));
+
+		Session::create(array(
+			'conference_id' => $conferenceId,
+			'title' => 'Kaffepause. Spekemat, ost og kjeks.',
+			'description' => 'Kaffepause. Spekemat, ost og kjeks.',
+			'location' => 'Ankomsthallen',
+			'confirmed' => true,
+			'category' => 'break',
+			'start_time' => Carbon::create($todays->year, $todays->month, $todays->day, 10, 30, 1),
+			'end_time' => Carbon::create($todays->year, $todays->month, $todays->day, 10, 45, 0),
+		));
+
+
+		Session::create(array(
+			'conference_id' => $conferenceId,
+			'title' => 'Sesjon 3A - Veikart for felleskomponenter',
+			'description' => 'Med blå-blå vind i forenklingsseilet.',
+			'location' => 'Cosmos 3A',
+			'confirmed' => true,
+			'category' => 'professional',
+			'start_time' => Carbon::create($todays->year, $todays->month, $todays->day, 10, 45, 1),
+			'end_time' => Carbon::create($todays->year, $todays->month, $todays->day, 11, 45, 0),
+		));
+
+
+		Session::create(array(
+			'conference_id' => $conferenceId,
+			'title' => 'Sesjon 3B - Digitalt førstevalg for alle - er det mulig?',
+			'description' => 'Digitalt førstevalg for alle - er det mulig?',
+			'location' => 'Cosmos 1',
+			'confirmed' => true,
+			'category' => 'professional',
+			'start_time' => Carbon::create($todays->year, $todays->month, $todays->day, 10, 45, 1),
+			'end_time' => Carbon::create($todays->year, $todays->month, $todays->day, 11, 45, 0),
+		));
+
+		Session::create(array(
+			'conference_id' => $conferenceId,
+			'title' => 'Sesjon 3C - Samarbeid mellom kunde og leverandør for å skape innovasjon i anskaffelsesprosessen',
+			'description' => 'Samarbeid mellom kunde og leverandør for å skape innovasjon i anskaffelsesprosessen',
+			'location' => 'Cosmos 3C',
+			'confirmed' => true,
+			'category' => 'professional',
+			'start_time' => Carbon::create($todays->year, $todays->month, $todays->day, 10, 45, 1),
+			'end_time' => Carbon::create($todays->year, $todays->month, $todays->day, 11, 45, 0),
+		));
+
+
+		Session::create(array(
+			'conference_id' => $conferenceId,
+			'title' => 'Lunsj',
+			'description' => 'Lunsj',
+			'location' => 'Restaurant 1',
+			'confirmed' => true,
+			'category' => 'break',
+			'start_time' => Carbon::create($todays->year, $todays->month, $todays->day, 11, 45, 1),
+			'end_time' => Carbon::create($todays->year, $todays->month, $todays->day, 12, 45, 0),
+		));
+
+
+		Session::create(array(
+			'conference_id' => $conferenceId,
+			'title' => 'Utstillerseminar 2',
+			'description' => 'U8 - Bouvet: Ekte digitalisering handler IKKE om å få skjemaer på nett, U9 - Microsoft: Fornying, forenkling og forbedring med innbyggeren i fokus, U10 - EVRY: Glem teknologi – tenk verdi!, U11 - Accenture: Hvordan modernisere borgernes og næringslivets interaksjon med det offentlige',
+			'location' => 'U8: Cosmos 1, U9: Cosmos 3A, U10: Cosmos 3C, U11: Space 1 ',
+			'confirmed' => true,
+			'category' => 'professional',
+			'start_time' => Carbon::create($todays->year, $todays->month, $todays->day, 12, 45, 1),
+			'end_time' => Carbon::create($todays->year, $todays->month, $todays->day, 13, 15, 0),
+		));
+
+		Session::create(array(
+			'conference_id' => $conferenceId,
+			'title' => 'Pause.',
+			'description' => 'Pause',
+			'location' => '',
+			'confirmed' => true,
+			'category' => 'break',
+			'start_time' => Carbon::create($todays->year, $todays->month, $todays->day, 13, 15, 1),
+			'end_time' => Carbon::create($todays->year, $todays->month, $todays->day, 13, 30, 0),
+		));
+
+
+		Session::create(array(
+			'conference_id' => $conferenceId,
+			'title' => 'Sesjon 4A - Digital ledelse',
+			'description' => 'Samarbeid mellom kunde og leverandør for å skape innovasjon i anskaffelsesprosessen',
+			'location' => 'Cosmos 1',
+			'confirmed' => true,
+			'category' => 'professional',
+			'start_time' => Carbon::create($todays->year, $todays->month, $todays->day, 13, 30, 1),
+			'end_time' => Carbon::create($todays->year, $todays->month, $todays->day, 14, 30, 0),
+		));
+
+		Session::create(array(
+			'conference_id' => $conferenceId,
+			'title' => 'Sesjon 4B - Kommunale fellesløsninger: Visjon og virkelighet',
+			'description' => 'Kommunale fellesløsninger: Visjon og virkelighet',
+			'location' => 'Cosmos 3A',
+			'confirmed' => true,
+			'category' => 'professional',
+			'start_time' => Carbon::create($todays->year, $todays->month, $todays->day, 13, 30, 1),
+			'end_time' => Carbon::create($todays->year, $todays->month, $todays->day, 14, 30, 0),
+		));
+
+
+		Session::create(array(
+			'conference_id' => $conferenceId,
+			'title' => 'Sesjon 4C - Skytjenester - bruk dem gjerne, men bruk dem riktig!',
+			'description' => 'Skytjenester - bruk dem gjerne, men bruk dem riktig!',
+			'location' => 'Cosmos 3C',
+			'confirmed' => true,
+			'category' => 'professional',
+			'start_time' => Carbon::create($todays->year, $todays->month, $todays->day, 13, 30, 1),
+			'end_time' => Carbon::create($todays->year, $todays->month, $todays->day, 14, 30, 0),
+		));
+
+
+		Session::create(array(
+			'conference_id' => $conferenceId,
+			'title' => 'Pause. Frukt, grønt og dip.',
+			'description' => 'Pause. Frukt, grønt og dip',
+			'location' => '',
+			'confirmed' => true,
+			'category' => 'break',
+			'start_time' => Carbon::create($todays->year, $todays->month, $todays->day, 14, 30, 1),
+			'end_time' => Carbon::create($todays->year, $todays->month, $todays->day, 14, 45, 0),
+		));
+
+
+		Session::create(array(
+			'conference_id' => $conferenceId,
+			'title' => 'Internasjonalt plenum',
+			'description' => 'nsights from Estonia – World Leaders in the E-state',
+			'location' => 'Cosmos 1',
+			'confirmed' => true,
+			'category' => 'professional',
+			'start_time' => Carbon::create($todays->year, $todays->month, $todays->day, 14, 45, 1),
+			'end_time' => Carbon::create($todays->year, $todays->month, $todays->day, 15, 45, 0),
+		));
+
+
+		Session::create(array(
+			'conference_id' => $conferenceId,
+			'title' => 'Vel hjem!',
+			'description' => 'Vel hjem!',
+			'location' => '',
+			'confirmed' => true,
+			'category' => 'break',
+			'start_time' => Carbon::create($todays->year, $todays->month, $todays->day, 14, 30, 1),
+			'end_time' => Carbon::create($todays->year, $todays->month, $todays->day, 14, 45, 0),
+		));
 	}
 
 }
