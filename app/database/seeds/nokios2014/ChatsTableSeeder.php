@@ -18,7 +18,7 @@ class ChatsTableSeeder extends \Seeder {
 
 		foreach($conference_ids as $conference_id)
 		{
-			$groups = Group::where('conference_id', '=', $conference_id)->get();
+			$groups = Group::where('conference_id', '=', $conference_id)->where('name', 'admin')->get();
 
 			foreach($users as $user)
 			{

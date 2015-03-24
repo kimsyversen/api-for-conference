@@ -18,16 +18,14 @@ class MessagesTableSeeder extends \Seeder {
 		$now = Carbon::now();
 		foreach($chat_ids as $chat_id)
 		{
-			foreach(range(1, 5) as $index)
-			{
-				Message::create([
-					'chat_id' => $chat_id,
-					'user_id' => $faker->randomElement($user_ids),
-					'text' => ucfirst($faker->paragraph()),
-					'created_at' => $now->addMinutes($index),
-					'updated_at' => $now->addMinutes($index)
-				]);
-			}
+			Message::create([
+				'chat_id' => $chat_id,
+				'user_id' => 1,
+				'text' => 'Velkommen til konferansen for 2015. Dette er første gang vi benytter denne konferanseappen og vi håper du vil like den. Det du kan gjøre med den er å se på konferanseprogrammet. Programmet viser også oppdateringer til sesjoner. I tillegg blir de annonsert i vår newsfeed.
+				Hvis du oppretter en konto og logger inn, vil du få mulighet til å lese private meldinger fra andre og opprette ditt eget personlige program. Det er også tilgang til kart hvis du får behov for å finne frem.',
+				'created_at' => $now,
+				'updated_at' => $now,
+			]);
 		}
 	}
 

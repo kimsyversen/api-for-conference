@@ -10,19 +10,16 @@ class NewspostsTableSeeder extends \Seeder {
 
 	public function run()
 	{
-		$faker = Faker::create();
-
-        $user_ids = User::lists('id');
-
         $newsfeed_ids = Newsfeed::lists('id');
 
 		foreach($newsfeed_ids as $newsfeed_id)
-			foreach(range(1, 3) as $index)
+
 				Newspost::create([
 	                'newsfeed_id' => $newsfeed_id,
-	                'user_id' => $faker->randomElement($user_ids),
-	                'title' => $faker->sentence(),
-	                'body' => $faker->text()
+	                'user_id' => 1,
+	                'title' => 'Velkommen til konferansen for 2015',
+	                'body' => 'Dette er første gang vi benytter denne konferanseappen og vi håper du vil like den. Det du kan gjøre med den er å se på konferanseprogrammet. Programmet viser også oppdateringer til sesjoner. I tillegg blir de annonsert i vår newsfeed.
+				Hvis du oppretter en konto og logger inn, vil du få mulighet til å lese private meldinger fra andre og opprette ditt eget personlige program. Det er også tilgang til kart hvis du får behov for å finne frem.',
 				]);
 
 	}
