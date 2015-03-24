@@ -32,9 +32,18 @@ class EloquentConferenceScheduleRepository implements ConferenceScheduleReposito
      */
     public function getActiveScheduleForConference($conference_id)
     {
-        $activeScheduleId = Conference::findOrFail($conference_id)['active_schedule_id'];
+        $conference = Conference::findOrFail($conference_id);
 
-        $activeSchedule = ConferenceSchedule::with('sessions')->findOrFail($activeScheduleId);
+        $activeSchedule = ConferenceSchedule::with('sessions')->find($conference['active_schedule_id']);
+
+        if(! $activeSchedule)
+        {
+            $activeSchedule = ConferenceSchedule::updateOrCreate(['conference_id' => $conference->id])->first();
+
+            $conference['active_schedule_id'] = $activeSchedule->id;
+
+            $conference->save();
+        }
 
         $this->raise(new ActiveScheduleWasRequested($activeSchedule));
 

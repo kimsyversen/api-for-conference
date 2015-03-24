@@ -7,6 +7,6 @@ class ConferenceSchedule extends Schedule {
      *
      * @var array
      */
-	protected $fillable = [];
+	protected $fillable = ['conference_id'];
 
 }
