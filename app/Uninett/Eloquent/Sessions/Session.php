@@ -27,6 +27,11 @@ class Session extends Eloquent {
         return Carbon::createFromFormat('Y-m-d H:i:s', $value);
     }
 
+    public function getConfirmedAttribute($value)
+    {
+        return boolval($value);
+    }
+
     /**
      * A session may exist in many schedules
      *

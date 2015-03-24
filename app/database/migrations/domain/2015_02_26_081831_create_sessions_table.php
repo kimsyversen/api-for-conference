@@ -20,6 +20,7 @@ class CreateSessionsTable extends Migration {
             $table->longText('description');
             $table->string('location');
             $table->enum('category', ['social', 'professional', 'break']);
+            $table->boolean('confirmed')->default(true);
             $table->timestamp('start_time');
             $table->timestamp('end_time');
             $table->timestamps();

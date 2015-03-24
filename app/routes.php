@@ -25,6 +25,18 @@
 //    return 'Message sendt ' . getenv('MANDRILL_SECRET');
 //});
 
+//Route::get('/', function()
+//{
+//    Queue::push(function($job)
+//    {
+//        Log::info('Queues are pretty darn cool.');
+//
+//        $job->delete();
+//    });
+//
+//    return 'It\'s done';
+//});
+
 //Event::listen('illuminate.query', function($query)
 //{
 //    Log::debug($query);

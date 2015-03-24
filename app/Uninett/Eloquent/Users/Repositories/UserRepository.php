@@ -1,35 +1,39 @@
 <?php namespace Uninett\Eloquent\Users\Repositories;
 
+use Laracasts\Commander\Events\EventGenerator;
 use Uninett\Eloquent\Users\User;
-
+use Uninett\Exceptions\VerifyUserException;
+use Uninett\Users\Registration\Events\UserHasBeenVerified;
+use Uninett\Users\Registration\Events\UserHasRegistered;
+use Illuminate\Http\Response as HttpResponse;
 
 class UserRepository {
 
-	public function save(User $user)
-	{
-     /*   // TODO: Kan vi fjerne denne?
-		if($user->confirmation_code === null)
-			$user->confirmed = 1;*/
-
-		return $user->save();
-	}
+    use EventGenerator;
 
 	public function verify($confirmation_code)
 	{
-		if(!$confirmation_code)
-			return false;
+		$user = User::where('confirmation_code', $confirmation_code)->get()->first();
 
-		$user = User::where('confirmation_code', '=', $confirmation_code)->get()->first();
-
-		if (! $user)
-			return false;
+		if (! $user) throw new VerifyUserException('Verification code expired.', 'Verification code expired.', HttpResponse::HTTP_PRECONDITION_FAILED);
 
 		$user->confirmed = 1;
 		$user->confirmation_code = null;
 		$user->save();
 
+        $this->raise(new UserHasBeenVerified($user));
+
 		return $user;
 	}
+
+    public function register($email, $password, $confirmation_code)
+    {
+        $user = User::updateOrCreate(compact('email'), compact('email', 'password', 'confirmation_code'));
+
+        $this->raise(new UserHasRegistered($user));
+
+        return $user;
+    }
 
 
 } 

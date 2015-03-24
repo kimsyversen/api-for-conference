@@ -18,11 +18,9 @@ class RegistrationController extends ApiController {
 
 	public function store()
 	{
-		$user = $this->execute(RegisterUserCommand::class);
+		$this->execute(RegisterUserCommand::class);
 
 		return $this->responder->respondCreated('Account was successfully created.');
-
-		//return $this->respondWithError('Something went wrong.');
 	}
 
 	public function verify($confirmation_code)
