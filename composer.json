@@ -28,7 +28,8 @@
 			"app/database/migrations",
 			"app/database/seeds",
             "app/tests/helpers",
-            "app/database/seeds/fakeSeed"
+            "app/database/seeds/fakeSeed",
+            "app/database/seeds/nokios2014"
 		],
       "psr-4": {
         "Uninett\\": "app/Uninett",
