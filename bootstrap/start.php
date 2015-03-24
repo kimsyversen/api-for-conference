@@ -26,7 +26,7 @@ $app = new Illuminate\Foundation\Application;
 
 $env = $app->detectEnvironment(array(
 	'production' => array('shadowcat', 'shadowcat.uninett.no'),
-	'local' =>  array('kImac.local' , 'administrator-VirtualBox')
+	'local' =>  array('kImac' , 'administrator-VirtualBox')
 ));
 
 /*

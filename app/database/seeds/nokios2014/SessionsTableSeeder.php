@@ -16,6 +16,17 @@ class SessionsTableSeeder extends \UninettSeeder {
 
 		$todays = Carbon::now();
 
+		Session::create([
+			'conference_id' => $conferenceId,
+			'title' => 'Registrering',
+			'description' => '',
+			'location' => 'Ankomsthallen',
+			'category' => 'professional',
+			'start_time' => Carbon::create($todays->year, $todays->month, $todays->day, 8, 30, 1),
+			'end_time' => Carbon::create($todays->year, $todays->month, $todays->day, 9, 30, 0),
+		]);
+
+
 		/**
 		 *
 		 *  First parallell sessions
@@ -72,7 +83,7 @@ class SessionsTableSeeder extends \UninettSeeder {
 			'conference_id' => $conferenceId,
 			'title' => 'Kurs 5 - Offentlige anskaffelser til det beste',
 			'description' => 'Best mulig for flest mulig! I korthet er dette hva universell utforming (uu) dreier seg om. Ønsker du å øke trafikken på nettstedet ditt, hjelper det derfor å tenke uu. Kunnskapen finnes. Det handler bare om å ta den i bruk! Det er utarbeidet en standard med retningslinjer for tilgjengelig webinnhold (WCAG 2.0). Denne standarden konkretiserer hva det vil si å gjøre nettsider tilgjengelige for mennesker med nedsatt funksjonsevne. Håndhevingen av Diskriminerings- og Tilgjengelighetsloven baseres på WCAG. Oppfyller ikke nettstedet ditt retningslinjene i standarden, kan du bli bøtelagt og dømt til å rette opp feilene. Statistikk viser at hver sjette nordmann har en funksjonshemning. Microsoft har gjennomført undersøkelser som viser at en av to trenger deres tilgjengelighetsfunksjonalitet. Dette betyr at uu ikke dreier seg om å sikre gode løsninger for noen få funksjonshemmede, men om at tilgjengelige løsninger er noe vi alle kan ha glede av. Viktigere enn loven er å forstå at universell utforming gir flere og mer fornøyde brukere. Universell utforming er derfor en tankegang for deg som vil noe mer. For deg som vil sikre god brukervennlighet for alle. Erfaringen viser at dersom du sørger for god tilgjengelighet for funksjonshemmede, blir løsningene bedre og enklere å bruke for alle.',
-			'location' => 'Ikke tilgjenglig',
+			'location' => '',
 			'category' => 'professional',
 			'confirmed' => false,
 			'start_time' => Carbon::create($todays->year, $todays->month, $todays->day, 9, 30, 1),
@@ -94,19 +105,20 @@ class SessionsTableSeeder extends \UninettSeeder {
 		Session::create([
 			'conference_id' => $conferenceId,
 			'title' => 'Kurs 7 - Hvordan ta i bruk KS SvarUt i kommuner og fylkeskommuner',
-			'description' => 'Big data er et begrep alle som har fulgt med på diskusjoner rundt digitalisering har møtt på de siste årene. Vi vil i dette kurset gi innsikt hva som ligger i begrepet Big data og gi en overordnet beskrivelse av teknologien som ligger til grunn. Vi kommer særlig til å vise fram anvendelser av teknologien med eksempler fra både privat og offentlig sektor. Vi kjenner alle til hvordan Amazon anbefaler deg produkter på basis av hva brukere som ligner på deg har kjøpt. Hvilke offentlige virksomheter kan ha størst nytte av å tenke som Amazon?',
-			'location' => 'Ikke tilgjenglig',
+			'description' => '',
+			'location' => '',
 			'confirmed' => false,
 			'category' => 'professional',
 			'start_time' => Carbon::create($todays->year, $todays->month, $todays->day, 9, 30, 1),
 			'end_time' => Carbon::create($todays->year, $todays->month, $todays->day, 11, 15, 0),
 		]);
 
+
 		Session::create([
 			'conference_id' => $conferenceId,
-			'title' => 'Kurs 7 - Hvordan ta i bruk KS? Svar: Ut i kommuner og fylkeskommuner',
-			'description' => 'Big data er et begrep alle som har fulgt med på diskusjoner rundt digitalisering har møtt på de siste årene. Vi vil i dette kurset gi innsikt hva som ligger i begrepet Big data og gi en overordnet beskrivelse av teknologien som ligger til grunn. Vi kommer særlig til å vise fram anvendelser av teknologien med eksempler fra både privat og offentlig sektor. Vi kjenner alle til hvordan Amazon anbefaler deg produkter på basis av hva brukere som ligner på deg har kjøpt. Hvilke offentlige virksomheter kan ha størst nytte av å tenke som Amazon?',
-			'location' => 'Cosmos 3A',
+			'title' => 'Lunsj',
+			'description' => '',
+			'location' => 'Restaurant 1',
 			'category' => 'break',
 			'start_time' => Carbon::create($todays->year, $todays->month, $todays->day, 11, 30, 1),
 			'end_time' => Carbon::create($todays->year, $todays->month, $todays->day, 12, 30, 0),
@@ -185,8 +197,8 @@ Til slutt vil vi, I samarbeid med våre partnere, viser gode forenklings- og dig
         Session::create(array(
 	        'conference_id' => $conferenceId,
 	        'title' => 'Workshop 5 - Er den nasjonale beredskapen i Norge god nok til å møte krise og katastrofe?',
-	        'description' => 'Ikke tilgjenglig',
-	        'location' => 'Ikke tilgjenglig',
+	        'description' => '',
+	        'location' => '',
 	        'confirmed' => false,
 	        'category' => 'professional',
 	        'start_time' => Carbon::create($todays->year, $todays->month, $todays->day, 12, 30, 1),
@@ -197,8 +209,8 @@ Til slutt vil vi, I samarbeid med våre partnere, viser gode forenklings- og dig
         Session::create(array(
 	        'conference_id' => $conferenceId,
 	        'title' => 'Workshop 6 - Finansieringsmuligheter i IKT 2025 og EU sitt Horizon 2020-program',
-	        'description' => 'Ikke tilgjenglig',
-	        'location' => 'Ikke tilgjenglig',
+	        'description' => '',
+	        'location' => '',
 
 	        'confirmed' => false,
 	        'category' => 'professional',
@@ -243,22 +255,20 @@ Resultatene fra workshopen er tenkt brukt senere i konferansen. Vel møtt til en
         Session::create(array(
 	        'conference_id' => $conferenceId,
 	        'title' => 'Pause - Spekemat, ost og kjeks',
-	        'description' => 'Ikke tilgjenglig',
-	        'location' => 'Ikke tilgjenglig',
-
+	        'description' => '',
+	        'location' => '',
 	        'confirmed' => true,
 	        'category' => 'professional',
 	        'start_time' => Carbon::create($todays->year, $todays->month, $todays->day, 14, 00, 1),
 	        'end_time' => Carbon::create($todays->year, $todays->month, $todays->day, 14, 15, 0),
         ));
-
-
+		
 
         Session::create(array(
 	        'conference_id' => $conferenceId,
 	        'title' => 'Workshop fortsetter',
-	        'description' => 'Ikke tilgjenglig',
-	        'location' => 'Ikke tilgjenglig',
+	        'description' => '',
+	        'location' => '',
 
 	        'confirmed' => true,
 	        'category' => 'professional',
@@ -269,12 +279,12 @@ Resultatene fra workshopen er tenkt brukt senere i konferansen. Vel møtt til en
 
         Session::create(array(
 	        'conference_id' => $conferenceId,
-	        'title' => 'Pause - Spekemat, ost og kjeks',
-	        'description' => 'Ikke tilgjenglig',
-	        'location' => 'Ikke tilgjenglig',
+	        'title' => 'Pause - Oppskåret frukt, grønt & dip',
+	        'description' => '',
+	        'location' => '',
 
 	        'confirmed' => true,
-	        'category' => 'professional',
+	        'category' => 'break',
 	        'start_time' => Carbon::create($todays->year, $todays->month, $todays->day, 15, 45, 1),
 	        'end_time' => Carbon::create($todays->year, $todays->month, $todays->day, 16, 00, 0),
         ));
@@ -282,8 +292,8 @@ Resultatene fra workshopen er tenkt brukt senere i konferansen. Vel møtt til en
         Session::create(array(
 	        'conference_id' => $conferenceId,
 	        'title' => 'Workshop fortsetter',
-	        'description' => 'Ikke tilgjenglig',
-	        'location' => 'Ikke tilgjenglig',
+	        'description' => '',
+	        'location' => '',
 
 	        'confirmed' => true,
 	        'category' => 'professional',
@@ -294,19 +304,18 @@ Resultatene fra workshopen er tenkt brukt senere i konferansen. Vel møtt til en
         Session::create(array(
 	        'conference_id' => $conferenceId,
 	        'title' => 'Slutt',
-	        'description' => 'Ikke tilgjenglig',
-	        'location' => 'Ikke tilgjenglig',
+	        'description' => '',
+	        'location' => '',
 	        'confirmed' => true,
 	        'category' => 'break',
 	        'start_time' => Carbon::create($todays->year, $todays->month, $todays->day, 17, 00, 1),
 	        'end_time' => Carbon::create($todays->year, $todays->month, $todays->day, 17, 00, 2),
         ));
 
-
         Session::create(array(
 	        'conference_id' => $conferenceId,
 	        'title' => 'Rockheim, Splitter Pine Tapas og Charlotte Audestad',
-	        'description' => 'Rockheim',
+	        'description' => '',
 	        'location' => 'Rockheim',
 
 	        'confirmed' => true,
@@ -317,7 +326,7 @@ Resultatene fra workshopen er tenkt brukt senere i konferansen. Vel møtt til en
 
 
 		/**
-		 * NEW DAY
+		 * NEW DAY ("Onsdag")
 		 */
 
 		$todays = Carbon::now()->addDays(1);
@@ -334,65 +343,43 @@ Resultatene fra workshopen er tenkt brukt senere i konferansen. Vel møtt til en
 	        'end_time' => Carbon::create($todays->year, $todays->month, $todays->day, 9, 30, 0),
         ));
 
-        Session::create(array(
-	        'conference_id' => $conferenceId,
-	        'title' => 'Åpning',
-	        'description' => 'Prorektor Berit Kjeldstad ønsker velkommen og åpner konferansen.',
-	        'location' => 'Cosmos 1',
+		//Opening
 
-	        'confirmed' => true,
-	        'category' => 'professional',
-	        'start_time' => Carbon::create($todays->year, $todays->month, $todays->day, 9, 30, 1),
-	        'end_time' => Carbon::create($todays->year, $todays->month, $todays->day, 11, 00, 0),
-        ));
+		Session::create(array(
+			'conference_id' => $conferenceId,
+			'title' => 'Halveis til framtiden - digitale trender og impulser',
+			'description' => 'Truls har skrevet en bok sammen med Adjiedj Bakaas med samme tittel som foredraget. Boka peker på 5 megatrender og gir en rekke innspill på digitale trender og impulser vil endre det meste.',
+			'location' => 'Cosmos 1',
 
-        Session::create(array(
-	        'conference_id' => $conferenceId,
-	        'title' => 'Halveis til framtiden - digitale trender og impulser',
-	        'description' => 'Truls har skrevet en bok sammen med Adjiedj Bakaas med samme tittel som foredraget. Boka peker på 5 megatrender og gir en rekke innspill på digitale trender og impulser vil endre det meste.',
-	        'location' => 'Cosmos 1',
+			'confirmed' => true,
+			'category' => 'professional',
+			'start_time' => Carbon::create($todays->year, $todays->month, $todays->day, 9, 30, 1),
+			'end_time' => Carbon::create($todays->year, $todays->month, $todays->day, 11, 00, 0),
+		));
 
-	        'confirmed' => true,
-	        'category' => 'professional',
-	        'start_time' => Carbon::create($todays->year, $todays->month, $todays->day, 9, 30, 1),
-	        'end_time' => Carbon::create($todays->year, $todays->month, $todays->day, 11, 00, 0),
-        ));
+		Session::create(array(
+			'conference_id' => $conferenceId,
+			'title' => 'Digital kommunikasjon',
+			'description' => 'Digital kommunikasjon skal være hovedregelen i dialogen mellom offentlig sektor og innbyggerne. Vi hører om de nye digitale byggeklossene, SvarUt, kontakt- og reservasjonsregisteret og digital post til innbyggere. Disse skal inngå i den digitale grunnmuren. Hva betyr dette egentlig for innbyggerne, kommunene og statlige virksomheter? Er vi i mål med grunnmuren når disse kommer på plass? Og hvilken utvikling kan vi forvente etter dette? I samtalen vil de fire reflektere blant annet rundt disse spørsmålene, og komme inn på: Betydningen av samhandling og samarbeid mellom kommune og stat; Veikart for felleskomponenter for å sikre forutsigbarhet, fremdrift og en helhetlig tilnærming; Digital kompetanse hos ledere.',
+			'location' => 'Cosmos 1',
+			'confirmed' => true,
+			'category' => 'professional',
+			'start_time' => Carbon::create($todays->year, $todays->month, $todays->day, 9, 30, 1),
+			'end_time' => Carbon::create($todays->year, $todays->month, $todays->day, 11, 00, 0),
+		));
 
-        Session::create(array(
-	        'conference_id' => $conferenceId,
-	        'title' => 'Digital kommunikasjon',
-	        'description' => 'Digital kommunikasjon skal være hovedregelen i dialogen mellom offentlig sektor og innbyggerne. Vi hører om de nye digitale byggeklossene, SvarUt, kontakt- og reservasjonsregisteret og digital post til innbyggere. Disse skal inngå i den digitale grunnmuren. Hva betyr dette egentlig for innbyggerne, kommunene og statlige virksomheter? Er vi i mål med grunnmuren når disse kommer på plass? Og hvilken utvikling kan vi forvente etter dette? I samtalen vil de fire reflektere blant annet rundt disse spørsmålene, og komme inn på: Betydningen av samhandling og samarbeid mellom kommune og stat; Veikart for felleskomponenter for å sikre forutsigbarhet, fremdrift og en helhetlig tilnærming; Digital kompetanse hos ledere.',
-	        'location' => 'Cosmos 1',
+		Session::create(array(
+			'conference_id' => $conferenceId,
+			'title' => 'Kaffepause. Spekemat, ost og kjeks',
+			'description' => '',
+			'location' => 'Ankomsthallen',
+			'confirmed' => true,
+			'category' => 'break',
+			'start_time' => Carbon::create($todays->year, $todays->month, $todays->day, 11, 00, 1),
+			'end_time' => Carbon::create($todays->year, $todays->month, $todays->day, 11, 15, 0),
+		));
 
-	        'confirmed' => true,
-	        'category' => 'professional',
-	        'start_time' => Carbon::create($todays->year, $todays->month, $todays->day, 9, 30, 1),
-	        'end_time' => Carbon::create($todays->year, $todays->month, $todays->day, 11, 00, 0),
-        ));
 
-        Session::create(array(
-	        'conference_id' => $conferenceId,
-	        'title' => 'Presentasjon av kandidater til Fyrlykt-prisen',
-	        'description' => 'Presentasjon av kandidater til Fyrlykt-prisen.',
-	        'location' => 'Cosmos 1',
-
-	        'confirmed' => true,
-	        'category' => 'professional',
-	        'start_time' => Carbon::create($todays->year, $todays->month, $todays->day, 9, 30, 1),
-	        'end_time' => Carbon::create($todays->year, $todays->month, $todays->day, 11, 00, 0),
-        ));
-
-        Session::create(array(
-	        'conference_id' => $conferenceId,
-	        'title' => 'Kaffepause. Spekemat, ost og kjeks',
-	        'description' => 'Det blir servert kaffe og spekemat med ost og kjeks i fellesområdet.',
-	        'location' => 'Fellesområdet',
-
-	        'confirmed' => true,
-	        'category' => 'professional',
-	        'start_time' => Carbon::create($todays->year, $todays->month, $todays->day, 11, 00, 1),
-	        'end_time' => Carbon::create($todays->year, $todays->month, $todays->day, 11, 15, 0),
-        ));
 
         Session::create(array(
 	        'conference_id' => $conferenceId,
@@ -423,7 +410,7 @@ Vi har med oss Kultur- og naturreise, et prosjekt under Kartverket, Kulturrådet
         Session::create(array(
 	        'conference_id' => $conferenceId,
 	        'title' => 'U3 - Brønnøysundregistrene: Med Altinn i fremtiden',
-	        'description' => 'Ingen diskripsjon',
+	        'description' => '',
 	        'location' => 'Cosmos 1',
 
 	        'confirmed' => true,
@@ -455,7 +442,6 @@ Men hvordan går man frem for å danne tjenester som bruker de digitale kontaktf
 	        'title' => 'U5 - Telenor: Velferdsteknologi i praksis',
 	        'description' => 'Værnes-regionen var tidlig ute med bruk av digitale løsninger innenfor helse og omsorg. Stjørdal og Selbu var de første kommunene som innførte løsning der velferdsteknologi ble integrert med fagsystemet og journalsystemet i kommunen. Hva er utfordringene med helse og omsorg i kommunene og hva er målet med innføring av ny teknologi? Vi får en innføring i kommunens erfaringer med løsningen.',
 	        'location' => 'Living Room 1 ',
-
 	        'confirmed' => true,
 	        'category' => 'professional',
 	        'start_time' => Carbon::create($todays->year, $todays->month, $todays->day, 11, 15, 1),
@@ -467,7 +453,6 @@ Men hvordan går man frem for å danne tjenester som bruker de digitale kontaktf
 	        'title' => 'U6 - Visma: Hvordan skape innovasjon i din virksomhet?',
 	        'description' => 'Vi gir deg en innføring i hvordan du kan skape en innovasjonskultur i din organisasjon. Ragne forteller om hva vi i Visma gjør for å fange, foredle og implementere nye idèer fra egen organisasjon i forretningsutviklingen, og gir deg samtidig noen råd om prosess, verktøy og aktiviteter du kan benytte for å lykkes med å etablere en innovasjonskultur internt.',
 	        'location' => 'Space 1 ',
-
 	        'confirmed' => true,
 	        'category' => 'professional',
 	        'start_time' => Carbon::create($todays->year, $todays->month, $todays->day, 11, 15, 1),
@@ -477,9 +462,8 @@ Men hvordan går man frem for å danne tjenester som bruker de digitale kontaktf
         Session::create(array(
 	        'conference_id' => $conferenceId,
 	        'title' => 'U7 - Kantega: Hvordan finne ut mer om brukerne dine enn brukeren selv vet',
-	        'description' => 'Ingen diskripsjon',
+	        'description' => '',
 	        'location' => 'Living Room 4',
-
 	        'confirmed' => true,
 	        'category' => 'professional',
 	        'start_time' => Carbon::create($todays->year, $todays->month, $todays->day, 12, 00, 1),
@@ -621,7 +605,6 @@ Forrett: Sukkersaltet Frøya Laks, Dillkrem, karse og marinert agurk
 Hovedrett: Langbakt Indrefilet av storfe, fenikkel, stekt sopp, pac choy, amadinepotet og timiansjy
 Dessert: Pasjonsfrukt panna cotta med mangokompott og sukkerbrød.',
 	        'location' => 'Clarion Hotel & Congress',
-
 	        'confirmed' => true,
 	        'category' => 'social',
 	        'start_time' => Carbon::create($todays->year, $todays->month, $todays->day, 19, 30, 1),
@@ -632,12 +615,12 @@ Dessert: Pasjonsfrukt panna cotta med mangokompott og sukkerbrød.',
 		/**
 		 * NEW DAY
 		 */
-		$todays = Carbon::now()->addDays(1);
+		$todays = Carbon::now()->addDays(2);
 
 		Session::create(array(
 			'conference_id' => $conferenceId,
 			'title' => 'Kaffe',
-			'description' => 'Kaffe',
+			'description' => '',
 			'location' => 'Ankomsthallen',
 			'confirmed' => true,
 			'category' => 'break',
@@ -659,7 +642,7 @@ Dessert: Pasjonsfrukt panna cotta med mangokompott og sukkerbrød.',
 		Session::create(array(
 			'conference_id' => $conferenceId,
 			'title' => 'Kaffepause. Spekemat, ost og kjeks.',
-			'description' => 'Kaffepause. Spekemat, ost og kjeks.',
+			'description' => '',
 			'location' => 'Ankomsthallen',
 			'confirmed' => true,
 			'category' => 'break',
@@ -702,11 +685,10 @@ Dessert: Pasjonsfrukt panna cotta med mangokompott og sukkerbrød.',
 			'end_time' => Carbon::create($todays->year, $todays->month, $todays->day, 11, 45, 0),
 		));
 
-
 		Session::create(array(
 			'conference_id' => $conferenceId,
 			'title' => 'Lunsj',
-			'description' => 'Lunsj',
+			'description' => '',
 			'location' => 'Restaurant 1',
 			'confirmed' => true,
 			'category' => 'break',
@@ -715,11 +697,24 @@ Dessert: Pasjonsfrukt panna cotta med mangokompott og sukkerbrød.',
 		));
 
 
+		//Utstillerseminarer
 		Session::create(array(
 			'conference_id' => $conferenceId,
-			'title' => 'Utstillerseminar 2',
-			'description' => 'U8 - Bouvet: Ekte digitalisering handler IKKE om å få skjemaer på nett, U9 - Microsoft: Fornying, forenkling og forbedring med innbyggeren i fokus, U10 - EVRY: Glem teknologi – tenk verdi!, U11 - Accenture: Hvordan modernisere borgernes og næringslivets interaksjon med det offentlige',
-			'location' => 'U8: Cosmos 1, U9: Cosmos 3A, U10: Cosmos 3C, U11: Space 1 ',
+			'title' => 'U8 - Bouvet: Ekte digitalisering handler IKKE om å få skjemaer på nett',
+			'description' => 'Digitalisering må gi gevinst både for virksomhet og brukere. I dette foredraget ser vi på hvordan man går gjennom helheten i tjenesteproduksjon og kontaktpunkter mot brukere og samarbeidspartnere for å oppnå en slik dobbel gevinst. Ekte digitalisering har konsekvenser for innbyggeropplevelser, arbeidsprosesser og organisering, arkitektur og løsningsrealisering. I foredraget brukes eksempler fra Statens lånekasse og Statens innkrevingssentral.',
+			'location' => 'Cosmos 1',
+			'confirmed' => true,
+			'category' => 'professional',
+			'start_time' => Carbon::create($todays->year, $todays->month, $todays->day, 12, 45, 1),
+			'end_time' => Carbon::create($todays->year, $todays->month, $todays->day, 13, 15, 0),
+		));
+
+
+		Session::create(array(
+			'conference_id' => $conferenceId,
+			'title' => 'U9 - Microsoft: Fornying, forenkling og forbedring med innbyggeren i fokus',
+			'description' => 'Hvordan kan vi oppnå regjeringens mål om fornying, forenkling og forbedring gjennom å sette innbyggeren i fokus for løsninger i det offentlige Norge? Det handler om gi å ansatte i offentlig sektor mer tid til å gjøre den egentlige jobben - yte bedre service og tjenester til innbyggere og næringsliv. Vi viser eksempler fra Norge og England på moderne arbeidsflater og mobile løsninger på brukernes og ansattes premisser.»',
+			'location' => 'Cosmos 3A',
 			'confirmed' => true,
 			'category' => 'professional',
 			'start_time' => Carbon::create($todays->year, $todays->month, $todays->day, 12, 45, 1),
@@ -728,8 +723,32 @@ Dessert: Pasjonsfrukt panna cotta med mangokompott og sukkerbrød.',
 
 		Session::create(array(
 			'conference_id' => $conferenceId,
-			'title' => 'Pause.',
-			'description' => 'Pause',
+			'title' => 'U10 - EVRY: Glem teknologi – tenk verdi!',
+			'description' => 'Megatrender preger IT-bransjen i større og større grad, og begrepet «Cloud» treffer oss oftere og oftere. Er skyen virkelig bare utfordringer? Hvilke «quick-wins» kan skytjenester gi, og hvordan lykkes vi med dem? Ved å fokusere på verdien slike tjenester kan gi, kan kanskje holdninger til slike tjenester snus. Vi ser spesielt på Microsofts skytjenester Office365.',
+			'location' => 'Cosmos 3C',
+			'confirmed' => true,
+			'category' => 'professional',
+			'start_time' => Carbon::create($todays->year, $todays->month, $todays->day, 12, 45, 1),
+			'end_time' => Carbon::create($todays->year, $todays->month, $todays->day, 13, 15, 0),
+		));
+
+		Session::create(array(
+			'conference_id' => $conferenceId,
+			'title' => 'U11 - Accenture: Hvordan modernisere borgernes og næringslivets interaksjon med det offentlige',
+			'description' => 'Nicolas har det overordnede ansvaret for utvikling av Accentures strategi og tjenester innen digitalisering i offentlig sektor. I sitt innlegg vil Nicolas forklare hvordan det offentlige kan bruke det nyeste av tenkning innenfor digitalisering til å modernisere borgernes og næringslivets interaksjon med det offentlige og herunder skape høyere borgertilfredshet, større engasjement, bedre konkurranseevne og økt statlig produktivitet. Nicolas vil dele sine erfaringer med oss og gi konkrete eksempler på pågående initiativer og vellykkede prosjekter fra resten av verden.',
+			'location' => 'Space 1',
+			'confirmed' => true,
+			'category' => 'professional',
+			'start_time' => Carbon::create($todays->year, $todays->month, $todays->day, 12, 45, 1),
+			'end_time' => Carbon::create($todays->year, $todays->month, $todays->day, 13, 15, 0),
+		));
+
+		// Pause
+
+		Session::create(array(
+			'conference_id' => $conferenceId,
+			'title' => 'Pause',
+			'description' => '',
 			'location' => '',
 			'confirmed' => true,
 			'category' => 'break',
@@ -776,8 +795,8 @@ Dessert: Pasjonsfrukt panna cotta med mangokompott og sukkerbrød.',
 		Session::create(array(
 			'conference_id' => $conferenceId,
 			'title' => 'Pause. Frukt, grønt og dip.',
-			'description' => 'Pause. Frukt, grønt og dip',
-			'location' => '',
+			'description' => '',
+			'location' => 'Ankomsthallen',
 			'confirmed' => true,
 			'category' => 'break',
 			'start_time' => Carbon::create($todays->year, $todays->month, $todays->day, 14, 30, 1),
@@ -800,12 +819,12 @@ Dessert: Pasjonsfrukt panna cotta med mangokompott og sukkerbrød.',
 		Session::create(array(
 			'conference_id' => $conferenceId,
 			'title' => 'Vel hjem!',
-			'description' => 'Vel hjem!',
+			'description' => '',
 			'location' => '',
 			'confirmed' => true,
 			'category' => 'break',
-			'start_time' => Carbon::create($todays->year, $todays->month, $todays->day, 14, 30, 1),
-			'end_time' => Carbon::create($todays->year, $todays->month, $todays->day, 14, 45, 0),
+			'start_time' => Carbon::create($todays->year, $todays->month, $todays->day, 15, 45, 1),
+			'end_time' => Carbon::create($todays->year, $todays->month, $todays->day, 15, 46, 0),
 		));
 	}
 
