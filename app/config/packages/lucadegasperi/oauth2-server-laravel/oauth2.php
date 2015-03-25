@@ -1,6 +1,7 @@
 <?php
 
 use Uninett\Eloquent\Users\User;
+use Illuminate\Http\Response as HttpResponse;
 
 return [
 
@@ -86,7 +87,11 @@ return [
 				    $user = User::where('email', $email)->first();
 
                     if ($user->confirmed != true)
-                        return false;
+                        throw new Uninett\Exceptions\VerifyUserException(
+                            'unactivated_account',
+                            ['The account is not activated'],
+                            HttpResponse::HTTP_LOCKED
+                        );
 
 				    return $user->id;
 			    }
