@@ -20,7 +20,7 @@ class SessionsTableSeeder extends \UninettSeeder {
 			'conference_id' => $conferenceId,
 			'title' => 'Registrering',
 			'description' => '',
-			'location' => 'Fellesområdet',
+			'location' => 'Resepsjonen',
 			'category' => 'other',
 			'start_time' => Carbon::create($todays->year, $todays->month, $todays->day, 8, 30, 1),
 			'end_time' => Carbon::create($todays->year, $todays->month, $todays->day, 9, 30, 0),
