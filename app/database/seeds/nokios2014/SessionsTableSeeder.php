@@ -258,7 +258,7 @@ Resultatene fra workshopen er tenkt brukt senere i konferansen. Vel møtt til en
 	        'description' => '',
 	        'location' => '',
 	        'confirmed' => true,
-	        'category' => 'professional',
+	        'category' => 'break',
 	        'start_time' => Carbon::create($todays->year, $todays->month, $todays->day, 14, 00, 1),
 	        'end_time' => Carbon::create($todays->year, $todays->month, $todays->day, 14, 15, 0),
         ));
@@ -548,7 +548,7 @@ Kan det tenkes at offentlig innkjøpsregime bidrar til å hindre utvikling av n�
 	        'location' => 'Fellesområdet',
 
 	        'confirmed' => true,
-	        'category' => 'professional',
+	        'category' => 'break',
 	        'start_time' => Carbon::create($todays->year, $todays->month, $todays->day, 15, 00, 1),
 	        'end_time' => Carbon::create($todays->year, $todays->month, $todays->day, 15, 15, 0),
         ));
