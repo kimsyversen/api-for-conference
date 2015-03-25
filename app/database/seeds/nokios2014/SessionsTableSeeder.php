@@ -21,7 +21,7 @@ class SessionsTableSeeder extends \UninettSeeder {
 			'title' => 'Registrering',
 			'description' => '',
 			'location' => 'Ankomsthallen',
-			'category' => 'professional',
+			'category' => 'other',
 			'start_time' => Carbon::create($todays->year, $todays->month, $todays->day, 8, 30, 1),
 			'end_time' => Carbon::create($todays->year, $todays->month, $todays->day, 9, 30, 0),
 		]);
@@ -271,7 +271,7 @@ Resultatene fra workshopen er tenkt brukt senere i konferansen. Vel møtt til en
 	        'location' => '',
 
 	        'confirmed' => true,
-	        'category' => 'professional',
+	        'category' => 'other',
 	        'start_time' => Carbon::create($todays->year, $todays->month, $todays->day, 14, 15, 1),
 	        'end_time' => Carbon::create($todays->year, $todays->month, $todays->day, 15, 45, 0),
         ));
@@ -296,7 +296,7 @@ Resultatene fra workshopen er tenkt brukt senere i konferansen. Vel møtt til en
 	        'location' => '',
 
 	        'confirmed' => true,
-	        'category' => 'professional',
+	        'category' => 'other',
 	        'start_time' => Carbon::create($todays->year, $todays->month, $todays->day, 16, 00, 1),
 	        'end_time' => Carbon::create($todays->year, $todays->month, $todays->day, 17, 00, 0),
         ));
@@ -338,7 +338,7 @@ Resultatene fra workshopen er tenkt brukt senere i konferansen. Vel møtt til en
 	        'location' => 'Resepsjonen',
 
 	        'confirmed' => true,
-	        'category' => 'professional',
+	        'category' => 'other',
 	        'start_time' => Carbon::create($todays->year, $todays->month, $todays->day, 8, 30, 1),
 	        'end_time' => Carbon::create($todays->year, $todays->month, $todays->day, 9, 30, 0),
         ));
