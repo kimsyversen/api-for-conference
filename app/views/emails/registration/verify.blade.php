@@ -7,9 +7,11 @@
 <h2>Verify Your Email Address</h2>
 
 <div>
-    Hi chief! Thanks for registering. You must verify your account before you use it. Click on the link below.
-    {{ $confirmation_url }}.<br/>
+    <p class="lead">Hi chief! Thanks for registering. You must activate your account to be able to log in.
+        <a href="{{ $confirmation_url }}">Click here to activate your account</a></p>
 
+
+    <p>If you did not create this account, please ignore this email.</p>
 </div>
 
 

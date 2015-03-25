@@ -256,7 +256,7 @@ Resultatene fra workshopen er tenkt brukt senere i konferansen. Vel møtt til en
 	        'conference_id' => $conferenceId,
 	        'title' => 'Pause - Spekemat, ost og kjeks',
 	        'description' => '',
-	        'location' => '',
+	        'location' => 'Fellesområdet',
 	        'confirmed' => true,
 	        'category' => 'break',
 	        'start_time' => Carbon::create($todays->year, $todays->month, $todays->day, 14, 00, 1),
