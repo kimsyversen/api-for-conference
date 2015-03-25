@@ -1,7 +1,6 @@
 <?php namespace database\seeds\nokios2014;
 
 use Faker\Factory as Faker;
-
 use Uninett\Eloquent\Schedules\ConferenceSchedule;
 use Uninett\Eloquent\Sessions\Session;
 

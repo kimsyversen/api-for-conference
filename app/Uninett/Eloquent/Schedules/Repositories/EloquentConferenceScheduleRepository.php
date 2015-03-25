@@ -38,7 +38,7 @@ class EloquentConferenceScheduleRepository implements ConferenceScheduleReposito
 
         if(! $activeSchedule)
         {
-            $activeSchedule = ConferenceSchedule::updateOrCreate(['conference_id' => $conference->id])->first();
+            $activeSchedule = ConferenceSchedule::where('conference_id', $conference->id)->first() ?: ConferenceSchedule::create(compact('conference_id'));
 
             $conference['active_schedule_id'] = $activeSchedule->id;
 

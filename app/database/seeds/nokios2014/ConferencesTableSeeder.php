@@ -24,6 +24,16 @@ class ConferencesTableSeeder extends \Seeder {
             'end_date' => Carbon::now()->addDays(2)->hour(22)->minute(0)->second(0),
 		]);
 
+        Conference::create([
+            'name' => 'NKUL 2015',
+            'description' => 'Norges største og viktigste møteplass for oss som arbeider med IKT og skole. Målgrupper: Lærere i grunn- og videregående skole, barnehagelærere, skoleledere, skoleeiere, lærerutdannere, lærerstudenter og andre aktører i utdanningssektoren.',
+            'banner' => 'https://barnehageblogg.files.wordpress.com/2012/12/nkul.jpg?w=450',
+            'country' => 'Norway',
+            'city' => 'Trondheim',
+            'start_date' => Carbon::now()->hour(8)->minute(0)->second(0),
+            'end_date' => Carbon::now()->addDays(2)->hour(22)->minute(0)->second(0),
+        ]);
+
 	}
 
 }
