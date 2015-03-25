@@ -3,6 +3,7 @@
 return [
     'listeners' => [
         'Uninett\Handlers\EmailNotifier',
+        'Uninett\Handlers\SendWelcomeMessage'
     ],
 
     'bindings' => [
