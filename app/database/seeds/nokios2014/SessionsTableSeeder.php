@@ -118,7 +118,7 @@ class SessionsTableSeeder extends \UninettSeeder {
 			'conference_id' => $conferenceId,
 			'title' => 'Lunsj',
 			'description' => '',
-			'location' => 'Restaurant 1',
+			'location' => 'Lunsjområdet',
 			'category' => 'break',
 			'start_time' => Carbon::create($todays->year, $todays->month, $todays->day, 11, 30, 1),
 			'end_time' => Carbon::create($todays->year, $todays->month, $todays->day, 12, 30, 0),
@@ -281,7 +281,7 @@ Resultatene fra workshopen er tenkt brukt senere i konferansen. Vel møtt til en
 	        'conference_id' => $conferenceId,
 	        'title' => 'Pause - Oppskåret frukt, grønt & dip',
 	        'description' => '',
-	        'location' => '',
+	        'location' => 'Fellesområdet',
 
 	        'confirmed' => true,
 	        'category' => 'break',
@@ -514,7 +514,7 @@ Effektiv krisehåndtering krever et samspill mellom flere aktører. Samfunnet di
         Session::create(array(
 	        'conference_id' => $conferenceId,
 	        'title' => 'Lunsj',
-	        'description' => 'Det blir servert lunsj i lunsjområdet.',
+	        'description' => '',
 	        'location' => 'Lunsjområdet',
 
 	        'confirmed' => true,
@@ -544,7 +544,7 @@ Kan det tenkes at offentlig innkjøpsregime bidrar til å hindre utvikling av n�
         Session::create(array(
 	        'conference_id' => $conferenceId,
 	        'title' => 'Pause. Frukt, grønt og dip.',
-	        'description' => 'Det blir servert en liten oppkvikker i fellesområdet.',
+	        'description' => '',
 	        'location' => 'Fellesområdet',
 
 	        'confirmed' => true,
@@ -631,7 +631,7 @@ Dessert: Pasjonsfrukt panna cotta med mangokompott og sukkerbrød.',
 		Session::create(array(
 			'conference_id' => $conferenceId,
 			'title' => 'Plenum',
-			'description' => 'Med blå-blå vind i forenklingsseilet.',
+			'description' => 'Med blå-blå vind i forenklingsseilet. 1 år har gått med blå-blå regjering. Statssekretær Paul Chaffey orienterer om regjeringens ambisjoner og planer for forenkling og digitalisering. Hva skal prioriteres og hvordan påvirker regjeringens planer aktører i forvaltningen og samfunnet generelt? Vår kommentator Arne Krokan tar opp hva som har skjedd siste året, og stiller statssekretæren noen spørsmål til dette.',
 			'location' => 'Cosmos 1',
 			'confirmed' => true,
 			'category' => 'professional',
@@ -654,7 +654,7 @@ Dessert: Pasjonsfrukt panna cotta med mangokompott og sukkerbrød.',
 		Session::create(array(
 			'conference_id' => $conferenceId,
 			'title' => 'Sesjon 3A - Veikart for felleskomponenter',
-			'description' => 'Med blå-blå vind i forenklingsseilet.',
+			'description' => 'Et veikart for utvikling av de nasjonale felleskomponentene innen IKT utarbeides i løpet av 2014. Dette skjer med Difi som sekretariat for en arbeidsgruppe som jobber på oppdrag fra SKATE. SKATE er et strategisk samarbeidsråd for styring og koordinering av tjenester i e-forvaltningen og medlemmene er direktørene for Brønnøysundregistrene, Skattedirektoratet, Kartverket, Difi, Nav, Helsedirektoratet, Politidirektoratet, Lånekassen, Statistisk sentralbyrå og KS/KommIT. I denne sesjonen vil veikartet for felleskomponentene bli presentert og diskutert. Det er Skatesekretariatet v/Difi som presenterer.',
 			'location' => 'Cosmos 3A',
 			'confirmed' => true,
 			'category' => 'professional',
@@ -666,7 +666,7 @@ Dessert: Pasjonsfrukt panna cotta med mangokompott og sukkerbrød.',
 		Session::create(array(
 			'conference_id' => $conferenceId,
 			'title' => 'Sesjon 3B - Digitalt førstevalg for alle - er det mulig?',
-			'description' => 'Digitalt førstevalg for alle - er det mulig?',
+			'description' => 'Digitaliseringsprogrammet har som primær målsetning at digital kommunikasjon skal være hovedregelen for kommunikasjon mellom innbyggerne og forvaltningen i stat og kommune. Det er satt tydelige mål for hvilke tjenester som skal være digitale i år og i 2015. Som en overordnet målsetning er det ambisiøst og framtidsrettet, langt fra de fleste ønsker eller er i stand til å kommunisere digitalt. Samtidig må vi stille spørsmål om det er økonomisk lønnsomt og samfunnsmessig fornuftig at alle tjenester og all kommunikasjon skal være digitale. For å sette det på spissen - er det et mål at alt og alle skal være digitalt og tilgjengelig 24/7/365. Kanskje det bør fortsatt være noen digital-frie soner, både i tid og rom, slik at vi kan ta oss inn igjen det stadig mer hektiske, online og multi-tasking livet svært mange lever.',
 			'location' => 'Cosmos 1',
 			'confirmed' => true,
 			'category' => 'professional',
@@ -677,7 +677,7 @@ Dessert: Pasjonsfrukt panna cotta med mangokompott og sukkerbrød.',
 		Session::create(array(
 			'conference_id' => $conferenceId,
 			'title' => 'Sesjon 3C - Samarbeid mellom kunde og leverandør for å skape innovasjon i anskaffelsesprosessen',
-			'description' => 'Samarbeid mellom kunde og leverandør for å skape innovasjon i anskaffelsesprosessen',
+			'description' => 'Næringslivet er en viktig samarbeidspartner for å bidra til en mer innovativ offentlig sektor. Offentlig sektor kan også være en viktig pådriver for innovasjon i næringslivet. Offentlig sektor kjøpte i 2011 tjenester og produkter fra næringslivet for om lag 400 milliarder kroner – og representerer slik sett en enorm innkjøpsmakt. Dessverre brukes bare en liten andel av denne summen til å fremme mer innovative løsninger. Bedre utnyttelse av innovasjonsmuligheten vil gi bedre tjenester, mer effektiv ressursutnyttelse i offentlig sektor og positive spill-over effekter for samfunnet, bl.a. ved å stimulere norske bedrifter (leverandørene) til å øke innovasjonstakten yttereligere. Da må offentlige innkjøp bli et strategisk verktøy for å videreutvikle evnen til å skape verdier i offentlige tjenester og i norsk næringsliv. I denne sesjonen ønsker vi å se på hvilke mulighetsrom som finnes innenfor dagens lovverk og hvordan offentlig sektor kan inngå utviklingsavtaler med leverandører. Og vi vil se på noen konkrete eksempler på Innovasjon i praksis.',
 			'location' => 'Cosmos 3C',
 			'confirmed' => true,
 			'category' => 'professional',
@@ -689,7 +689,7 @@ Dessert: Pasjonsfrukt panna cotta med mangokompott og sukkerbrød.',
 			'conference_id' => $conferenceId,
 			'title' => 'Lunsj',
 			'description' => '',
-			'location' => 'Restaurant 1',
+			'location' => 'Lunsjområdet',
 			'confirmed' => true,
 			'category' => 'break',
 			'start_time' => Carbon::create($todays->year, $todays->month, $todays->day, 11, 45, 1),
@@ -760,7 +760,15 @@ Dessert: Pasjonsfrukt panna cotta med mangokompott og sukkerbrød.',
 		Session::create(array(
 			'conference_id' => $conferenceId,
 			'title' => 'Sesjon 4A - Digital ledelse',
-			'description' => 'Samarbeid mellom kunde og leverandør for å skape innovasjon i anskaffelsesprosessen',
+			'description' => 'I Mattilsynets nye strategi er digitalisering et omfattende område. Vi har 4 satsingsområder og digitalisering er et tema under hvert punkt.
+•	Synlig og tydelig
+-	Utvikle brukervennlige løsninger for kommunikasjon og selvbetjening
+•	Effektiv og moderne
+-	Utvikle digitale løsninger som sikrer effektivitet og kvalitet i arbeidet
+•	Kunnskapsbasert
+-	Formidle og aktivt dele våre data, vår kunnskap og erfaring
+•	Attraktiv arbeidsplass
+-	Øke digital kompetanse' ,
 			'location' => 'Cosmos 1',
 			'confirmed' => true,
 			'category' => 'professional',
@@ -771,7 +779,13 @@ Dessert: Pasjonsfrukt panna cotta med mangokompott og sukkerbrød.',
 		Session::create(array(
 			'conference_id' => $conferenceId,
 			'title' => 'Sesjon 4B - Kommunale fellesløsninger: Visjon og virkelighet',
-			'description' => 'Kommunale fellesløsninger: Visjon og virkelighet',
+			'description' => 'DigIT – DoIT – KommIT
+Brukerbehov først – Fra visjon til virkelighet
+Kommunene har sammen med KS satt i gang KommIT (Program for IKT samordning i kommunesektoren) for å samordne kommunesektoren, jobbe samordnet med statlige aktører, øke den kommunale IKT-kompetansen og utrede fremtidens utviklings- og forvaltningsenhet.
+
+Utvikling og utbredelse av Felles kommunal IKT-arkitektur og KS Læring er sentrale deler av leveranseplattformen for utvikling og forbedring av mer digitaliserte kommunale tjenester, som understøtter kommunenes reise mot «En samordnet kommunal sektor leverer digitale tjenester som gir innbyggere og næringsliv et reelt digitalt førstevalg».
+
+I denne sesjonen viser KS KommIT hvordan framtidens kommunale digitale tjenester utvikles fra visjon til virkelighet – med brukerens behov i sentrum. ',
 			'location' => 'Cosmos 3A',
 			'confirmed' => true,
 			'category' => 'professional',
@@ -783,7 +797,7 @@ Dessert: Pasjonsfrukt panna cotta med mangokompott og sukkerbrød.',
 		Session::create(array(
 			'conference_id' => $conferenceId,
 			'title' => 'Sesjon 4C - Skytjenester - bruk dem gjerne, men bruk dem riktig!',
-			'description' => 'Skytjenester - bruk dem gjerne, men bruk dem riktig!',
+			'description' => 'Stadig flere flytter sine tjenester til, og lagrer sine data i ”Skyen”. Mange offentlige aktører ønsker å gjøre dette, og mange gjør det allerede. I denne sesjonen ser vi på hvordan dette gjøres riktig og sikkert. Skytjenester gir mange muligheter, men byr også på en rekke utfordringer. Her får vi høre om begge deler.',
 			'location' => 'Cosmos 3C',
 			'confirmed' => true,
 			'category' => 'professional',
@@ -796,7 +810,7 @@ Dessert: Pasjonsfrukt panna cotta med mangokompott og sukkerbrød.',
 			'conference_id' => $conferenceId,
 			'title' => 'Pause. Frukt, grønt og dip.',
 			'description' => '',
-			'location' => 'Ankomsthallen',
+			'location' => 'Fellesområdet',
 			'confirmed' => true,
 			'category' => 'break',
 			'start_time' => Carbon::create($todays->year, $todays->month, $todays->day, 14, 30, 1),
@@ -807,7 +821,11 @@ Dessert: Pasjonsfrukt panna cotta med mangokompott og sukkerbrød.',
 		Session::create(array(
 			'conference_id' => $conferenceId,
 			'title' => 'Internasjonalt plenum',
-			'description' => 'Insights from Estonia – World Leaders in the E-state',
+			'description' => 'Taavi Kotka Government CIO, Deputy Secretary General - ICT, Ministry of Economic Affairs and Communications for Estonia will tell us how Estonia overcame a culture of resistance to embrace digital citizenship and became a pioneer e-state.
+A commitment to openness across government: A truly digital, online and transparent e-state.
+An online government: Estonia as pioneers in implementation of e-services, including e-taxation, e-health, e-schools
+State Portal – Giving citizens the power to control their own data
+Understanding importance of information security in e-governance. ',
 			'location' => 'Cosmos 1',
 			'confirmed' => true,
 			'category' => 'professional',
