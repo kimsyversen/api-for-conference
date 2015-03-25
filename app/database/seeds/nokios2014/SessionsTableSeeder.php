@@ -119,7 +119,7 @@ class SessionsTableSeeder extends \UninettSeeder {
 			'title' => 'Lunsj',
 			'description' => '',
 			'location' => 'Lunsjområdet',
-			'category' => 'break',
+			'category' => 'social',
 			'start_time' => Carbon::create($todays->year, $todays->month, $todays->day, 11, 30, 1),
 			'end_time' => Carbon::create($todays->year, $todays->month, $todays->day, 12, 30, 0),
 		]);
@@ -518,7 +518,7 @@ Effektiv krisehåndtering krever et samspill mellom flere aktører. Samfunnet di
 	        'location' => 'Lunsjområdet',
 
 	        'confirmed' => true,
-	        'category' => 'professional',
+	        'category' => 'social',
 	        'start_time' => Carbon::create($todays->year, $todays->month, $todays->day, 11, 45, 1),
 	        'end_time' => Carbon::create($todays->year, $todays->month, $todays->day, 12, 00, 0),
         ));
@@ -691,7 +691,7 @@ Dessert: Pasjonsfrukt panna cotta med mangokompott og sukkerbrød.',
 			'description' => '',
 			'location' => 'Lunsjområdet',
 			'confirmed' => true,
-			'category' => 'break',
+			'category' => 'social',
 			'start_time' => Carbon::create($todays->year, $todays->month, $todays->day, 11, 45, 1),
 			'end_time' => Carbon::create($todays->year, $todays->month, $todays->day, 12, 45, 0),
 		));
