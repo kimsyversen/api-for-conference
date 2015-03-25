@@ -334,7 +334,7 @@ Resultatene fra workshopen er tenkt brukt senere i konferansen. Vel møtt til en
         Session::create(array(
 	        'conference_id' => $conferenceId,
 	        'title' => 'Registrering',
-	        'description' => 'Registrer deg ved resepsjonen ved ankomst.',
+	        'description' => '',
 	        'location' => 'Resepsjonen',
 
 	        'confirmed' => true,
