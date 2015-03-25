@@ -807,7 +807,7 @@ Dessert: Pasjonsfrukt panna cotta med mangokompott og sukkerbrød.',
 		Session::create(array(
 			'conference_id' => $conferenceId,
 			'title' => 'Internasjonalt plenum',
-			'description' => 'nsights from Estonia – World Leaders in the E-state',
+			'description' => 'Insights from Estonia – World Leaders in the E-state',
 			'location' => 'Cosmos 1',
 			'confirmed' => true,
 			'category' => 'professional',
