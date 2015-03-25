@@ -27,7 +27,9 @@ class RegistrationController extends ApiController {
 	{
 		$user = $this->execute(VerifyUserCommand::class, ['confirmation_code' => $confirmation_code] );
 
-		return $this->responder->respond($this->transform->transform($user->toArray()));
+		return View::make('emails.registration.login-after-verify');
+
+		//return $this->responder->respond($this->transform->transform($user->toArray()));
 
 	}
 }
