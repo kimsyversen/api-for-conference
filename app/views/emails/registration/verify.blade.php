@@ -4,7 +4,7 @@
     <meta charset="utf-8">
 </head>
 <body>
-<h2>Verify Your Email Address</h2>
+<h2>Activate your account</h2>
 
 <div>
     <p class="lead">Hi chief! Thanks for registering. You must activate your account to be able to log in.
