@@ -106,17 +106,21 @@ class ConferenceSchedulesController extends ApiController {
         $activeSchedule = $this->execute(RequestActiveScheduleCommand::class);
 
         return $this->responder->respond($this->schedulesTransformer->transformCollection($activeSchedule));
+
+//        $data = $this->schedulesTransformer->transformCollection($activeSchedule);
+//
+//        $paginatedData = Paginator::make($data, count($data), 5);
+//
+//        return $this->responder->respondWithPagination($paginatedData->all(), $paginatedData);
     }
 
     public function showAuthenticated($conference_id)
     {
         $user_id = $this->getUserId();
 
-        Request::merge(compact('conference_id', 'user_id'));
+        Request::merge(compact('user_id'));
 
-        $activeSchedule = $this->execute(RequestActiveScheduleCommand::class);
-
-        return $this->responder->respond($this->schedulesTransformer->transformCollection($activeSchedule));
+        return $this->showActive($conference_id);
     }
 
 }

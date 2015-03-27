@@ -18,6 +18,10 @@ class RegistrationController extends ApiController {
 
 	public function store()
 	{
+        Request::merge([
+           'email' =>  trim(Request::get('email'))
+        ]);
+
 		$this->execute(RegisterUserCommand::class);
 
 		return $this->responder->respondCreated('Account was successfully created.');
