@@ -47,7 +47,8 @@ class LogRequestCommandHandler implements CommandHandler {
 					'hits' => 1,
 					'statistic_uri_id' => $record->id
 				]);
-		} else {
+		}
+        else {
 
 			$newUri = $this->statisticUriRepository->create([
 				'name' => $command->request

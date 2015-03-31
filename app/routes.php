@@ -54,7 +54,6 @@ Route::post('register', ['as' => 'register_path',  'uses' => 'RegistrationContro
 Route::get('register', [ 'as' => 'register_path', 'uses' => 'RegistrationController@create' ]);
 Route::get('register/verify/{confirmation_code}', [ 'as' => 'confirmation_path',  'uses' => 'RegistrationController@verify' ]);
 
-
 /**
  * api/v1/
  */
@@ -115,8 +114,7 @@ Route::group(['prefix' => 'api/v1'], function() {
      */
     Route::get('conferences/{conferences}/chats', ['as' => 'api.v1.conferences.chats.index', 'uses' => 'ChatsController@index', 'before' => 'oauth']);
     Route::get('conferences/{conferences}/chats/{chats}', ['as' => 'api.v1.conferences.chats.show', 'uses' => 'ChatsController@show', 'before' => 'oauth']);
-
-
+    
 
 //    Route::get('conferences/{$id}/sessions',            ['as' => 'api.v1.conferences.index',    'uses' => 'ConferencesController@index']);
 //    Route::get('conferences/{$id}/sessions/{$id2}',     ['as' => 'api.v1.conferences.index',    'uses' => 'ConferencesController@index']);
