@@ -13,3 +13,7 @@
 
 Artisan::resolve('commands\Generators\CommandsGenerator\CommanderGenerateCommand');
 Artisan::resolve('commands\Generators\RoutesGenerator\RoutesGeneratorCommand');
+
+Artisan::add(new ApiDatabaseSeederCommand);
+Artisan::add(new ApiMigrationsMigrateCommand);
+Artisan::add(new ApiMigrationsResetCommand);
