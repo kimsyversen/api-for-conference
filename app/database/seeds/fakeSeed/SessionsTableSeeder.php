@@ -43,12 +43,15 @@ class SessionsTableSeeder extends UninettSeeder {
 
         $category = ['social', 'professional', 'break'];
 
+        $target_audience = ['Apples', 'Bananas', 'Pears', 'Lemons', 'Oranges'];
+
 		Session::create([
 			'conference_id' => $conference->id,
 			'title' => $faker->sentence(),
 			'description' => $faker->paragraph() . ' ' . $faker->paragraph() . ' ' . $faker->paragraph() . ' ' . $faker->paragraph(),
 			'location' => $faker->address,
             'category' => $faker->randomElement($category),
+            'target_audience' => $faker->randomElement($target_audience),
             'confirmed' => $faker->boolean(),
 			'start_time' => Carbon::createFromFormat('Y-m-d H:i:s', $conference->start_date)->addHours($hours + $session_duration)->second(1),
 			'end_time' => Carbon::createFromFormat('Y-m-d H:i:s', $conference->start_date)->addHours(1 + $hours + $session_duration),

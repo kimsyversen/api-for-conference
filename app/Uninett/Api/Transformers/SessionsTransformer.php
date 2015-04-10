@@ -16,6 +16,7 @@ class SessionsTransformer extends Transformer {
             'description' => $item['description'],
             'location' => $item['location'],
             'category' => $item['category'],
+            'target_audience' => $item['target_audience'],
             'confirmed' => $item['confirmed'],
             'start_date' => $item['start_time'],
             'end_date' => $item['end_time'],

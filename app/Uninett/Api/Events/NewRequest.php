@@ -1,6 +1,8 @@
 <?php namespace Uninett\Api\Events;
-use Statistic;
+
 use Log;
+use Uninett\Eloquent\Statistics\Statistic;
+
 class NewRequest {
 
 	public $request;
