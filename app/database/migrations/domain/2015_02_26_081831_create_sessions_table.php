@@ -20,7 +20,7 @@ class CreateSessionsTable extends Migration {
             $table->longText('description');
             $table->string('location');
             $table->enum('category', ['social', 'professional', 'break', 'other']);
-            $table->string('target_audience')->default(null)->nullable();
+            $table->string('target_audience')->nullable();
             $table->boolean('confirmed')->default(true);
             $table->timestamp('start_time');
             $table->timestamp('end_time');

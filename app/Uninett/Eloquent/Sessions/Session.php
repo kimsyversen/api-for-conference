@@ -73,6 +73,16 @@ class Session extends Eloquent {
     }
 
     /**
+     * A session has many speakers
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function speakers()
+    {
+        return $this->hasMany('Uninett\Eloquent\Speakers\Speaker');
+    }
+
+    /**
      * A session has many questions
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
