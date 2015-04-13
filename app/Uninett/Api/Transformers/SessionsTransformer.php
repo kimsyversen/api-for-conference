@@ -14,7 +14,7 @@ class SessionsTransformer extends Transformer {
             'id' => $item['id'],
             'title' => $item['title'],
             'description' => $item['description'],
-            'speakers' => $item['speakers'],
+            'speakers' => (array_key_exists('speakers', $item) ? $item['speakers'] : []),
             'location' => $item['location'],
             'category' => $item['category'],
             'target_audience' => $item['target_audience'],
