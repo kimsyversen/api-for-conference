@@ -8,7 +8,6 @@ class DatabaseSeederNokios extends Seeder {
 		'oauth_clients',
 		'oauth_sessions',
 		'oauth_access_tokens',
-
         'chatables',
         'chats',
         'conference_roles',
@@ -26,12 +25,12 @@ class DatabaseSeederNokios extends Seeder {
         'roles',
         'schedulables',
         'sessions',
+		'speakers'
 	];
 
     protected $seeders = [
         'UserTableSeeder',
         'OAuthTestSeeder',
-
         'database\seeds\nokios2014\ConferencesTableSeeder',
         'database\seeds\nokios2014\MapsTableSeeder',
         'database\seeds\nokios2014\SessionsTableSeeder',
@@ -45,7 +44,8 @@ class DatabaseSeederNokios extends Seeder {
         'database\seeds\nokios2014\ChatsTableSeeder',
         'database\seeds\nokios2014\MessagesTableSeeder',
         'database\seeds\nokios2014\NewsfeedsTableSeeder',
-        'database\seeds\nokios2014\NewspostsTableSeeder'
+        'database\seeds\nokios2014\NewspostsTableSeeder',
+	    'database\seeds\nokios2014\SpeakersTableSeeder'
 
 	];
 
