@@ -24,7 +24,7 @@ class EloquentConferenceSessionRepository implements ConferenceSessionRepository
      */
     public function getConferenceSession($conference_id, $session_id)
     {
-        $conference = Conference::with('sessions')->with('sessions.ratings')->with('sessions.questions')->findOrFail($conference_id);
+        $conference = Conference::with('sessions')->with('sessions.ratings')->with('sessions.questions')->with('sessions.speakers')->findOrFail($conference_id);
 
         $session = $conference['sessions']->only($session_id)->first();
 

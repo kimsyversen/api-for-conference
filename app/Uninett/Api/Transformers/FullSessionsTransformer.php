@@ -16,6 +16,8 @@ class FullSessionsTransformer extends Transformer {
 
     public function transform($item)
     {
+        //dd($item->toArray());
+
         $output = [
             'links' => [
                 'session' => [
@@ -31,6 +33,7 @@ class FullSessionsTransformer extends Transformer {
             'id' => $item['id'],
             'title' => $item['title'],
             'description' => $item['description'],
+            'speakers' => $item['speakers'],
             'location' => $item['location'],
             'category' => $item['category'],
             'target_audience' => $item['target_audience'],

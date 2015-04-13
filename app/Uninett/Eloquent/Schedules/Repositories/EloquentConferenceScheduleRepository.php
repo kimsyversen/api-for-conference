@@ -34,7 +34,7 @@ class EloquentConferenceScheduleRepository implements ConferenceScheduleReposito
     {
         $conference = Conference::findOrFail($conference_id);
 
-        $activeSchedule = ConferenceSchedule::with('sessions')->find($conference['active_schedule_id']);
+        $activeSchedule = ConferenceSchedule::with('sessions.speakers')->find($conference['active_schedule_id']);
 
         if(! $activeSchedule)
         {
@@ -59,6 +59,8 @@ class EloquentConferenceScheduleRepository implements ConferenceScheduleReposito
     public function getSessionsForSchedule($schedule)
     {
         $sessions = $schedule->sessions;
+
+        // TODO: Se om det er speakers her, hvis ikke legg det til...
 
         return $this->calculateParallelSessions($sessions);
     }
