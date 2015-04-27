@@ -13,8 +13,7 @@ class RequestStoreSessionRatingValidator extends FormValidator{
         'conference_id' => 'required',
         'session_id' => 'required',
         'user_id' => 'required',
-        'score' => 'required',
-        //'comment' => 'required',
+        'score' => 'required|integer|between:1,5',
     ];
 
 }

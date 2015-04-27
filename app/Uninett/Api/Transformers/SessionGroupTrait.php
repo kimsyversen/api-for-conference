@@ -34,6 +34,8 @@ trait SessionGroupTrait {
                     $next_sessions_array[] = $session;
             }
 
+            $paralell_sessions = $this->sortSessionsAlphabetically($paralell_sessions);
+
             $paralell_sessions = ['sessions' => $paralell_sessions];
             $paralell_sessions['start_time'] = $begins_at;
             $paralell_sessions['end_time'] = $ends_at;
@@ -43,7 +45,21 @@ trait SessionGroupTrait {
             $sessions = $next_sessions_array;
         }
 
-        return $result; //['parallels' => $result];
+        return $result;
+    }
+
+    private function sortSessionsAlphabetically($sessions)
+    {
+
+        usort($sessions, function ($item1, $item2) {
+
+            if ($item1['title'] == $item2['title']) return 0;
+
+            return ($item1['title'] > $item2['title']) ? 1 : -1;
+
+        });
+
+        return $sessions;
     }
 
 }

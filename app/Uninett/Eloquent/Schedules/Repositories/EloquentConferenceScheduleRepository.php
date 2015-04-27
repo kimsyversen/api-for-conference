@@ -60,8 +60,6 @@ class EloquentConferenceScheduleRepository implements ConferenceScheduleReposito
     {
         $sessions = $schedule->sessions;
 
-        // TODO: Se om det er speakers her, hvis ikke legg det til...
-
         return $this->calculateParallelSessions($sessions);
     }
 
