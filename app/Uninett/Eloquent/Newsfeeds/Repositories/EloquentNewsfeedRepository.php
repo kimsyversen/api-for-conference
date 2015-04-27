@@ -18,13 +18,15 @@ class EloquentNewsfeedRepository {
 
         $newsfeed ?: $newsfeed = $this->getConference($conference_id)->newsfeeds()->create([]);
 
+        $newsfeed->newsposts->sortByDesc('created_at');
+
         return $newsfeed;
     }
 
-    public function getNewspostsForNewsfeed($newsfeed)
-    {
-        return $newsfeed->newsposts;
-    }
+//    public function getNewspostsForNewsfeed($newsfeed)
+//    {
+//        return $newsfeed->newsposts;
+//    }
 
 //    /**
 //     * Get or create the personal schedule for a user on a conference

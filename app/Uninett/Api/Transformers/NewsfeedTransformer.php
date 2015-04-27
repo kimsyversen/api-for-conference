@@ -14,10 +14,11 @@ class NewsfeedTransformer extends Transformer {
 
 	public function transform($item)
     {
+        $newsposts = array_values($item['newsposts']);
 
         return [
             'user_twitter' => $item['user_twitter'],
-	        'newsposts' => $this->newspostTransformer->transformCollection($item['newsposts'])
+	        'newsposts' => $this->newspostTransformer->transformCollection($newsposts)
         ];
     }
 }

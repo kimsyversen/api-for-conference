@@ -27,9 +27,9 @@ class NewsfeedsController extends \ApiController {
 	{
         Request::merge(compact('conference_id'));
 
-        $newsposts = $this->execute(RequestNewsfeedCommand::class);
+        $newsfeed = $this->execute(RequestNewsfeedCommand::class);
 
-		return $this->responder->respond($this->newsfeedTransformer->transform($newsposts->toArray()));
+		return $this->responder->respond($this->newsfeedTransformer->transform($newsfeed->toArray()));
 	}
 
 
