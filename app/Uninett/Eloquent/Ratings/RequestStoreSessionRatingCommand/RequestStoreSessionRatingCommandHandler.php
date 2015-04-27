@@ -3,7 +3,7 @@
 use Laracasts\Commander\CommandHandler;
 use Laracasts\Commander\Events\DispatchableTrait;
 use Uninett\Eloquent\Ratings\Rating;
-use Uninett\Eloquent\Ratings\Repositories\EloquentRatingRepository;
+use Uninett\Eloquent\Ratings\Repositories\EloquentSessionRatingRepository;
 
 class RequestStoreSessionRatingCommandHandler implements CommandHandler {
 
@@ -11,7 +11,7 @@ class RequestStoreSessionRatingCommandHandler implements CommandHandler {
 
     private $ratingRepository;
 
-    function __construct(EloquentRatingRepository $ratingRepository)
+    function __construct(EloquentSessionRatingRepository $ratingRepository)
     {
         $this->ratingRepository = $ratingRepository;
     }

@@ -8,7 +8,7 @@ use Uninett\Eloquent\Ratings\Rating;
 use Uninett\Eloquent\Sessions\Session;
 use Uninett\Exceptions\RatingValidationException;
 
-class EloquentRatingRepository {
+class EloquentSessionRatingRepository {
 
     use EventGenerator;
 
@@ -124,6 +124,5 @@ class EloquentRatingRepository {
 
         return $status;
     }
-
 
 }
