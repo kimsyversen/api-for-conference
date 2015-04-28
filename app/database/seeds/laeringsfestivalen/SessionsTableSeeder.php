@@ -656,9 +656,6 @@ class SessionsTableSeeder extends  \Seeder {
 		]);
 
 
-
-
-
 		$session_29 = Session::create([
 			'conference_id' => $conferenceId,
 			'title' => 'Eksisterer den "digitale" studenten? Om studenters prioriteringer og personlige ressurser',
@@ -764,9 +761,6 @@ class SessionsTableSeeder extends  \Seeder {
 			'title' => 'Administrerende direktør',
 			'description' => '',
 		]);
-
-
-
 
 
 		$session_34 = Session::create([
