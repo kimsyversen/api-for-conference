@@ -10,7 +10,7 @@ class ConferenceTransformer extends Transformer {
 				'rel' => 'self',
 			],
 			'name' => $item['name'],
-			'banner' => $item['banner'],
+			'banner' => url($item['banner']),
 			'description' => $item['description'],
 			'country' => $item['country'],
 			'city' => $item['city'],
