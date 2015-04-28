@@ -134,7 +134,7 @@ class SessionsTableSeeder extends  \Seeder {
 			'category' => 'social',
 			'target_audience' => 'All',
 			'confirmed' => true,
-			'start_time' => Carbon::create(2015, 05, 04, 12, 30, 01),
+			'start_time' => Carbon::create(2015, 05, 04, 12, 00, 01),
 			'end_time' => Carbon::create(2015, 05, 04, 13, 15, 00),
 		]);
 
