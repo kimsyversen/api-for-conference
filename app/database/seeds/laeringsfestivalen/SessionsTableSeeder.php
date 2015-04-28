@@ -295,6 +295,17 @@ class SessionsTableSeeder extends  \Seeder {
 		]);
 
 
+		Session::create([
+			'conference_id' => $conferenceId,
+			'title' => 'Pause',
+			'description' => '',
+			'location' => '',
+			'category' => 'break',
+			'target_audience' => '',
+			'confirmed' => true,
+			'start_time' => Carbon::create(2015, 05, 04, 15, 00, 01),
+			'end_time' => Carbon::create(2015, 05, 04, 15, 15, 00),
+		]);
 
 		$session_13 = Session::create([
 			'conference_id' => $conferenceId,
@@ -555,8 +566,8 @@ class SessionsTableSeeder extends  \Seeder {
 			'category' => 'professional',
 			'target_audience' => 'All',
 			'confirmed' => true,
-			'start_time' => Carbon::create(2015, 05, 05, 10, 30, 01),
-			'end_time' => Carbon::create(2015, 05, 05, 11, 15, 00),
+			'start_time' => Carbon::create(2015, 05, 05, 12, 00, 01),
+			'end_time' => Carbon::create(2015, 05, 05, 12, 45, 00),
 		]);
 
 		Speaker::create([
@@ -617,7 +628,7 @@ class SessionsTableSeeder extends  \Seeder {
 			'category' => 'break',
 			'target_audience' => 'All',
 			'confirmed' => true,
-			'start_time' => Carbon::create(2015, 05, 05, 12, 40, 01),
+			'start_time' => Carbon::create(2015, 05, 05, 12, 45, 01),
 			'end_time' => Carbon::create(2015, 05, 05, 13, 00, 00),
 		]);
 
@@ -766,8 +777,8 @@ class SessionsTableSeeder extends  \Seeder {
 			'category' => 'professional',
 			'target_audience' => 'All',
 			'confirmed' => true,
-			'start_time' => Carbon::create(2015, 05, 05, 14, 00, 01),
-			'end_time' => Carbon::create(2015, 05, 05, 14, 45, 00),
+			'start_time' => Carbon::create(2015, 05, 05, 14, 45, 01),
+			'end_time' => Carbon::create(2015, 05, 05, 15, 00, 00),
 		]);
 
 		Speaker::create([
