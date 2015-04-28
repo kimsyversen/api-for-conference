@@ -8,7 +8,7 @@ class MapsTransformer extends Transformer{
         return [
             'id' => $item['id'],
             'conference_id' => $item['conference_id'],
-            'uri' => $item['uri'],
+            'uri' => url($item['uri']),
             'description' => $item['description'],
             'created_at' => $item['created_at'],
             'updated_at' => $item['updated_at']
