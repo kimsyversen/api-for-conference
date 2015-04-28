@@ -61,8 +61,8 @@ class SessionsTableSeeder extends  \Seeder {
 			'category' => 'professional',
 			'target_audience' => '',
 			'confirmed' => true,
-			'start_time' => Carbon::create(2015, 05, 04, 10, 45, 01),
-			'end_time' => Carbon::create(2015, 05, 04, 11, 15, 00),
+			'start_time' => Carbon::create(2015, 05, 04, 11, 15, 01),
+			'end_time' => Carbon::create(2015, 05, 04, 12, 00, 00),
 		]);
 
 		Speaker::create([
@@ -85,8 +85,8 @@ class SessionsTableSeeder extends  \Seeder {
 			'category' => 'professional',
 			'target_audience' => 'All',
 			'confirmed' => true,
-			'start_time' => Carbon::create(2015, 05, 04, 10, 45, 01),
-			'end_time' => Carbon::create(2015, 05, 04, 11, 15, 00),
+			'start_time' => Carbon::create(2015, 05, 04, 11, 15, 01),
+			'end_time' => Carbon::create(2015, 05, 04, 12, 00, 00),
 		]);
 
 		Speaker::create([
