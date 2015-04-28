@@ -10,10 +10,10 @@ class SessionsTableSeeder extends  \Seeder {
 
 	public function run()
 	{
-		$this->createSessionsNokios(1);
+		$this->createSessions(1);
 	}
 
-	private function createSessionsNokios($conferenceId)
+	private function createSessions($conferenceId)
 	{
 		Session::create([
 			'conference_id' => $conferenceId,
