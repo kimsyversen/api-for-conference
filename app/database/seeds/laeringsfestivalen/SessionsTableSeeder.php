@@ -649,7 +649,7 @@ class SessionsTableSeeder extends  \Seeder {
 		Speaker::create([
 			'session_id' => $session_28->id,
 			'first_name' => 'Magnus',
-			'last_name' => ' Aarskaug Rud',
+			'last_name' => 'Aarskaug Rud',
 			'affiliation' => 'Altund',
 			'title' => '',
 			'description' => 'Magnus Aarskaug Rud studerer industriell matematikk ved Institutt for matematiske fag (IMF). Magnus tar for seg kvaliteten på øvingsopplegget ved utvalgte emner. E-post: magnurud@stud.ntnu.no  Mobil: 975 98 733',
