@@ -20,7 +20,7 @@ class SessionsTableSeeder extends  \Seeder {
 			'title' => 'Registrering i Elektrobygget på Gløshaugen, NTNU',
 			'description' => '',
 			'location' => 'Elektrobygget',
-			'category' => 'professional',
+			'category' => 'other',
 			'target_audience' => 'All',
 			'confirmed' => true,
 			'start_time' => Carbon::create(2015, 05, 04, 9, 00, 00),
