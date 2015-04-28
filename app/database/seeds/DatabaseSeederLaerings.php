@@ -40,7 +40,6 @@ class DatabaseSeederLaerings extends Seeder {
         'database\seeds\laeringsfestivalen\GroupsTableSeeder',
         'database\seeds\laeringsfestivalen\NewsfeedsTableSeeder',
         'database\seeds\laeringsfestivalen\NewspostsTableSeeder',
-
 	];
 
 
