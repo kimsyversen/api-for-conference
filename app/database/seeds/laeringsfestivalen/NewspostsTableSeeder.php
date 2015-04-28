@@ -10,11 +10,5 @@ class NewspostsTableSeeder extends  \Seeder {
 
 	public function run()
 	{
-		Newspost::create([
-            'newsfeed_id' => 1,
-            'user_id' => 1,
-            'title' => 'Test message',
-            'body' => 'Testus testus 123'
-		]);
 	}
 }
