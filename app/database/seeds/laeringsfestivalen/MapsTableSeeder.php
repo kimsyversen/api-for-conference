@@ -20,7 +20,7 @@ class MapsTableSeeder extends  \Seeder {
 		Map::create([
 			'conference_id' => $conference_id,
 			'uri' => 'img/LF15_TO.png',
-			'description' => ''
+			'description' => 'Map data ©2015 Google'
 		]);
 	}
 }

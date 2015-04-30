@@ -1,6 +1,5 @@
 <?php namespace Uninett\Eloquent\Ratings\Repositories;
 
-
 use Carbon\Carbon;
 use Laracasts\Commander\Events\EventGenerator;
 use Uninett\Eloquent\Ratings\Events\SessionWasRated;
