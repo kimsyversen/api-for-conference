@@ -10,17 +10,17 @@ class SessionsTableSeeder extends  \Seeder {
 
 	public function run()
 	{
-		$this->createSessionsNokios(1);
+		$this->createSessions(1);
 	}
 
-	private function createSessionsNokios($conferenceId)
+	private function createSessions($conferenceId)
 	{
 		Session::create([
 			'conference_id' => $conferenceId,
 			'title' => 'Registrering i Elektrobygget på Gløshaugen, NTNU',
 			'description' => '',
 			'location' => 'Elektrobygget',
-			'category' => 'professional',
+			'category' => 'other',
 			'target_audience' => 'All',
 			'confirmed' => true,
 			'start_time' => Carbon::create(2015, 05, 04, 9, 00, 00),
@@ -130,7 +130,7 @@ class SessionsTableSeeder extends  \Seeder {
 			'conference_id' => $conferenceId,
 			'title' => 'Lunsj',
 			'description' => '',
-			'location' => '',
+			'location' => 'Se kart',
 			'category' => 'social',
 			'target_audience' => 'All',
 			'confirmed' => true,
@@ -549,7 +549,7 @@ class SessionsTableSeeder extends  \Seeder {
 			'conference_id' => $conferenceId,
 			'title' => 'Lunsj',
 			'description' => '',
-			'location' => '',
+			'location' => 'Se kart',
 			'category' => 'social',
 			'target_audience' => 'All',
 			'confirmed' => true,
