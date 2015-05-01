@@ -29,14 +29,14 @@ class DatabaseSeederLaerings extends Seeder {
 	];
 
     protected $seeders = [
-        'UserTableSeeder',
+        'database\seeds\laeringsfestivalen\UserTableSeeder',
         'OAuthTestSeeder',
         'database\seeds\laeringsfestivalen\ConferencesTableSeeder',
         'database\seeds\laeringsfestivalen\MapsTableSeeder',
         'database\seeds\laeringsfestivalen\SessionsTableSeeder',
         'database\seeds\laeringsfestivalen\ConferenceSchedulesTableSeeder',
         'database\seeds\laeringsfestivalen\RolesTableSeeder',
-        'database\seeds\laeringsfestivalen\UserConferenceRolesTableSeeder',
+        //'database\seeds\laeringsfestivalen\UserConferenceRolesTableSeeder',
         'database\seeds\laeringsfestivalen\GroupsTableSeeder',
         'database\seeds\laeringsfestivalen\NewsfeedsTableSeeder',
         'database\seeds\laeringsfestivalen\NewspostsTableSeeder',

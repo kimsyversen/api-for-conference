@@ -13,7 +13,7 @@ class UserTableSeeder extends Seeder {
 		//The main test user and admin for the conferences
 		User::create([
 			'email' => 'admin@example.com',
-			'password' => 'secret',
+			'password' => 'ostepoplukterdritt',
 			'confirmed' => 1,
 			'confirmation_code' => null,
 			'remember_token' => null,
