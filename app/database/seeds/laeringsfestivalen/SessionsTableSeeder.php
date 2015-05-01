@@ -430,7 +430,7 @@ class SessionsTableSeeder extends  \Seeder {
 		Speaker::create([
 			'session_id' => $session_20->id,
 			'first_name' => 'Maren',
-			'last_name' => ' Jegersberg,',
+			'last_name' => 'Jegersberg',
 			'affiliation' => 'Universitetet i Oslo',
 			'title' => 'Juridisk rådgiver',
 			'description' => '',
@@ -451,7 +451,7 @@ class SessionsTableSeeder extends  \Seeder {
 		Speaker::create([
 			'session_id' => $session_22->id,
 			'first_name' => 'Hilde Anite',
-			'last_name' => ' Ørnes,',
+			'last_name' => 'Ørnes',
 			'affiliation' => 'Norgesuniversitetet',
 			'title' => 'Seniorrådgiver i Norgesuniversitetet og prosjektleder for undersøkelsen Digital tilstand 2014',
 			'description' => '',
@@ -460,7 +460,7 @@ class SessionsTableSeeder extends  \Seeder {
 		Speaker::create([
 			'session_id' => $session_22->id,
 			'first_name' => 'Jon',
-			'last_name' => ' Lanestedt,',
+			'last_name' => 'Lanestedt',
 			'affiliation' => 'Norgesuniversitetet',
 			'title' => 'Seniorrådgiver',
 			'description' => '',
