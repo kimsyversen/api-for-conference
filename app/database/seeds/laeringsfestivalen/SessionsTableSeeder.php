@@ -115,7 +115,7 @@ class SessionsTableSeeder extends  \Seeder {
 			'category' => 'professional',
 			'confirmed' => true,
 			'start_time' => Carbon::create(2015, 05, 04, 12, 05, 01),
-			'end_time' => Carbon::create(2015, 05, 04, 12, 35, 00),
+			'end_time' => Carbon::create(2015, 05, 04, 13, 15, 00),
 		]);
 
 
