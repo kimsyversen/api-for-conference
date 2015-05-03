@@ -97,7 +97,7 @@ class SessionsTableSeeder extends  \Seeder {
 
 		$session_3 = Session::create([
 			'conference_id' => $conferenceId,
-			'title' => 'SPOR 1: Utstillerseminar',
+			'title' => 'SPOR 1: Utstillerseminar – Gyldendal Akademisk',
 			'description' => '"Hvordan møter lærebokforlag de endrede behovene for læring og kompetanseheving i utdanning og i arbeidslivet?" Kunnskap er lettere tilgjengelig enn noen gang. Verktøy og virkemidler for effektiv og bedre læring har aldri vært bedre enn i dag. Studievanene er varierte og fleksible. I arbeidslivet er behovet for fortløpende kompetanseheving akutt. Den raske teknologiske utviklingen endrer måten vi både jobber, lever og lærer. Dagens studenter blir flere, men kjøper likevel færre bøker enn før. Dette krever at norske lærebokforlag må tenke helt nytt rundt hvordan kvalitetssikret kunnskap skal formidles og settes sammen på en måte som er tilpasset morgendagens behov. Gyldendal Akademisk har satset digitalt i over 10 år. Vi jobber i tett dialog med fagmiljøene og studentene i å utvikle nyttige, digitale løsninger for både UH-sektoren og arbeidslivet. Stikkord: livslang læring, brukermedvirkning, kvalitetssikret innhold, studentaktive metoder, læring som prosess, kompetanseutvikling, faglig samarbeid, brukerorientert utvikling',
 			'location' => 'Auditorium EL 5',
 			'category' => 'professional',
@@ -115,7 +115,7 @@ class SessionsTableSeeder extends  \Seeder {
 			'category' => 'professional',
 			'confirmed' => true,
 			'start_time' => Carbon::create(2015, 05, 04, 12, 05, 01),
-			'end_time' => Carbon::create(2015, 05, 04, 12, 35, 00),
+			'end_time' => Carbon::create(2015, 05, 04, 13, 15, 00),
 		]);
 
 
@@ -430,7 +430,7 @@ class SessionsTableSeeder extends  \Seeder {
 		Speaker::create([
 			'session_id' => $session_20->id,
 			'first_name' => 'Maren',
-			'last_name' => ' Jegersberg,',
+			'last_name' => 'Jegersberg',
 			'affiliation' => 'Universitetet i Oslo',
 			'title' => 'Juridisk rådgiver',
 			'description' => '',
@@ -451,7 +451,7 @@ class SessionsTableSeeder extends  \Seeder {
 		Speaker::create([
 			'session_id' => $session_22->id,
 			'first_name' => 'Hilde Anite',
-			'last_name' => ' Ørnes,',
+			'last_name' => 'Ørnes',
 			'affiliation' => 'Norgesuniversitetet',
 			'title' => 'Seniorrådgiver i Norgesuniversitetet og prosjektleder for undersøkelsen Digital tilstand 2014',
 			'description' => '',
@@ -460,7 +460,7 @@ class SessionsTableSeeder extends  \Seeder {
 		Speaker::create([
 			'session_id' => $session_22->id,
 			'first_name' => 'Jon',
-			'last_name' => ' Lanestedt,',
+			'last_name' => 'Lanestedt',
 			'affiliation' => 'Norgesuniversitetet',
 			'title' => 'Seniorrådgiver',
 			'description' => '',
@@ -569,7 +569,7 @@ class SessionsTableSeeder extends  \Seeder {
 			'first_name' => 'Magnus',
 			'last_name' => 'Aarskaug Rud',
 			'affiliation' => 'Altund',
-			'title' => '',
+			'title' => 'Student',
 			'description' => 'Magnus Aarskaug Rud studerer industriell matematikk ved Institutt for matematiske fag (IMF). Magnus tar for seg kvaliteten på øvingsopplegget ved utvalgte emner. E-post: magnurud@stud.ntnu.no  Mobil: 975 98 733',
 		]);
 
